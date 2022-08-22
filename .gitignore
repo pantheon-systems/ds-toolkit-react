@@ -1,0 +1,42 @@
+# Add a .gitkeep file in an empty
+# directory to check it in to the repository
+!.gitkeep
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+.env.test
+
+#### Storybook ####
+storybook-static
+build-storybook.log
+
+# Playwright & testing
+/playwright-report/
+/playwright/.cache/
+/__tests__/_test-results/artifacts/
+/__tests__/_test-results/report/
+/__tests__/a11y/results
+/__tests__/a11y/__testfiles__/*.*
+
+# Build artifacts
+/_dist/
