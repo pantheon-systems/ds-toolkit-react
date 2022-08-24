@@ -1,66 +1,75 @@
 {
-  "name": "@pantheon-systems/pds-product-react",
-  "version": "0.1.0",
-  "description": "PDS toolkit for the product context and built using the React framework",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pantheon-systems/pds-product-react.git"
-  },
-  "author": "Pantheon Systems",
-  "bugs": {
-    "url": "https://github.com/pantheon-systems/pds-product-react/issues"
-  },
-  "homepage": "https://github.com/pantheon-systems/pds-product-react#readme",
-  "main": "_dist/cjs/index.js",
-  "module": "_dist/esm/index.js",
-  "types": "_dist/index.d.ts",
-  "files": [
-    "_dist"
-  ],
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook",
-    "test": "playwright test",
-    "test:e2e": "playwright test --project 'e2e:chromium' 'e2e:firefox' 'e2e:webkit'",
-    "test:e2e:mobile": "playwright test --project 'e2e:Mobile Chrome' 'e2e:Mobile Safari'",
-    "test:vrt": "playwright test --project 'vrt:chromium' 'vrt:firefox' 'vrt:webkit' 'vrt:Mobile Chrome' 'vrt:Mobile Safari'",
-    "test:vrt:update-snapshots": "npm run test:vrt -- --update-snapshots",
-    "test:a11y:generate": "npm run storybook:build && npx sb extract && node __tests__/a11y/a11y.generate-tests.js",
-    "test:a11y": "playwright test --project 'a11y'",
-    "a11y:results": "npx http-server ./__tests__/a11y/results/",
-    "build": "rollup -c"
-  },
-  "devDependencies": {
-    "@axe-core/playwright": "^4.4.3",
-    "@babel/core": "^7.18.10",
-    "@pantheon-systems/pds-tokens": "^0.0.0",
-    "@playwright/test": "^1.24.2",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.4",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-interactions": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/builder-webpack4": "^6.5.10",
-    "@storybook/manager-webpack4": "^6.5.10",
-    "@storybook/react": "^6.5.10",
-    "@storybook/testing-library": "^0.0.13",
-    "@types/react": "^18.0.17",
-    "axe-html-reporter": "^2.2.3",
-    "babel-loader": "^8.2.5",
-    "del": "^6.1.1",
-    "postcss": "^8.4.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^2.77.3",
-    "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.7.4"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0"
-  }
+	"name": "@pantheon-systems/pds-product-react",
+	"version": "0.1.0",
+	"description": "PDS toolkit for the product context and built using the React framework",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pantheon-systems/pds-product-react.git"
+	},
+	"author": "Pantheon Systems",
+	"bugs": {
+		"url": "https://github.com/pantheon-systems/pds-product-react/issues"
+	},
+	"homepage": "https://github.com/pantheon-systems/pds-product-react#readme",
+	"main": "_dist/cjs/index.js",
+	"module": "_dist/esm/index.js",
+	"types": "_dist/index.d.ts",
+	"files": [
+		"_dist"
+	],
+	"scripts": {
+		"prestorybook": "npm run build:css",
+		"storybook": "start-storybook -p 6006",
+		"storybook:build": "build-storybook",
+		"test": "playwright test",
+		"test:e2e": "playwright test --project 'e2e:chromium' 'e2e:firefox' 'e2e:webkit'",
+		"test:e2e:mobile": "playwright test --project 'e2e:Mobile Chrome' 'e2e:Mobile Safari'",
+		"test:vrt": "playwright test --project 'vrt:chromium' 'vrt:firefox' 'vrt:webkit' 'vrt:Mobile Chrome' 'vrt:Mobile Safari'",
+		"test:vrt:update-snapshots": "npm run test:vrt -- --update-snapshots",
+		"test:a11y:generate": "npm run storybook:build && npx sb extract && node __tests__/a11y/a11y.generate-tests.js",
+		"test:a11y": "playwright test --project 'a11y'",
+		"a11y:results": "npx http-server ./__tests__/a11y/results/",
+		"build": "rollup -c",
+		"postbuild": "npm run build:css",
+		"build:css": "postcss src/foundations/index.css -o _dist/css/pantheon-core.css",
+		"build:css:watch": "npm run build:css -- -w"
+	},
+	"devDependencies": {
+		"@axe-core/playwright": "^4.4.3",
+		"@babel/core": "^7.18.10",
+		"@csstools/postcss-design-tokens": "^1.1.1",
+		"@pantheon-systems/pds-tokens": "^0.x",
+		"@playwright/test": "^1.24.2",
+		"@rollup/plugin-commonjs": "^22.0.2",
+		"@rollup/plugin-node-resolve": "^13.3.0",
+		"@rollup/plugin-typescript": "^8.3.4",
+		"@storybook/addon-actions": "^6.5.10",
+		"@storybook/addon-essentials": "^6.5.10",
+		"@storybook/addon-interactions": "^6.5.10",
+		"@storybook/addon-links": "^6.5.10",
+		"@storybook/builder-webpack4": "^6.5.10",
+		"@storybook/manager-webpack4": "^6.5.10",
+		"@storybook/react": "^6.5.10",
+		"@storybook/testing-library": "^0.0.13",
+		"@types/react": "^18.0.17",
+		"axe-html-reporter": "^2.2.3",
+		"babel-loader": "^8.2.5",
+		"cssnano": "^5.1.13",
+		"del": "^6.1.1",
+		"postcss": "^8.4.16",
+		"postcss-cli": "^10.0.0",
+		"postcss-import": "^14.1.0",
+		"postcss-nested": "^5.0.6",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"rollup": "^2.77.3",
+		"rollup-plugin-dts": "^4.2.2",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-terser": "^7.0.2",
+		"typescript": "^4.7.4"
+	},
+	"peerDependencies": {
+		"react": "^18.2.0"
+	}
 }
