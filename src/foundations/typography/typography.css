@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Poppins:wght@600;700&display=swap');
+
+@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+body {
+	font-family: token('typography.font.bodycopy');
+	line-height: token('typography.line-height.L');
+	letter-spacing: calc(token('typography.letter-spacing.S') * 1rem);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+	margin-block-start: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: token('typography.font-weight.semibold');
+	line-height: token('typography.line-height.S');
+
+	margin-block-end: calc(
+		token('spacing.S') * 1em
+	); /* "em" is relative to size of heading */
+}
+
+h1,
+h2,
+h3 {
+	font-family: token('typography.font.headings');
+}
+
+h4,
+h5 {
+	font-family: token('typography.font.bodycopy');
+}
+
+h1 {
+	font-size: calc(token('typography.size.multipliers.first') * 1rem);
+}
+
+h2 {
+	font-size: calc(token('typography.size.multipliers.second') * 1rem);
+}
+
+h3 {
+	font-size: calc(token('typography.size.multipliers.third') * 1rem);
+}
+
+h4 {
+	font-size: calc(token('typography.size.multipliers.fourth') * 1rem);
+}
+
+h5 {
+	font-size: calc(token('typography.size.multipliers.fifth') * 1rem);
+}
+
+p {
+	margin-block-end: calc(
+		token('spacing.M') * 1em
+	); /* "em" is relative to the font size of the paragraph */
+}
