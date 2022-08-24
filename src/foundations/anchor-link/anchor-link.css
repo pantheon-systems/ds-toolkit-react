@@ -1,0 +1,24 @@
+@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+a,
+a:visited {
+	color: token('color.internal.accents.deep');
+	text-decoration-line: underline;
+}
+
+a:hover {
+	text-decoration-line: none;
+}
+
+a:active {
+	color: token('color.internal.accents.bright');
+}
+
+a:focus-visible {
+	outline: none;
+	border-width: 1px;
+	border-color: inherit;
+	border-style: solid;
+
+	padding-inline: calc(token('spacing.5XS') * 1em);
+}
