@@ -5,7 +5,8 @@
 body {
 	font-family: token('typography.font.bodycopy');
 	line-height: token('typography.line-height.L');
-	letter-spacing: calc(token('typography.letter-spacing.S') * 1rem);
+	/* prettier-ignore */
+	letter-spacing: token('typography.letter-spacing.S')rem;
 }
 
 h1,
@@ -24,10 +25,8 @@ h4,
 h5 {
 	font-weight: token('typography.font-weight.semibold');
 	line-height: token('typography.line-height.S');
-
-	margin-block-end: calc(
-		token('spacing.S') * 1em
-	); /* "em" is relative to size of heading */
+	/* prettier-ignore */
+	margin-block-end: token('spacing.S')em; /* "em" is relative to size of heading */
 }
 
 h1,
@@ -42,27 +41,31 @@ h5 {
 }
 
 h1 {
-	font-size: calc(token('typography.size.multipliers.first') * 1rem);
+	/* prettier-ignore */
+	font-size: token('typography.size.multipliers.first')rem;
 }
 
 h2 {
-	font-size: calc(token('typography.size.multipliers.second') * 1rem);
+	/* prettier-ignore */
+	font-size: token('typography.size.multipliers.second')rem;
 }
 
 h3 {
-	font-size: calc(token('typography.size.multipliers.third') * 1rem);
+	/* prettier-ignore */
+	font-size: token('typography.size.multipliers.third')rem;
 }
 
 h4 {
-	font-size: calc(token('typography.size.multipliers.fourth') * 1rem);
+	/* prettier-ignore */
+	font-size: token('typography.size.multipliers.fourth')rem;
 }
 
 h5 {
-	font-size: calc(token('typography.size.multipliers.fifth') * 1rem);
+	/* prettier-ignore */
+	font-size: token('typography.size.multipliers.fifth')rem;
 }
 
 p {
-	margin-block-end: calc(
-		token('spacing.M') * 1em
-	); /* "em" is relative to the font size of the paragraph */
+	/* prettier-ignore */
+	margin-block-end: token('spacing.M')em; /* "em" is relative to the font size of the paragraph */
 }

@@ -4,9 +4,9 @@ div.pds-subheader {
 	font-family: token('typography.font.bodycopy');
 	font-weight: token('typography.font-weight.semibold');
 	line-height: token('typography.line-height.S');
-	margin-block-end: calc(
-		token('spacing.S') * 1em
-	); /* "em" is relative to the size of the subheading */
+	/* prettier-ignore */
+	margin-block-end: token('spacing.S')em; /* "em" is relative to the size of the subheading */
 	text-transform: uppercase;
-	letter-spacing: calc(token('typography.letter-spacing.M') * 1rem);
+	/* prettier-ignore */
+	letter-spacing: token('typography.letter-spacing.M')rem;
 }

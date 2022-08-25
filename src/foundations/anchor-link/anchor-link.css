@@ -19,6 +19,6 @@ a:focus-visible {
 	border-width: 1px;
 	border-color: inherit;
 	border-style: solid;
-
-	padding-inline: calc(token('spacing.5XS') * 1em);
+	/* prettier-ignore */
+	padding-inline: token('spacing.5XS')em;
 }
