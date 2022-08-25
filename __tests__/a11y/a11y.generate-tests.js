@@ -70,7 +70,7 @@ function testTemplate(story) {
   // iterate over raw stories to filter to only component stories and remove pages
   Object.entries(rawStories).map((entry) => {
     const value = entry[1];
-    const kind = value.kind.split("/").slice(1).join("/"); // remove the top level category name
+    const kind = value.kind;
 
     if (kind && !stories.hasOwnProperty(kind) && value.story !== "Page") {
       stories[kind] = new Array();
