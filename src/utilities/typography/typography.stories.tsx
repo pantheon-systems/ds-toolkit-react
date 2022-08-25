@@ -9,6 +9,7 @@ export default {
 				component: Docs,
 			},
 		},
+		controls: { disabled: true },
 	},
 	argTypes: {},
 };
