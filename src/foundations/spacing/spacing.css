@@ -1,0 +1,59 @@
+@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+body {
+}
+
+p,
+ul,
+ol,
+dl,
+details,
+table,
+form {
+	/* prettier-ignore */
+	margin-block-end: token('spacing.L')em;
+}
+
+img,
+figure {
+	/* prettier-ignore */
+	margin-block-end: token('spacing.L')rem;
+}
+
+figure,
+ul,
+ol,
+dl {
+	margin-block-start: 0;
+}
+
+figure {
+	line-height: 1;
+	margin-inline: 0;
+}
+
+figcaption {
+	line-height: 1.5;
+}
+
+li {
+	/* prettier-ignore */
+	margin-block-end: token('spacing.2XS')em;
+}
+
+li > ul,
+li > ol {
+	/* prettier-ignore */
+	margin-block-start: token('spacing.2XS')em;
+}
+
+dt {
+	/* prettier-ignore */
+	margin-block-end: token('spacing.4XS')em;
+}
+
+dd,
+details[open] > summary {
+	/* prettier-ignore */
+	margin-block-end: token('spacing.S')em;
+}

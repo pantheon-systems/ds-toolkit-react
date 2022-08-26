@@ -4,7 +4,6 @@
 
 body {
 	font-family: token('typography.font.bodycopy');
-	line-height: token('typography.line-height.L');
 	/* prettier-ignore */
 	letter-spacing: token('typography.letter-spacing.S')rem;
 }
@@ -66,6 +65,10 @@ h5 {
 }
 
 p {
-	/* prettier-ignore */
-	margin-block-end: token('spacing.M')em; /* "em" is relative to the font size of the paragraph */
+	line-height: token('typography.line-height.M');
+}
+
+pre,
+code {
+	font-family: 'Monaco', 'Consolas', 'Lucida Console', monospace;
 }
