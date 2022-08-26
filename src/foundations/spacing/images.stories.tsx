@@ -15,13 +15,21 @@ export default {
 };
 
 export const IMG = ({}) => {
-	return <img src='https://picsum.photos/id/560/400/250' />;
+	return (
+		<img
+			src='https://picsum.photos/id/560/400/250'
+			alt='Small dirt walking trail in a forest of pine trees'
+		/>
+	);
 };
 
 export const Figure = ({}) => {
 	return (
 		<figure>
-			<img src='https://picsum.photos/id/260/400/250' />
+			<img
+				src='https://picsum.photos/id/260/400/250'
+				alt='Snowcapped mountains through trees'
+			/>
 			<figcaption>Snowcapped mountains through trees</figcaption>
 		</figure>
 	);
