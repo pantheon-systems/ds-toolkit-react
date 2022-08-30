@@ -31,6 +31,7 @@ function slugify(str) {
 
 // base content for tests file
 let tests = `const { test, expect } = require("@playwright/test");
+const { gotoFrame } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require("../../../src/libs/testing/a11y");
 
 // enable single file parallelism
@@ -41,9 +42,7 @@ test.describe.configure({ mode: "parallel" });
 function testTemplate(story) {
   return `
 	test("${story.name}", async ({ page }) => {
-		await page.goto(
-			"/iframe.html?id=${story.id}&args=&viewMode=story"
-		);
+		await gotoFrame(page, '${story.id}');
 		
 		const a11yNumViolations = await a11yTest(page, "${slugify(
       story.kind
@@ -93,7 +92,7 @@ function testTemplate(story) {
       .then(
         (results) =>
           (filesFound = results.filter(
-            (fn) => fn.startsWith("a11y.") && fn.endsWith(".spec.js")
+            (fn) => fn.endsWith(".spec.a11y.js")
           ))
       );
 
