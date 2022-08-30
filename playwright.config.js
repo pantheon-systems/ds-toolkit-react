@@ -46,7 +46,7 @@ const config = {
 				[
 					'html',
 					{
-						open: process.env.CI ? 'never' : 'on-failure',
+						open: 'never',
 						outputFolder: './__tests__/_test-results/report',
 					},
 				],
