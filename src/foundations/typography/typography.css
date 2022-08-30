@@ -6,6 +6,7 @@ body {
 	font-family: token('typography.font.bodycopy');
 	/* prettier-ignore */
 	letter-spacing: token('typography.letter-spacing.S')rem;
+	color: var(--pds-typography-bodycopy-color);
 }
 
 h1,
@@ -26,6 +27,7 @@ h5 {
 	line-height: token('typography.line-height.S');
 	/* prettier-ignore */
 	margin-block-end: token('spacing.S')em; /* "em" is relative to size of heading */
+	color: var(--pds-typography-headings-color);
 }
 
 h1,
