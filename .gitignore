@@ -40,3 +40,4 @@ build-storybook.log
 
 # Build artifacts
 /_dist/
+.DS_Store
