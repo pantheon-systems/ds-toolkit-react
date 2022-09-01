@@ -1,20 +1,20 @@
 {
-  "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+	"compilerOptions": {
+		/* Visit https://aka.ms/tsconfig.json to read more about this file */
 
-    "target": "es2016",
-    "module": "esnext",
-    "jsx": "react",
-    "declaration": true,
-    "declarationDir": "_dist/types",
-    "sourceMap": true,
-    "outDir": "_dist",
-    "strict": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "emitDeclarationOnly": true
-  }
+		"target": "es2016",
+		"module": "esnext",
+		"jsx": "react-jsx",
+		"declaration": true,
+		"declarationDir": "_dist/types",
+		"sourceMap": true,
+		"outDir": "_dist",
+		"strict": true,
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"emitDeclarationOnly": true
+	}
 }
