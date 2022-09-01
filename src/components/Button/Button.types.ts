@@ -4,7 +4,7 @@ export interface ButtonProps {
 	/**
 	 * Which variant of button to render
 	 */
-	variant: 'primary' | 'secondary' | 'tertiary' | 'destructive';
+	variant: 'primary' | 'secondary' | 'tertiary' | 'critical';
 	/**
 	 * The text of the button
 	 */

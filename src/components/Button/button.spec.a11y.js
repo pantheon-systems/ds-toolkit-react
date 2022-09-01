@@ -278,13 +278,13 @@ test.describe('Components/Button', () => {
 		});
 	});
 
-	test.describe('Destructive', () => {
+	test.describe('Critical', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__destructive',
+				'components-button__critical',
 			);
 
 			expect(
@@ -297,12 +297,12 @@ test.describe('Components/Button', () => {
 			await gotoFrame(
 				page,
 				'components-button--button',
-				'variant:destructive;disabled:true',
+				'variant:critical;disabled:true',
 			);
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__destructive-disabled',
+				'components-button__critical-disabled',
 			);
 
 			expect(
@@ -312,7 +312,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -320,7 +320,7 @@ test.describe('Components/Button', () => {
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__destructive-hover',
+				'components-button__critical-hover',
 			);
 
 			expect(
@@ -330,7 +330,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -339,7 +339,7 @@ test.describe('Components/Button', () => {
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__destructive-active',
+				'components-button__critical-active',
 			);
 
 			expect(
@@ -349,7 +349,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			// Tab to item with keyboard
 			let keyPressed = 'Tab';
@@ -360,7 +360,7 @@ test.describe('Components/Button', () => {
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__destructive-focused',
+				'components-button__critical-focused',
 			);
 
 			expect(
