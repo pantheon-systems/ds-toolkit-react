@@ -208,14 +208,14 @@ test.describe('Components/Button', () => {
 		});
 	});
 
-	test.describe('Destructive', () => {
+	test.describe('Critical', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__destructive.png',
+				'button__critical.png',
 			);
 		});
 
@@ -223,30 +223,30 @@ test.describe('Components/Button', () => {
 			await gotoFrame(
 				page,
 				'components-button--button',
-				'variant:destructive;disabled:true',
+				'variant:critical;disabled:true',
 			);
 
 			const button = page.locator('.pds-button');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__destructive-disabled.png',
+				'button__critical-disabled.png',
 			);
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
 			await button.hover();
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__destructive-hover.png',
+				'button__critical-hover.png',
 			);
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -254,12 +254,12 @@ test.describe('Components/Button', () => {
 			await page.mouse.down();
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__destructive-active.png',
+				'button__critical-active.png',
 			);
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:destructive');
+			await gotoFrame(page, 'components-button--button', 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -271,7 +271,7 @@ test.describe('Components/Button', () => {
 			await page.keyboard.press(keyPressed);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__destructive-focused.png',
+				'button__critical-focused.png',
 			);
 		});
 	});
