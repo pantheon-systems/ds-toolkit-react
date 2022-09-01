@@ -1,4 +1,4 @@
-import Docs from '!!raw-loader!./lists.docs.mdx';
+import Docs from './lists.docs.md';
 
 export default {
 	title: 'Foundations/Spacing/Lists',

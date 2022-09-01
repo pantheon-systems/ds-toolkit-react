@@ -1,4 +1,4 @@
-import Docs from '!!raw-loader!./typography.docs.mdx';
+import Docs from './typography.docs.md';
 
 export default {
 	title: 'Utilities/Typography',
@@ -16,12 +16,9 @@ export default {
 
 const Template = ({}) => {
 	return (
-		<>
-			<div class='pds-subheader'>
-				This is a subheader. Unlike headers (H1-H5) it has no inherent
-				hierarchy.
-			</div>
-		</>
+		<div className='pds-subheader'>
+			This is a subheader. Unlike headers (H1-H5) it has no inherent hierarchy.
+		</div>
 	);
 };
 

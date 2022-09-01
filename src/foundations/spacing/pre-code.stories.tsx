@@ -1,4 +1,4 @@
-import Docs from '!!raw-loader!./pre-code.docs.mdx';
+import Docs from './pre-code.docs.md';
 
 export default {
 	title: 'Foundations/Spacing/Pre & Code',
