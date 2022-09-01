@@ -2,7 +2,7 @@
 
 a,
 a:visited {
-	color: token('color.internal.accents.deep');
+	color: token('color.accents.deep');
 	text-decoration-line: underline;
 }
 
@@ -11,7 +11,7 @@ a:hover {
 }
 
 a:active {
-	color: token('color.internal.accents.bright');
+	color: token('color.accents.bright');
 }
 
 a:focus-visible {
