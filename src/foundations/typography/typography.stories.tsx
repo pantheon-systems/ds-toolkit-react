@@ -1,4 +1,4 @@
-import Docs from '!!raw-loader!./typography.docs.mdx';
+import Docs from './typography.docs.md';
 
 export default {
 	title: 'Foundations/Typography',

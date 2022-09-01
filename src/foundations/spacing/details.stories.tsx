@@ -1,4 +1,4 @@
-import Docs from '!!raw-loader!./details.docs.mdx';
+import Docs from './details.docs.md';
 
 export default {
 	title: 'Foundations/Spacing',

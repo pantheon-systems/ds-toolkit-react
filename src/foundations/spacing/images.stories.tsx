@@ -1,4 +1,4 @@
-import Docs from '!!raw-loader!./images.docs.mdx';
+import Docs from './images.docs.md';
 
 export default {
 	title: 'Foundations/Spacing/Images',
