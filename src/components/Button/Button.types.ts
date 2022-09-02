@@ -13,5 +13,9 @@ export interface ButtonProps {
 	 * Is the button disabled?
 	 */
 	disabled: boolean;
+	/**
+	 * Type of button
+	 */
+	type: 'button' | 'submit' | 'reset';
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }
