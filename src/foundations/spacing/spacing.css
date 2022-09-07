@@ -10,14 +10,12 @@ dl,
 details,
 table,
 form {
-	/* prettier-ignore */
-	margin-block-end: token('spacing.L')em;
+	margin-block-end: token('spacing.L' to em);
 }
 
 img,
 figure {
-	/* prettier-ignore */
-	margin-block-end: token('spacing.L')rem;
+	margin-block-end: token('spacing.L' to rem);
 }
 
 figure,
@@ -37,23 +35,19 @@ figcaption {
 }
 
 li {
-	/* prettier-ignore */
-	margin-block-end: token('spacing.2XS')em;
+	margin-block-end: token('spacing.2XS' to em);
 }
 
 li > ul,
 li > ol {
-	/* prettier-ignore */
-	margin-block-start: token('spacing.2XS')em;
+	margin-block-start: token('spacing.2XS' to em);
 }
 
 dt {
-	/* prettier-ignore */
-	margin-block-end: token('spacing.4XS')em;
+	margin-block-end: token('spacing.4XS' to em);
 }
 
 dd,
 details[open] > summary {
-	/* prettier-ignore */
-	margin-block-end: token('spacing.S')em;
+	margin-block-end: token('spacing.S' to em);
 }
