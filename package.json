@@ -43,7 +43,7 @@
 	"devDependencies": {
 		"@axe-core/playwright": "^4.4.3",
 		"@babel/core": "^7.18.10",
-		"@csstools/postcss-design-tokens": "^1.1.1",
+		"@csstools/postcss-design-tokens": "^1.2.x",
 		"@pantheon-systems/pds-tokens": "^0.x",
 		"@playwright/test": "^1.24.2",
 		"@rollup/plugin-commonjs": "^22.0.2",
