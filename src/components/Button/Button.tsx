@@ -11,13 +11,16 @@ const Button: FC<ButtonProps> = ({
 	disabled = false,
 	type = 'button',
 	onClick,
+	className,
+	...args
 }) => {
 	const variantClass = `pds-button--${variant}`;
 
 	return (
 		<button
+			{...args}
 			type={type}
-			className={['pds-button', variantClass].join(' ')}
+			className={['pds-button', variantClass, className].join(' ')}
 			disabled={disabled}
 			onClick={onClick}
 		>

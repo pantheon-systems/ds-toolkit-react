@@ -1,21 +1,36 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, KeyboardEventHandler } from 'react';
 
-export interface ButtonProps {
+export type ButtonProps = {
 	/**
 	 * Which variant of button to render
 	 */
-	variant: 'primary' | 'secondary' | 'tertiary' | 'critical';
+	variant?: 'primary' | 'secondary' | 'tertiary' | 'critical';
 	/**
 	 * The text of the button
 	 */
-	label: string;
+	label: string | Array<any>;
 	/**
 	 * Is the button disabled?
 	 */
-	disabled: boolean;
+	disabled?: boolean;
 	/**
 	 * Type of button
 	 */
 	type: 'button' | 'submit' | 'reset';
+	/**
+	 * (optional) Additional CSS classes
+	 */
+	className?: string;
+	/**
+	 * (optional) ID attribute
+	 */
+	id?: string;
+	/**
+	 * Click event handler callback
+	 */
 	onClick: MouseEventHandler<HTMLButtonElement>;
-}
+	/**
+	 * Key down event handler callback
+	 */
+	onKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
+};
