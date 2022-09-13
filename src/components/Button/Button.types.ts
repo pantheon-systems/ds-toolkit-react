@@ -30,7 +30,7 @@ export type ButtonProps = {
 	 */
 	onClick: MouseEventHandler<HTMLButtonElement>;
 	/**
-	 * Key down event handler callback
+	 * (optional) Key down event handler callback
 	 */
 	onKeyDown?: KeyboardEventHandler<HTMLButtonElement>;
 };
