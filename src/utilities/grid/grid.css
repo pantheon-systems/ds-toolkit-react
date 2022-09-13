@@ -1,0 +1,113 @@
+@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/* Temporary. Will remove. */
+.pds-grid-item {
+	background-color: pink;
+}
+
+.pds-grid {
+	display: grid;
+}
+
+/* Small breakpoint grid container. */
+@media only screen and (max-width: 640px) {
+	.pds-grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: token('grid.columns-4.gap');
+	}
+}
+
+/* Medium breakpoint grid container. */
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+	.pds-grid {
+		grid-template-columns: repeat(6, 1fr);
+		gap: token('grid.columns-6.gap');
+	}
+}
+
+/* Large breakpoint grid container. */
+@media only screen and (min-width: 1025px) {
+	.pds-grid {
+		grid-template-columns: repeat(12, 1fr);
+		gap: token('grid.columns-12.gap');
+	}
+}
+
+/* Small breakpoint grid item values. */
+@media only screen and (max-width: 640px) {
+	div.pds-grid-item--sm-1 {
+		grid-column: span 1;
+	}
+	div.pds-grid-item--sm-2 {
+		grid-column: span 2;
+	}
+	div.pds-grid-item--sm-3 {
+		grid-column: span 3;
+	}
+	div.pds-grid-item--sm-4 {
+		grid-column: span 4;
+	}
+}
+
+/* Medium breakpoint grid item values. */
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+	div.pds-grid-item--md-1 {
+		grid-column: span 1;
+	}
+	div.pds-grid-item--md-2 {
+		grid-column: span 2;
+	}
+	div.pds-grid-item--md-3 {
+		grid-column: span 3;
+	}
+	div.pds-grid-item--md-4 {
+		grid-column: span 4;
+	}
+	div.pds-grid-item--md-5 {
+		grid-column: span 5;
+	}
+	div.pds-grid-item--md-6 {
+		grid-column: span 6;
+	}
+}
+
+/* Large breakpoint grid item values. */
+
+@media only screen and (min-width: 1025px) {
+	div.pds-grid-item--lg-1 {
+		grid-column: span 1;
+	}
+	div.pds-grid-item--lg-2 {
+		grid-column: span 2;
+	}
+	div.pds-grid-item--lg-3 {
+		grid-column: span 3;
+	}
+	div.pds-grid-item--lg-4 {
+		grid-column: span 4;
+	}
+	div.pds-grid-item--lg-5 {
+		grid-column: span 5;
+	}
+	div.pds-grid-item--lg-6 {
+		grid-column: span 6;
+	}
+	div.pds-grid-item--lg-7 {
+		grid-column: span 7;
+	}
+	div.pds-grid-item--lg-8 {
+		grid-column: span 8;
+	}
+	div.pds-grid-item--lg-9 {
+		grid-column: span 9;
+	}
+	div.pds-grid-item--lg-10 {
+		grid-column: span 10;
+	}
+	div.pds-grid-item--lg-11 {
+		grid-column: span 11;
+	}
+	div.pds-grid-item--lg-12 {
+		grid-column: span 12;
+	}
+}
