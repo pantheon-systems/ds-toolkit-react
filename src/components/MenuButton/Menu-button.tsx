@@ -31,6 +31,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	// Non-state instance trackers
 	const groupIDs = useRef(new Array());
 	const menuItemIDs = useRef(new Array());
+	const focusableMenuItems = useRef(new Array());
 
 	useEffect(() => {
 		// setup the onClick outside handler
@@ -62,6 +63,44 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 	const setOpenState = (value: boolean) => {
 		setIsOpen(value);
+	};
+
+	const setFocusByFirstCharacter = (char: string) => {
+		// ensure lowercase for easier comparison
+		char = char.toLowerCase();
+		// track if we've found an item yet
+		let itemFound = false;
+
+		// loop from current active index to end of focusable items
+		for (
+			let i = activeMenuItemIndex + 1;
+			i < focusableMenuItems.current.length;
+			i++
+		) {
+			const item = focusableMenuItems.current[i];
+
+			if (item.label.toLowerCase().startsWith(char)) {
+				setActiveMenuItem(menuItemIDs.current[i], i);
+				// report that we found an item
+				itemFound = true;
+				// break out of loop
+				break;
+			}
+		}
+
+		// loop from beginning of focusable items to item prior to current active index
+		// !! Continue search only if we haven't found an item yet
+		if (itemFound === false) {
+			for (let i = 0; i < activeMenuItemIndex; i++) {
+				const item = focusableMenuItems.current[i];
+
+				if (item.label.toLowerCase().startsWith(char)) {
+					setActiveMenuItem(menuItemIDs.current[i], i);
+					// break out of loop
+					break;
+				}
+			}
+		}
 	};
 
 	//
@@ -143,9 +182,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 		if (event.shiftKey) {
 			if (isPrintableCharacter(key)) {
-				{
-					/* this.setFocusByFirstCharacter(key); */
-				}
+				setFocusByFirstCharacter(key);
 				flag = true;
 			}
 
@@ -172,9 +209,6 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 				case 'Up':
 				case 'ArrowUp':
-					{
-						/* setFocusToPreviousMenuitem(); */
-					}
 					moveToIndex = activeMenuItemIndex - 1;
 					if (moveToIndex < 0) {
 						moveToIndex = menuItemIDs.current.length - 1;
@@ -186,9 +220,6 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 				case 'ArrowDown':
 				case 'Down':
-					{
-						/* setFocusToNextMenuitem(); */
-					}
 					moveToIndex = activeMenuItemIndex + 1;
 					if (moveToIndex > menuItemIDs.current.length - 1) {
 						moveToIndex = 0;
@@ -200,18 +231,12 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 				case 'Home':
 				case 'PageUp':
-					{
-						/* setFocusToFirstMenuitem(); */
-					}
 					setActiveMenuItem(menuItemIDs.current[0], 0);
 					flag = true;
 					break;
 
 				case 'End':
 				case 'PageDown':
-					{
-						/* setFocusToLastMenuitem(); */
-					}
 					const lastIndex = menuItemIDs.current.length - 1;
 					setActiveMenuItem(menuItemIDs.current[lastIndex], lastIndex);
 					flag = true;
@@ -223,9 +248,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 				default:
 					if (isPrintableCharacter(key)) {
-						{
-							/* this.setFocusByFirstCharacter(key); */
-						}
+						setFocusByFirstCharacter(key);
 						flag = true;
 					}
 					break;
@@ -290,6 +313,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 		// render a menu item if it has a label value
 		if (item.label) {
 			menuItemIDs.current.push(itemID);
+			focusableMenuItems.current.push(item);
 
 			// decide if this item should be shown to have focus
 			let shouldFocus = false;
@@ -303,6 +327,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 					key={itemID}
 					className={shouldFocus ? 'pds-menu-button__item-focused' : ''}
 					role='menuitem'
+					tabIndex={-1}
 				>
 					{item.label}
 				</li>
@@ -351,6 +376,10 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 	// Function to render the items
 	const renderMenuItems = (items: Array<MenuItemType>) => {
+		// reset tracking variables
+		menuItemIDs.current = new Array();
+		focusableMenuItems.current = new Array();
+
 		// Chunk menu items into groups if needed
 		const itemsData = items;
 		// check if we have any separators or headings in the dataset
