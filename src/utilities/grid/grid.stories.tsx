@@ -34,7 +34,18 @@ const Template = (args: { items: any }) => {
 	items.forEach(
 		(item: { sm: number; md: number; lg: number }, index: number) => {
 			const classes = `pds-grid-item pds-grid-item--sm-${item.sm} pds-grid-item--md-${item.md} pds-grid-item--lg-${item.lg}`;
-			gridMarkup.push(<div className={classes}>Item {index + 1}</div>);
+			gridMarkup.push(
+				<div
+					className={classes}
+					style={{
+						backgroundColor: 'PaleTurquoise',
+						textAlign: 'center',
+						padding: '1rem',
+					}}
+				>
+					Item {index + 1}
+				</div>,
+			);
 		},
 	);
 
