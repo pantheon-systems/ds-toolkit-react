@@ -1,5 +1,3 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import MenuButtonComponent from './Menu-button';
 import DocsDescription from './Menu-button.docs.md';
 
@@ -15,7 +13,7 @@ export default {
 		},
 	},
 	argTypes: {},
-} as ComponentMeta<typeof MenuButtonComponent>;
+};
 
 const sampleIcon = (
 	<svg
@@ -30,6 +28,10 @@ const sampleIcon = (
 	</svg>
 );
 
+const sampleCallback = (item) => {
+	window.alert(`Activated menu item => ${item.label}`);
+};
+
 const sampleMenuItems = [
 	{
 		label: 'Business options',
@@ -37,18 +39,22 @@ const sampleMenuItems = [
 	},
 	{
 		label: 'Alpha item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Beta item',
+		callback: sampleCallback,
 	},
 	{
 		isSeparator: true,
 	},
 	{
 		label: 'Gamma item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Epsilon item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Corporate options',
@@ -56,40 +62,50 @@ const sampleMenuItems = [
 	},
 	{
 		label: 'Alpha item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Beta item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Gamma item',
+		callback: sampleCallback,
 	},
 ];
 
 const sampleSimpleMenuItems = [
 	{
 		label: 'Alpha item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Beta item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Gamma item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Epsilon item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Alpha item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Beta item',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Gamma item',
+		callback: sampleCallback,
 	},
 ];
 
-const Template: ComponentStory<typeof MenuButtonComponent> = (args) => (
+const Template = (args) => (
 	<div
 		style={{ display: 'flex', width: '50%', justifyContent: 'space-between' }}
 	>
@@ -105,6 +121,6 @@ const Template: ComponentStory<typeof MenuButtonComponent> = (args) => (
 export const MenuButton = Template.bind({});
 MenuButton.args = {
 	label: 'Menu trigger label',
-	icon: { icon: sampleIcon<HTMLElement>, position: 'end' },
+	icon: { icon: sampleIcon, position: 'end' },
 	menuItems: sampleMenuItems,
 };

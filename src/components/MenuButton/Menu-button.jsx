@@ -1,5 +1,5 @@
-import { FC, useState, useEffect, useRef } from 'react';
-import { MenuButtonProps, MenuItem as MenuItemType } from './Menu-button.types';
+import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './menu-button.css';
 
 // Import additional components for composition
@@ -10,18 +10,26 @@ const createShortUUID = () => {
 	return crypto.randomUUID().substring(0, 8);
 };
 
+const isSeparatorItemType = (item) => {
+	return item.isSeparator;
+};
+
+const isHeadingItemType = (item) => {
+	return item.isHeading;
+};
+
 /**
  * Primary UI component for user interaction
  */
-const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
+const MenuButton = ({ label, icon, menuItems }) => {
 	// generate a short unique ID to add to ID attributes
 	const salt = createShortUUID();
 	const [triggerID] = useState(`menu-button-${salt}`);
 	const [listboxID] = useState(`menu-listbox-${salt}`);
 
-	const menuRefDiv = useRef<HTMLDivElement>(null);
-	const menuRefUL = useRef<HTMLUListElement>(null);
-	const nodeRef = useRef<HTMLSpanElement>(null);
+	const menuRefDiv = useRef(null);
+	const menuRefUL = useRef(null);
+	const nodeRef = useRef(null);
 
 	const [isOpen, setIsOpen] = useState(false);
 	const [focusMenu, setFocusMenu] = useState(false);
@@ -56,16 +64,26 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	//
 	//
 
-	const setActiveMenuItem = (elemID: string, index: number) => {
+	const setActiveMenuItem = (elemID, index) => {
 		setActiveDescendant(elemID);
 		setActiveMenuItemIndex(index);
 	};
 
-	const setOpenState = (value: boolean) => {
+	const setOpenState = (value) => {
 		setIsOpen(value);
 	};
 
-	const setFocusByFirstCharacter = (char: string) => {
+	const openMenu = () => {
+		setIsOpen(true);
+		setFocusMenu(true);
+	};
+
+	const closeMenu = () => {
+		setIsOpen(false);
+		nodeRef.current.querySelector(`#${triggerID}`).focus();
+	};
+
+	const setFocusByFirstCharacter = (char) => {
 		// ensure lowercase for easier comparison
 		char = char.toLowerCase();
 		// track if we've found an item yet
@@ -103,10 +121,25 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 		}
 	};
 
+	const activateMenuItem = (itemID) => {
+		const itemIndex = menuItemIDs.current.indexOf(itemID);
+		const item = focusableMenuItems.current[itemIndex];
+
+		// only execute callback if there is one
+		if (item.callback) {
+			item.callback(item);
+		}
+	};
+
+	const activateCurrentMenuItem = () => {
+		const currentItemID = menuItemIDs.current[activeMenuItemIndex];
+		activateMenuItem(currentItemID);
+	};
+
 	//
 	// Event handler functions
 	//
-	const handleTriggerClick = (event: React.MouseEvent) => {
+	const handleTriggerClick = (event) => {
 		setIsOpen((prevState) => {
 			return !prevState;
 		});
@@ -121,7 +154,12 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 		event.preventDefault();
 	};
 
-	const handleButtonKeyDown = (event: React.KeyboardEvent) => {
+	const handleMenuItemClick = (event) => {
+		closeMenu();
+		activateMenuItem(event.currentTarget.id);
+	};
+
+	const handleButtonKeyDown = (event) => {
 		var key = event.key,
 			flag = false;
 
@@ -131,16 +169,15 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 			case 'Enter':
 			case 'ArrowDown':
 			case 'Down':
-				setOpenState(true);
+				openMenu();
 				setActiveMenuItem(menuItemIDs.current[0], 0);
 				flag = true;
-				setFocusMenu(true);
 				break;
 
 			// close menu
 			case 'Esc':
 			case 'Escape':
-				setOpenState(false);
+				closeMenu();
 				flag = true;
 				break;
 
@@ -148,8 +185,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 			case 'Up':
 			case 'ArrowUp':
 				const lastIndex = menuItemIDs.current.length - 1;
-				setOpenState(true);
-				setFocusMenu(true);
+				openMenu();
 				setActiveMenuItem(menuItemIDs.current[lastIndex], lastIndex);
 				flag = true;
 				break;
@@ -166,13 +202,13 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 		}
 	};
 
-	const handleMenuKeydown = (event: React.KeyboardEvent) => {
+	const handleMenuKeydown = (event) => {
 		let key = event.key,
 			flag = false,
 			moveToItemID = '',
 			moveToIndex = 0;
 
-		function isPrintableCharacter(str: string) {
+		function isPrintableCharacter(str) {
 			return str.length === 1 && str.match(/\S/);
 		}
 
@@ -187,23 +223,21 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 			}
 
 			if (event.key === 'Tab') {
-				setOpenState(false);
+				closeMenu();
 				flag = true;
 			}
 		} else {
 			switch (key) {
 				case ' ':
 				case 'Enter':
-					setOpenState(false);
-					{
-						/* this.performMenuAction(this.currentMenuitem); */
-					}
+					closeMenu();
+					activateCurrentMenuItem();
 					flag = true;
 					break;
 
 				case 'Esc':
 				case 'Escape':
-					setOpenState(false);
+					closeMenu();
 					flag = true;
 					break;
 
@@ -243,7 +277,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 					break;
 
 				case 'Tab':
-					setOpenState(false);
+					closeMenu();
 					break;
 
 				default:
@@ -262,13 +296,12 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	};
 
 	const handleFocusOut = () => {
-		setIsOpen(false);
-		setFocusMenu(false);
+		closeMenu();
 	};
 
 	// Handle click outside event to close menu if open
-	const handleClickOutside = (event: MouseEvent) => {
-		if (nodeRef.current && !nodeRef.current.contains(event.target as Node)) {
+	const handleClickOutside = (event) => {
+		if (nodeRef.current && !nodeRef.current.contains(event.target)) {
 			if (isOpen) {
 				setOpenState(false);
 			}
@@ -282,22 +315,17 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	//
 
 	// function to render each menu item correctly
-	const renderItem = (
-		item: MenuItemType,
-		index: number,
-		groupID = '',
-		groupHeadingID = '',
-	) => {
+	const renderItem = (item, index, groupID = '', groupHeadingID = '') => {
 		const groupIDString = groupID ? `-group-${groupID}` : '';
 		const itemID = triggerID + groupIDString + '-item-' + (index + 1);
 
 		// render a separator if found
-		if (item.isSeparator) {
+		if (isSeparatorItemType(item)) {
 			return <li role='separator' key={itemID}></li>;
 		}
 
 		// render a heading if found
-		if (item.isHeading) {
+		if (isHeadingItemType(item)) {
 			return (
 				<li
 					role='presentation'
@@ -328,6 +356,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 					className={shouldFocus ? 'pds-menu-button__item-focused' : ''}
 					role='menuitem'
 					tabIndex={-1}
+					onClick={handleMenuItemClick}
 				>
 					{item.label}
 				</li>
@@ -336,20 +365,17 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	};
 
 	// Function to render grouped items
-	const renderMenuItemsGrouped = (
-		items: Array<MenuItemType>,
-		menuItemBreaks: Array<MenuItemType>,
-	) => {
+	const renderMenuItemsGrouped = (items, menuItemBreaks) => {
 		const groupedItems = new Array();
 
 		// get the first break item
 		let breakItem = menuItemBreaks.shift();
 
 		// setup our temporary storage for this group
-		let group: Array<MenuItemType> = new Array();
+		let group = new Array();
 
 		// iterate over all menu items
-		items.map((item, index: number) => {
+		items.map((item, index) => {
 			// if the item isn't the first break item then add it to the group
 			if (item !== breakItem) {
 				group.push(item);
@@ -375,7 +401,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	};
 
 	// Function to render the items
-	const renderMenuItems = (items: Array<MenuItemType>) => {
+	const renderMenuItems = (items) => {
 		// reset tracking variables
 		menuItemIDs.current = new Array();
 		focusableMenuItems.current = new Array();
@@ -383,16 +409,15 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 		// Chunk menu items into groups if needed
 		const itemsData = items;
 		// check if we have any separators or headings in the dataset
-		const menuItemBreaks = items.filter((item: MenuItemType) => {
-			return item.isHeading || item.isSeparator;
-		});
+		const menuItemBreaks = items.filter(
+			isHeadingItemType || isSeparatorItemType,
+		);
 		const haveBreaks = menuItemBreaks.length > 0;
 
 		// if we have breaks then split into groups at each marker
 		if (haveBreaks) {
 			// group the items together
-			const groupedItemsData: Array<Array<MenuItemType>> =
-				renderMenuItemsGrouped(items, menuItemBreaks);
+			const groupedItemsData = renderMenuItemsGrouped(items, menuItemBreaks);
 
 			// setup group IDs
 			groupedItemsData.forEach(() => {
@@ -402,7 +427,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 
 			// locate first valid item to properly set initial value for aria-activedescendant on menu/listbox
 			const firstMenuItemIndex = groupedItemsData[0].findIndex(
-				(item: MenuItemType) => !item.isSeparator && !item.isHeading,
+				(item) => !isSeparatorItemType(item) && !isHeadingItemType(item),
 			);
 
 			// set active descendant ID value in component state
@@ -425,7 +450,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 					onBlur={handleFocusOut}
 					ref={menuRefDiv}
 				>
-					{groupedItemsData.map((group: Array<MenuItemType>, index: number) => {
+					{groupedItemsData.map((group, index) => {
 						currentGroupID = groupIDs.current[index];
 						const hasHeading = group[0].isHeading;
 						const groupHeadingID = hasHeading
@@ -443,7 +468,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 								aria-label={groupLabel}
 								key={keyID}
 							>
-								{group.map((item: MenuItemType, index: number) => {
+								{group.map((item, index) => {
 									return renderItem(
 										item,
 										index,
@@ -476,7 +501,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 					onBlur={handleFocusOut}
 					ref={menuRefUL}
 				>
-					{itemsData.map((item: MenuItemType, index: number) => {
+					{itemsData.map((item, index) => {
 						return renderItem(item, index);
 					})}
 				</ul>
@@ -489,7 +514,7 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 	//
 
 	// build the button content based on icon position value if icon was provided
-	const buttonContent: Array<string | HTMLElement | undefined> = [label];
+	const buttonContent = [label];
 	if (icon && icon.position === 'start') {
 		buttonContent.unshift(icon.icon);
 	}
@@ -513,6 +538,36 @@ const MenuButton: FC<MenuButtonProps> = ({ label, icon, menuItems }) => {
 			{renderMenuItems(menuItems)}
 		</span>
 	);
+};
+
+MenuButton.propTypes = {
+	/**
+	 * The text of the button/trigger
+	 */
+	label: PropTypes.string,
+	/**
+	 * The icon element to render in the button/trigger and its location (start or end)
+	 */
+	icon: PropTypes.node,
+	/**
+	 * Array of menu items
+	 */
+	menuItems: PropTypes.arrayOf(
+		PropTypes.shape({
+			/**
+			 * Label for a menu item
+			 */
+			label: PropTypes.string.isRequired,
+			/**
+			 * (optional) URL/HREF this menu item should navigate to
+			 */
+			href: PropTypes.string,
+			/**
+			 * (optional) Callback function to execute when menu item is clicked/tapped/activated
+			 */
+			callback: PropTypes.func,
+		}),
+	).isRequired,
 };
 
 //

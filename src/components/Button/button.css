@@ -57,14 +57,12 @@ button.pds-button--primary:hover:enabled {
 	--pds-button-color-background: var(--pds-color-brand-primary-darkened);
 }
 
-button.pds-button,
 button.pds-button--secondary,
 button.pds-button--tertiary,
 button.pds-button--critical {
 	--pds-button-color-background: transparent;
 }
 
-button.pds-button,
 button.pds-button--secondary {
 	--pds-button-color-foreground: var(--pds-color-accents-deep);
 }
