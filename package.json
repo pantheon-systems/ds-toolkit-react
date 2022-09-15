@@ -45,6 +45,7 @@
 		"@axe-core/playwright": "^4.4.3",
 		"@babel/core": "^7.18.10",
 		"@csstools/postcss-design-tokens": "^1.2.x",
+		"@floating-ui/react-dom": "^1.0.0",
 		"@pantheon-systems/pds-tokens": "^0.x",
 		"@playwright/test": "^1.24.2",
 		"@rollup/plugin-babel": "^5.3.1",
