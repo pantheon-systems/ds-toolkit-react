@@ -4,7 +4,8 @@ import './grid.css';
 export default {
 	title: 'Utilities/Grid',
 	parameters: {
-		componentSubtitle: '',
+		componentSubtitle:
+			'A fluid grid based on 4-columns at the small breakpoint, 6-columns at medium, and 12-columns at large',
 		docs: {
 			description: {
 				component: Docs,
@@ -35,15 +36,16 @@ const Template = (args: { items: any }) => {
 		(item: { sm: number; md: number; lg: number }, index: number) => {
 			const classes = `pds-grid-item pds-grid-item--sm-${item.sm} pds-grid-item--md-${item.md} pds-grid-item--lg-${item.lg}`;
 			gridMarkup.push(
-				<div
-					className={classes}
-					style={{
-						backgroundColor: 'PaleTurquoise',
-						textAlign: 'center',
-						padding: '1rem',
-					}}
-				>
-					Item {index + 1}
+				<div className={classes}>
+					<div
+						style={{
+							backgroundColor: 'PaleTurquoise',
+							textAlign: 'center',
+							padding: '1rem',
+						}}
+					>
+						Item {index + 1}
+					</div>
 				</div>,
 			);
 		},
@@ -52,4 +54,4 @@ const Template = (args: { items: any }) => {
 	return <div className='pds-grid'>{gridMarkup}</div>;
 };
 
-export const Default = Template.bind({});
+export const Grid = Template.bind({});
