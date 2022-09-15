@@ -4,27 +4,27 @@ The grid establishes how visual elements should be positioned horizontally withi
 
 ## Usage
 
-The grid consists of two element types — a grid container and grid items. A single grid container should contain multiple grid items.
+The grid consists of two element types — a **grid container** and **grid items**. A single grid container should contain multiple grid items.
 
-Our grid properties vary depending on how wide the grid is at any given time. We’ve adopted fixed numbers of columns at various grid widths to ensure that our layouts are flexible without compromising consistency.
+Our grid properties vary depending on how wide the grid is at any given time. We’ve adopted fixed numbers of columns at each breakpoint to ensure that our layouts are flexible without compromising consistency.
 
 ### Columns per grid width
 
-| Grid width / breakpoint | Width range (in px) | Total number of columns |
-| ----------------------- | ------------------- | ----------------------- |
-| Small                   | 0 - 640             | 4                       |
-| Medium                  | 641 - 1024          | 6                       |
-| Large                   | 1025 - ∞            | 12                      |
+| Breakpoint name and id | Width range (in px) | Total number of columns |
+| ---------------------- | ------------------- | ----------------------- |
+| Small — `sm`           | 0 - 640             | 4                       |
+| Medium — `md`          | 641 - 1024          | 6                       |
+| Large — `lg`           | 1025 - ∞            | 12                      |
 
 ## Implementation
 
 ### Grid container
 
-A grid container is implemented by applying the CSS class `pds-grid` to a `<div>` or another sectioning element such as `<main>` or `<section>`. A grid container should only contain grid items as direct descendants.
+A grid container is implemented by applying the CSS class `pds-grid` to a `<div>` or another HTML sectioning element such as `<main>` or `<section>`. A grid container should contain only grid items as direct descendants.
 
 ### Grid items
 
-Grid items must always be direct descendants of the grid container and are typically made up of `<div>` elements. However, there may be use cases where other sectioning elements could be considered such as `<aside>`, `<article>`, or `<section>`.
+Grid items must always be direct descendants of the grid container and are typically made up of `<div>` elements. However, there may be use cases where other HTML sectioning elements could be considered such as `<aside>`, `<article>`, or `<section>`.
 
 Each grid item will contain the base class `pds-grid-item`, as well as a modifier class for each breakpoint based on the following convention: `pds-grid-item--[breakpoint]-[columns]`.
 
