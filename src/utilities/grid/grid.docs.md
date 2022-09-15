@@ -28,7 +28,7 @@ Grid items must always be direct descendants of the grid container and are typic
 
 Each grid item will contain the base class `pds-grid-item`, as well as a modifier class for each breakpoint based on the following convention: `pds-grid-item--[breakpoint]-[columns]`.
 
-For example, a grid item that is full-width at small and 50% width at medium and large would have the following markup.
+For example, a grid item that is full-width at small and 50% at medium and large would have the following markup.
 
 ```
 
