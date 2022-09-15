@@ -1,8 +1,8 @@
-@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
 
 a,
 a:visited {
-	color: token('color.internal.accents.deep');
+	color: token('color.accents.deep');
 	text-decoration-line: underline;
 }
 
@@ -11,7 +11,7 @@ a:hover {
 }
 
 a:active {
-	color: token('color.internal.accents.bright');
+	color: token('color.accents.bright');
 }
 
 a:focus-visible {
@@ -19,6 +19,5 @@ a:focus-visible {
 	border-width: 1px;
 	border-color: inherit;
 	border-style: solid;
-	/* prettier-ignore */
-	padding-inline: token('spacing.5XS')em;
+	padding-inline: token('spacing.5XS' to em);
 }

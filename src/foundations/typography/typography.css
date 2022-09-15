@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Poppins:wght@600;700&display=swap');
 
-@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
 
 body {
 	font-family: token('typography.font.bodycopy');
-	/* prettier-ignore */
-	letter-spacing: token('typography.letter-spacing.S')rem;
+	letter-spacing: token('typography.letter-spacing.S' to rem);
+	color: var(--pds-typography-bodycopy-color);
 }
 
 h1,
@@ -24,8 +24,10 @@ h4,
 h5 {
 	font-weight: token('typography.font-weight.semibold');
 	line-height: token('typography.line-height.S');
-	/* prettier-ignore */
-	margin-block-end: token('spacing.S')em; /* "em" is relative to size of heading */
+	margin-block-end: token(
+		'spacing.S' to em
+	); /* "em" is relative to size of heading */
+	color: var(--pds-typography-headings-color);
 }
 
 h1,
@@ -40,28 +42,23 @@ h5 {
 }
 
 h1 {
-	/* prettier-ignore */
-	font-size: token('typography.size.multipliers.first')rem;
+	font-size: token('typography.size.multipliers.first' to rem);
 }
 
 h2 {
-	/* prettier-ignore */
-	font-size: token('typography.size.multipliers.second')rem;
+	font-size: token('typography.size.multipliers.second' to rem);
 }
 
 h3 {
-	/* prettier-ignore */
-	font-size: token('typography.size.multipliers.third')rem;
+	font-size: token('typography.size.multipliers.third' to rem);
 }
 
 h4 {
-	/* prettier-ignore */
-	font-size: token('typography.size.multipliers.fourth')rem;
+	font-size: token('typography.size.multipliers.fourth' to rem);
 }
 
 h5 {
-	/* prettier-ignore */
-	font-size: token('typography.size.multipliers.fifth')rem;
+	font-size: token('typography.size.multipliers.fifth' to rem);
 }
 
 p {

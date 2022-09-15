@@ -1,0 +1,83 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-button-color-background 	-> set button background color
+ * --pds-button-color-foreground 	-> set button foreground/text color
+ * --pds-button-color-border		-> set button border color
+ * --pds-button-border-radius		-> set button border radius size
+ * --pds-button-border-width		-> set button border size/thickness
+ *
+ */
+
+button.pds-button {
+	background-color: var(--pds-button-color-background);
+	color: var(--pds-button-color-foreground);
+
+	border-color: var(
+		--pds-button-color-border,
+		var(--pds-button-color-foreground)
+	);
+	border-radius: var(--pds-button-border-radius, 0.25rem);
+	border-style: solid;
+	border-width: var(--pds-button-border-width, 1px);
+	font-size: token('typography.size.multipliers.reduce-one' to rem);
+	padding: token('spacing.XS' to rem);
+	/* margin-block-end: token('spacing.M' to rem); */
+}
+
+button.pds-button + button.pds-button {
+	margin-inline-start: token('spacing.M' to rem);
+}
+
+button.pds-button:focus-visible,
+button.pds-button:active:enabled {
+	outline: none;
+	box-shadow: 0 0 0.5rem var(--pds-color-focus);
+}
+
+button.pds-button:disabled {
+	--pds-button-color-background: var(--pds-color-highlight-light);
+	--pds-button-color-foreground: var(--pds-color-text-disabled);
+	--pds-button-color-border: var(--pds-button-color-background);
+}
+
+button.pds-button--primary {
+	--pds-button-color-background: var(--pds-color-brand-primary);
+	--pds-button-color-foreground: var(--pds-color-text-darkest);
+	--pds-button-color-border: var(--pds-button-color-background);
+}
+
+button.pds-button--primary:disabled {
+	--pds-button-color-background: var(--pds-color-brand-primary-lightened);
+}
+
+button.pds-button--primary:hover:enabled {
+	--pds-button-color-background: var(--pds-color-brand-primary-darkened);
+}
+
+button.pds-button--secondary,
+button.pds-button--tertiary,
+button.pds-button--critical {
+	--pds-button-color-background: transparent;
+}
+
+button.pds-button--secondary {
+	--pds-button-color-foreground: var(--pds-color-accents-deep);
+}
+
+button.pds-button--tertiary {
+	--pds-button-color-foreground: var(--pds-color-neutrals-dark-faded);
+}
+
+button.pds-button--critical {
+	--pds-button-color-foreground: var(--pds-color-status-failure);
+}
+
+button.pds-button:hover:enabled,
+button.pds-button--secondary:hover:enabled,
+button.pds-button--tertiary:hover:enabled,
+button.pds-button--critical:hover:enabled {
+	--pds-button-color-background: var(--pds-color-highlight-light);
+}

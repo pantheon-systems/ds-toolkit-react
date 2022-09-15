@@ -10,7 +10,7 @@ echo
 echo -e "${GREY}» Setting up Git hooks"
 echo -e "${RESET}"
 
-ln -s .git-hooks/pre-commit.sh .git/hooks/pre-commit
+ln -s ../../.git-hooks/pre-commit.sh .git/hooks/pre-commit
 
 echo
 echo -e "${GREEN}» Git hooks setup completed!"

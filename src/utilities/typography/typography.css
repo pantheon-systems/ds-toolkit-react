@@ -1,12 +1,12 @@
-@design-tokens url('../../../node_modules/@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
 
 div.pds-subheader {
 	font-family: token('typography.font.bodycopy');
 	font-weight: token('typography.font-weight.semibold');
 	line-height: token('typography.line-height.S');
-	/* prettier-ignore */
-	margin-block-end: token('spacing.S')em; /* "em" is relative to the size of the subheading */
+	margin-block-end: token(
+		'spacing.S' to em
+	); /* "em" is relative to the size of the subheading */
 	text-transform: uppercase;
-	/* prettier-ignore */
-	letter-spacing: token('typography.letter-spacing.M')rem;
+	letter-spacing: token('typography.letter-spacing.M' to rem);
 }
