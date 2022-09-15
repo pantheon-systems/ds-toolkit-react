@@ -1,6 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+
+import { useFloating, offset, flip } from '@floating-ui/react-dom';
+
 import './menu-button.css';
+
+import { defaultIcon } from './menu-button-icon';
 
 // Import additional components for composition
 import Button from '../Button';
@@ -19,16 +24,31 @@ const isHeadingItemType = (item) => {
 };
 
 /**
- * Primary UI component for user interaction
+ * Menu Button UI component
  */
 const MenuButton = ({ label, icon, menuItems }) => {
+	// Floating UI support
+	const {
+		x,
+		y,
+		reference,
+		floating,
+		strategy,
+		update: FUI_Update,
+		placement,
+		refs,
+	} = useFloating({
+		placement: 'bottom-start',
+		middleware: [flip()],
+	});
+
 	// generate a short unique ID to add to ID attributes
 	const salt = createShortUUID();
 	const [triggerID] = useState(`menu-button-${salt}`);
 	const [listboxID] = useState(`menu-listbox-${salt}`);
 
-	const menuRefDiv = useRef(null);
-	const menuRefUL = useRef(null);
+	const menuRef = floating;
+	const menuRefActual = refs.floating;
 	const nodeRef = useRef(null);
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -41,17 +61,27 @@ const MenuButton = ({ label, icon, menuItems }) => {
 	const menuItemIDs = useRef(new Array());
 	const focusableMenuItems = useRef(new Array());
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		// setup the onClick outside handler
 		window.addEventListener('mousedown', handleClickOutside, true);
+
+		// Update Floating UI placement
+		FUI_Update();
+
+		// Add the Floating UI data attribute
+		const menuElem = menuRefActual.current;
+
+		if (menuElem) {
+			menuElem.dataset.fuiPlacement = placement;
+		}
 
 		// only focus the menu when state instructs us to
 		if (focusMenu) {
 			// focus the menu element
-			const menuRef = menuRefDiv.current
-				? menuRefDiv.current
-				: menuRefUL.current;
-			if (menuRef) menuRef.focus();
+			// NOTE: setTimeout is used to prevent focus change from conflicting with Floating UI
+			setTimeout(() => {
+				menuElem.focus();
+			}, 0);
 			// reset state
 			setFocusMenu(false);
 		}
@@ -155,8 +185,8 @@ const MenuButton = ({ label, icon, menuItems }) => {
 	};
 
 	const handleMenuItemClick = (event) => {
-		closeMenu();
 		activateMenuItem(event.currentTarget.id);
+		closeMenu();
 	};
 
 	const handleButtonKeyDown = (event) => {
@@ -295,10 +325,6 @@ const MenuButton = ({ label, icon, menuItems }) => {
 		}
 	};
 
-	const handleFocusOut = () => {
-		closeMenu();
-	};
-
 	// Handle click outside event to close menu if open
 	const handleClickOutside = (event) => {
 		if (nodeRef.current && !nodeRef.current.contains(event.target)) {
@@ -306,9 +332,6 @@ const MenuButton = ({ label, icon, menuItems }) => {
 				setOpenState(false);
 			}
 		}
-
-		event.stopPropagation();
-		event.preventDefault();
 	};
 
 	//
@@ -445,10 +468,13 @@ const MenuButton = ({ label, icon, menuItems }) => {
 					aria-activedescendant={
 						activeDescendant !== '' ? activeDescendant : initialDescendant
 					}
-					style={isOpen ? { display: 'block' } : { display: 'none' }}
+					style={{
+						display: isOpen ? 'block' : 'none',
+						position: strategy,
+						transform: `translate(${Math.round(x)}px,${Math.round(y)}px)`,
+					}}
 					onKeyDown={handleMenuKeydown}
-					onBlur={handleFocusOut}
-					ref={menuRefDiv}
+					ref={floating}
 				>
 					{groupedItemsData.map((group, index) => {
 						currentGroupID = groupIDs.current[index];
@@ -496,10 +522,13 @@ const MenuButton = ({ label, icon, menuItems }) => {
 					aria-activedescendant={
 						activeDescendant !== '' ? activeDescendant : initialDescendant
 					}
-					style={isOpen ? { display: 'block' } : { display: 'none' }}
+					style={{
+						display: isOpen ? 'block' : 'none',
+						position: strategy,
+						transform: `translate(${Math.round(x)}px,${Math.round(y)}px)`,
+					}}
 					onKeyDown={handleMenuKeydown}
-					onBlur={handleFocusOut}
-					ref={menuRefUL}
+					ref={floating}
 				>
 					{itemsData.map((item, index) => {
 						return renderItem(item, index);
@@ -515,6 +544,17 @@ const MenuButton = ({ label, icon, menuItems }) => {
 
 	// build the button content based on icon position value if icon was provided
 	const buttonContent = [label];
+
+	// if we have a label but no icon is provided then use the default icon
+	if (label && icon && !icon.icon) {
+		if (icon.position === 'start') {
+			buttonContent.unshift(defaultIcon);
+		} else {
+			buttonContent.push(defaultIcon);
+		}
+	}
+
+	// if a custom icon was passed in then use it, or the default if no icon object was passed in
 	if (icon && icon.position === 'start') {
 		buttonContent.unshift(icon.icon);
 	}
@@ -534,12 +574,51 @@ const MenuButton = ({ label, icon, menuItems }) => {
 				aria-expanded={isOpen}
 				onClick={handleTriggerClick}
 				onKeyDown={handleButtonKeyDown}
+				ref={reference}
 			/>
 			{renderMenuItems(menuItems)}
 		</span>
 	);
 };
 
+//
+// Prop types
+
+const MenuItemType = PropTypes.exact({
+	/**
+	 * Label for a menu item
+	 */
+	label: PropTypes.string.isRequired,
+	/**
+	 * (optional) URL/HREF this menu item should navigate to
+	 */
+	href: PropTypes.string,
+	/**
+	 * (optional) Callback function to execute when menu item is clicked/tapped/activated
+	 */
+	callback: PropTypes.func,
+});
+
+const HeadingItemType = PropTypes.exact({
+	/**
+	 * Label for a menu item
+	 */
+	label: PropTypes.string.isRequired,
+	/**
+	 * Is the item a heading?
+	 */
+	isHeading: PropTypes.bool.isRequired,
+});
+
+const SeparatorItemType = PropTypes.exact({
+	/**
+	 * Is the item a separator?
+	 */
+	isSeparator: PropTypes.bool.isRequired,
+});
+
+//
+// Component propType definitions
 MenuButton.propTypes = {
 	/**
 	 * The text of the button/trigger
@@ -548,26 +627,29 @@ MenuButton.propTypes = {
 	/**
 	 * The icon element to render in the button/trigger and its location (start or end)
 	 */
-	icon: PropTypes.node,
+	icon: PropTypes.shape({
+		/**
+		 * Position of the icon
+		 */
+		position: PropTypes.oneOf(['start', 'end']).isRequired,
+		/**
+		 * Icon element/node to render
+		 */
+		icon: PropTypes.node,
+	}),
 	/**
 	 * Array of menu items
 	 */
 	menuItems: PropTypes.arrayOf(
-		PropTypes.shape({
-			/**
-			 * Label for a menu item
-			 */
-			label: PropTypes.string.isRequired,
-			/**
-			 * (optional) URL/HREF this menu item should navigate to
-			 */
-			href: PropTypes.string,
-			/**
-			 * (optional) Callback function to execute when menu item is clicked/tapped/activated
-			 */
-			callback: PropTypes.func,
-		}),
+		PropTypes.oneOfType([MenuItemType, HeadingItemType, SeparatorItemType]),
 	).isRequired,
+};
+
+MenuButton.defaultProps = {
+	icon: {
+		position: 'end',
+		icon: defaultIcon,
+	},
 };
 
 //
