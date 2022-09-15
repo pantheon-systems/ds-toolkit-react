@@ -1,5 +1,3 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import ButtonComponent from './Button';
 import DocsDescription from './Button.docs.md';
 
@@ -15,14 +13,11 @@ export default {
 		},
 	},
 	argTypes: {},
-} as ComponentMeta<typeof ButtonComponent>;
+};
 
-const Template: ComponentStory<typeof ButtonComponent> = (args) => (
-	<ButtonComponent {...args} />
-);
+const Template = (args) => <ButtonComponent {...args} />;
 
 export const Button = Template.bind({});
 Button.args = {
 	label: 'Button label',
-	disabled: false,
 };
