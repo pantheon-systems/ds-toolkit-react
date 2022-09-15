@@ -1,33 +1,29 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import './button.css';
 
 /**0
- * Primary UI component for user interaction
+ * Button UI component
  */
-const Button = ({
-	variant,
-	label,
-	disabled,
-	type,
-	onClick,
-	className,
-	...args
-}) => {
-	const variantClass = `pds-button--${variant}`;
+const Button = forwardRef(
+	({ variant, label, disabled, type, onClick, className, ...props }, ref) => {
+		const variantClass = `pds-button--${variant}`;
 
-	return (
-		<button
-			{...args}
-			type={type}
-			className={['pds-button', variantClass, className].join(' ').trim()}
-			disabled={disabled}
-			onClick={onClick}
-		>
-			{label}
-		</button>
-	);
-};
+		return (
+			<button
+				{...props}
+				type={type}
+				className={['pds-button', variantClass, className].join(' ').trim()}
+				disabled={disabled}
+				onClick={onClick}
+				ref={ref}
+			>
+				{label}
+			</button>
+		);
+	},
+);
 
 Button.propTypes = {
 	/**
@@ -41,7 +37,7 @@ Button.propTypes = {
 	/**
 	 * Is the button disabled?
 	 */
-	disabled: PropTypes.oneOf([true, false]),
+	disabled: PropTypes.bool,
 	/**
 	 * Type of button
 	 */
