@@ -590,10 +590,6 @@ const MenuItemType = PropTypes.exact({
 	 */
 	label: PropTypes.string.isRequired,
 	/**
-	 * (optional) URL/HREF this menu item should navigate to
-	 */
-	href: PropTypes.string,
-	/**
 	 * (optional) Callback function to execute when menu item is clicked/tapped/activated
 	 */
 	callback: PropTypes.func,
