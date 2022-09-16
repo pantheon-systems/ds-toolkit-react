@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { gotoFrame } = require('../../libs/testing/vrt');
+const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
@@ -59,12 +59,7 @@ test.describe('Components/Button', () => {
 
 			const button = page.locator('.pds-button');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__default-focused.png',
@@ -127,12 +122,7 @@ test.describe('Components/Button', () => {
 
 			const button = page.locator('.pds-button');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__primary-focused.png',
@@ -195,12 +185,7 @@ test.describe('Components/Button', () => {
 
 			const button = page.locator('.pds-button');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__tertiary-focused.png',
@@ -263,12 +248,7 @@ test.describe('Components/Button', () => {
 
 			const button = page.locator('.pds-button');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__critical-focused.png',
