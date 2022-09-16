@@ -30,10 +30,10 @@ Each grid item will contain the base class `pds-grid-item`, as well as a modifie
 
 For example, a grid item that is full-width at small and 50% at medium and large would have the following markup.
 
-```
+<!-- prettier-ignore -->
+```html
 
 <div className="pds-grid-item pds-grid-item--sm-4 pds-grid-item--md-3 pds-grid-item--lg-6"></div>
-
 ```
 
 **Note:** Grid items that have missing or invalid modifier classes for each viewport size will default to the maximum column width for that viewport.
