@@ -5,6 +5,16 @@ const gotoFrame = async (page, destination, args = null) => {
 	await page.evaluate(() => document.fonts.ready);
 };
 
+const focusViaTab = async (page, browserName) => {
+	// Tab to item with keyboard
+	let keyPressed = 'Tab';
+	if (browserName === 'webkit') {
+		keyPressed = 'Alt+Tab';
+	}
+	await page.keyboard.press(keyPressed);
+};
+
 module.exports = {
 	gotoFrame,
+	focusViaTab,
 };
