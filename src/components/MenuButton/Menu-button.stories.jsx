@@ -31,6 +31,13 @@ export default {
 			},
 		},
 	},
+	decorators: [
+		(Story) => (
+			<div style={{ marginBlockEnd: '16rem' }}>
+				<Story />
+			</div>
+		),
+	],
 };
 
 const Template = (args) => <MenuButtonComponent {...args} />;
