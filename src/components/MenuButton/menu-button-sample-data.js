@@ -1,5 +1,7 @@
+export const dialogMsgBase = `Activated menu item => `;
+
 const sampleCallback = (item) => {
-	window.alert(`Activated menu item => ${item.label}`);
+	window.alert(`${dialogMsgBase}${item.label}`);
 };
 
 export const sampleMenuItems = [
