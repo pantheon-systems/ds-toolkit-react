@@ -75,9 +75,11 @@ button.pds-button--critical {
 	--pds-button-color-foreground: var(--pds-color-status-failure);
 }
 
-button.pds-button:hover:enabled,
-button.pds-button--secondary:hover:enabled,
-button.pds-button--tertiary:hover:enabled,
 button.pds-button--critical:hover:enabled {
+	--pds-button-color-background: var(--pds-color-status-failure-background);
+}
+
+button.pds-button--secondary:hover:enabled,
+button.pds-button--tertiary:hover:enabled {
 	--pds-button-color-background: var(--pds-color-highlight-light);
 }

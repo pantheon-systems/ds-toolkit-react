@@ -6,6 +6,70 @@ A menu button is a button that shows a menu or list of actions. The items within
 
 A menu button's menu items should be for triggering actions within the application. They should not be used as a navigation menu, see the [navigation menu](#) component for that purpose.
 
+## Menu items data
+
+The shape of the data passed to the menu button component for menu items is an array of the following items:
+
+### Standard menu item
+
+```json
+{
+	"label": "Enable Autopilot",
+	"callback": () => { ... } // function to execute when menu item is activated/clicked/tapped
+}
+```
+
+### Heading menu item
+
+When creating a group of actions this will add a heading. It should be placed before the items it describes.
+
+```json
+{
+	"label": "Autopilot actions",
+	"isHeading": true
+}
+```
+
+### Separator menu item
+
+This will add a visual separator between two menu items.
+
+```json
+{
+	"isSeparator": true
+}
+```
+
+### Example data
+
+```json
+[
+	{
+		"label": "Business options",
+		"isHeading": true,
+	},
+	{
+		"label": "Alpha item",
+		"callback": () => { ... },
+	},
+	{
+		"label": "Beta item",
+		"callback": () => { ... },
+	},
+	{
+		"isSeparator": true,
+	},
+	{
+		"label": "Gamma item",
+		"callback": () => { ... },
+	},
+	{
+		"label": "Epsilon item",
+		"callback": () => { ... },
+	},
+];
+```
+
 ## Accessibility
 
 ### Keyboard navigation

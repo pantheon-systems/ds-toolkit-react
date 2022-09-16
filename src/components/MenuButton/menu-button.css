@@ -6,7 +6,8 @@
  * --pds-menu-button-color-border 				-> set menu's overall border color
  * --pds-menu-button__listbox-border-radius		-> set menu listbox' border radius size
  * --pds-menu-button__listbox-border-size		-> set menu listbox' border size/thickness
- * --pds-menu-button__listbox-color-background	-> set menu item background color (hover)
+ * --pds-menu-button__item-color-background		-> set menu item background color (hover)
+ * --pds-menu-button__listbox-color-background	-> set menu listbox' background color
  *
  */
 
@@ -17,21 +18,27 @@
 	);
 	--pds-button-color-border: var(--pds-menu-button-color-border);
 
-	--pds-menu-button__listbox-color-background: var(
+	--pds-menu-button__item-color-background: var(
 		--pds-button-color-background,
 		var(--pds-color-highlight-light)
 	);
 
 	--pds-menu-button__listbox-color-text: var(--pds-color-text-darkest);
+
+	display: inline-block;
 }
 
 button.pds-menu-button__trigger {
 	display: flex;
-	gap: token('spacing.3XS' to em);
+	gap: token('spacing.XS' to em);
 	align-items: center;
 }
 
-button.pds-menu-button__trigger[aria-expanded='true'] svg.down {
+button.pds-menu-button__trigger svg.trigger-indicator {
+	width: token('spacing.S' to em);
+}
+
+button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 	transform: rotate(180deg);
 }
 
@@ -56,12 +63,25 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.down {
 		--pds-menu-button__listbox-border-width,
 		var(--pds-button-border-width, 1px)
 	);
+	background-color: var(
+		--pds-menu-button__listbox-color-background,
+		var(--pds-color-neutrals-lightest)
+	);
 
 	padding: token('spacing.3XS' to em) 0;
 	margin-block-start: token('spacing.2XS' to rem);
 	font-size: token('typography.size.multipliers.reduce-one' to rem);
 
 	max-width: 20rem;
+	min-width: 8rem;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.pds-menu-button [role='menu'][data-fui-placement^='top'] {
+	margin-block-start: calc(token('spacing.2XS' to rem) * -1);
 }
 
 .pds-menu-button [role='menu'] [role='menuitem'],
@@ -74,7 +94,7 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.down {
 
 .pds-menu-button [role='menu'] [role='menuitem']:hover,
 .pds-menu-button [role='menu'] [role='menuitem'].pds-menu-button__item-focused {
-	background-color: var(--pds-menu-button__listbox-color-background);
+	background-color: var(--pds-menu-button__item-color-background);
 }
 
 .pds-menu-button [role='menu'] [role='separator'] {

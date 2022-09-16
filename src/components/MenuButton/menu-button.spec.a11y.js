@@ -1,372 +1,137 @@
 const { test, expect } = require('@playwright/test');
-const { gotoFrame } = require('../../../src/libs/testing/vrt');
+const { gotoFrame, focusViaTab } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require('../../../src/libs/testing/a11y');
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Button', () => {
-	test.describe('Default/Secondary', () => {
-		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
+test.describe('Components/Menu Button', () => {
+	test('Base', async ({ page }) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__default',
-			);
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default',
+		);
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('Disabled', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'disabled:true');
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__default-disabled',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
-
-			const button = page.locator('.pds-button');
-
-			await button.hover();
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__default-hover',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
-
-			const button = page.locator('.pds-button');
-
-			await button.hover();
-			await page.mouse.down();
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__default-active',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button');
-
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__default-focused',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
 	});
 
-	test.describe('Primary', () => {
-		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+	test('State: hover', async ({ page }) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__primary',
-			);
+		const button = page.locator('.pds-menu-button');
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		await button.hover();
 
-		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:primary;disabled:true',
-			);
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default-hover',
+		);
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__primary-disabled',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
-
-			const button = page.locator('.pds-button');
-
-			await button.hover();
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__primary-hover',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
-
-			const button = page.locator('.pds-button');
-
-			await button.hover();
-			await page.mouse.down();
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__primary-active',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
-
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__primary-focused',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
 	});
 
-	test.describe('Tertiary', () => {
-		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+	test('State: active', async ({ page }) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__tertiary',
-			);
+		const button = page.locator('.pds-menu-button');
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		await button.hover();
+		await page.mouse.down();
 
-		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:tertiary;disabled:true',
-			);
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default-active',
+		);
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__tertiary-disabled',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
-
-			const button = page.locator('.pds-button');
-
-			await button.hover();
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__tertiary-hover',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
-
-			const button = page.locator('.pds-button');
-
-			await button.hover();
-			await page.mouse.down();
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__tertiary-active',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
-
-		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
-
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
-
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__tertiary-focused',
-			);
-
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
 	});
 
-	test.describe('Critical', () => {
-		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+	test('State: focused', async ({ page, browserName }) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__critical',
-			);
+		await focusViaTab(page, browserName);
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default-focused',
+		);
 
-		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:critical;disabled:true',
-			);
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
+	});
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__critical-disabled',
-			);
+	test('Menu open (via mouse)', async ({ page }) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		const button = page.locator('.pds-menu-button');
+		await button.click();
 
-		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default-menu-open-mouse',
+		);
 
-			const button = page.locator('.pds-button');
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
+	});
 
-			await button.hover();
+	test('Menu open (via keyboard: enter)', async ({ page, browserName }) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__critical-hover',
-			);
+		const button = page.locator('.pds-menu-button');
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		await focusViaTab(page, browserName);
 
-		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+		await page.keyboard.press('Enter');
 
-			const button = page.locator('.pds-button');
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default-menu-open-keyboard-enter',
+		);
 
-			await button.hover();
-			await page.mouse.down();
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
+	});
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__critical-active',
-			);
+	test('Item focused (via keyboard: arrow down)', async ({
+		page,
+		browserName,
+	}) => {
+		await gotoFrame(page, 'components-menu-button--menu-button');
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		const button = page.locator('.pds-menu-button');
 
-		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+		await focusViaTab(page, browserName);
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+		await page.keyboard.press('Enter');
+		await page.keyboard.press('ArrowDown');
+		await page.keyboard.press('ArrowDown');
 
-			const a11yNumViolations = await a11yTest(
-				page,
-				'components-button__critical-focused',
-			);
+		const a11yNumViolations = await a11yTest(
+			page,
+			'components-menu-button__default-menu-item-focused-keyboard',
+		);
 
-			expect(
-				a11yNumViolations,
-				`${a11yNumViolations} accessibility issues found.`,
-			).toBe(0);
-		});
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
 	});
 });
