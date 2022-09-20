@@ -85,7 +85,7 @@ const MenuButton = ({ label, icon, menuItems }) => {
 		return () => {
 			window.removeEventListener('mousedown', handleClickOutside, true);
 		};
-	}, [isOpen]);
+	}, [isOpen, placement]);
 
 	//
 	// Internal/support methods

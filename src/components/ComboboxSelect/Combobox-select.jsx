@@ -78,7 +78,7 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 		return () => {
 			window.removeEventListener('mousedown', handleClickOutside, true);
 		};
-	}, [isOpen]);
+	}, [isOpen, placement]);
 
 	// Update scroll when active option changes
 	useLayoutEffect(() => {
