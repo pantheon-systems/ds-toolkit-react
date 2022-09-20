@@ -5,4 +5,4 @@ const { a11yTest } = require('../../../src/libs/testing/a11y');
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Combobox select-only', () => {});
+test.describe('Components/Combobox select', () => {});
