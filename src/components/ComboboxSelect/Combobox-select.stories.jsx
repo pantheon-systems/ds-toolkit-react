@@ -7,7 +7,7 @@ import {
 } from './combobox-select-sample-data';
 
 export default {
-	title: 'Components/Combobox select-only',
+	title: 'Components/Combobox select',
 	component: ComboboxSelectComponent,
 	parameters: {
 		componentSubtitle:
@@ -54,4 +54,4 @@ ComboboxSelect.args = {
 	label: 'Please select one',
 	selectOptions: sampleSelectOptions,
 };
-ComboboxSelect.storyName = 'Combobox select-only';
+ComboboxSelect.storyName = 'Combobox select';
