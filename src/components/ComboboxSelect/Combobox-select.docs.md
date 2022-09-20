@@ -1,12 +1,21 @@
 ## Purpose
 
-A menu button is a button that shows a menu or list of actions. The items within the menu are typically actions that trigger operations within the application.
+A select-only combobox is a type of input field that has a popup showing available options from which one can be selected.
 
 ## Usage
 
-## Menu items data
+## Select options data
 
-The shape of the data passed to the menu button component for menu items is an array of the following items:
+The shape of the data passed to the select-only combobox component for options is an array of the following item shape:
+
+```json
+{
+	"label": "Admin",
+	"value": "admin-level"
+}
+```
+
+In the above "value" is optional but recommended. If omitted the component will return the label as its value.
 
 ## Accessibility
 
@@ -24,11 +33,11 @@ The shape of the data passed to the menu button component for menu items is an a
 	<tbody>
 		<tr>
 			<td>Down Arrow<br/>Space<br/>Enter</td>
-			<td>Open the menu and focus on the first focusable menu item</td>
+			<td>Open the listbox and focus on the first focusable option or the currently selected one</td>
 		</tr>
 		<tr>
 			<td>Up arrow</td>
-			<td>Open the menu and focus on the last focusable menu item</td>
+			<td>Open the listbox and focus on the last focusable option or the currently selected one</td>
 		</tr>
 	</tbody>
 </table>
@@ -46,39 +55,39 @@ The shape of the data passed to the menu button component for menu items is an a
 		<tr>
 			<td>Enter</td>
 			<td>
-				- Activates the menu item
-				- Then closes the menu
-				- And sets focus on the menu button
+				- Marks the current option as selected
+				- Then closes the listbox
+				- And sets focus on the combobox
 			</td>
 		</tr>
 		<tr>
 			<td>Escape</td>
 			<td>
-				- Closes the menu
-				- And sets focus on the menu button
+				- Closes the listbox
+				- And sets focus on the combobox
 			</td>
 		</tr>
 		<tr>
 			<td>Up arrow</td>
 			<td>
-				- Moves the focus to the previous menu item
-				- If focus is on the first menu item, focus moves to the last menu item
+				- Moves the focus to the previous option
+				- If focus is on the first option, focus moves to the last option
 			</td>
 		</tr>
 		<tr>
 			<td>Down arrow</td>
 			<td>
-				- Moves the focus to the next menu item
-				- If focus is on the last menu item, focus moves to the first menu item
+				- Moves the focus to the next option
+				- If focus is on the last option, focus moves to the first option
 			</td>
 		</tr>
 		<tr>
 			<td>Home</td>
-			<td>Moves the focus to the first menu item</td>
+			<td>Moves the focus to the first option</td>
 		</tr>
 		<tr>
 			<td>End</td>
-			<td>Moves the focus to the last menu item</td>
+			<td>Moves the focus to the last option</td>
 		</tr>
 		<tr>
 			<td>
@@ -86,7 +95,7 @@ The shape of the data passed to the menu button component for menu items is an a
 				a-z
 			</td>
 			<td>
-				- Moves the focus to the next menu item with a label that starts with the typed character if such an item exists
+				- Moves the focus to the next option with a label that starts with the typed character if such an option exists
 				- Otherwise, focus does not move
 			</td>
 		</tr>
