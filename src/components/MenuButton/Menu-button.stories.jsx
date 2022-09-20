@@ -15,6 +15,9 @@ export default {
 			description: {
 				component: DocsDescription,
 			},
+			source: {
+				excludeDecorators: true,
+			},
 		},
 	},
 	argTypes: {

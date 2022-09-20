@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { useFloating, offset, flip } from '@floating-ui/react-dom';
+import { createShortUUID } from '../../libs/components/utils';
 
 import './menu-button.css';
 
@@ -9,11 +10,6 @@ import { defaultIcon } from './menu-button-icon';
 
 // Import additional components for composition
 import Button from '../Button';
-
-// function to generate a short UUID
-const createShortUUID = () => {
-	return crypto.randomUUID().substring(0, 8);
-};
 
 const isSeparatorItemType = (item) => {
 	return item.isSeparator;
@@ -85,7 +81,11 @@ const MenuButton = ({ label, icon, menuItems }) => {
 			// reset state
 			setFocusMenu(false);
 		}
-	});
+
+		return () => {
+			window.removeEventListener('mousedown', handleClickOutside, true);
+		};
+	}, [isOpen]);
 
 	//
 	// Internal/support methods
