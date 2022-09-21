@@ -14,35 +14,38 @@ const TwoItemLayout = ({ variant, children }) => {
 		'pds-grid-item--sm-4',
 		'pds-grid-item--md-3',
 		'pds-grid-item--lg-6',
-	].join(' ');
+	];
 	const oneThirdClasses = [
 		'pds-grid-item--sm-4',
 		'pds-grid-item--md-2',
 		'pds-grid-item--lg-4',
-	].join(' ');
+	];
 	const twoThirdsClasses = [
 		'pds-grid-item--sm-4',
 		'pds-grid-item--md-4',
 		'pds-grid-item--lg-8',
-	].join(' ');
+	];
 
-	// Base class arrays for each item.
-	const firstItemClasses = ['pds-grid-item'];
-	const secondItemClasses = ['pds-grid-item'];
+	// Base classes array.
+	const baseClasses = ['pds-grid-item'];
 
-	// Alter class arrays based on variant.
+	// Establish vars for each item's classes array.
+	let firstItemClasses;
+	let secondItemClasses;
+
+	// Alter items' class arrays based on variant.
 	switch (variant) {
 		case 'equal':
-			firstItemClasses.push(halfClasses);
-			secondItemClasses.push(halfClasses);
+			firstItemClasses = baseClasses.concat(halfClasses);
+			secondItemClasses = baseClasses.concat(halfClasses);
 			break;
 		case 'one-third-start':
-			firstItemClasses.push(oneThirdClasses);
-			secondItemClasses.push(twoThirdsClasses);
+			firstItemClasses = baseClasses.concat(oneThirdClasses);
+			secondItemClasses = baseClasses.concat(twoThirdsClasses);
 			break;
 		case 'one-third-end':
-			firstItemClasses.push(twoThirdsClasses);
-			secondItemClasses.push(oneThirdClasses);
+			firstItemClasses = baseClasses.concat(twoThirdsClasses);
+			secondItemClasses = baseClasses.concat(oneThirdClasses);
 	}
 
 	// Establish content slots.
