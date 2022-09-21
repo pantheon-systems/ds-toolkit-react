@@ -48,26 +48,22 @@ const TwoItemLayout = ({ variant, children }) => {
 			secondItemClasses = baseClasses.concat(oneThirdClasses);
 	}
 
-	// Establish content slots for 'first-item' and 'second-item'.
-	// Children should be passed in with a slot prop like this: slot='slot-name'.
-	let firstItemContent = [];
-	let secondItemContent = [];
-
-	React.Children.forEach(children, (child, index) => {
-		if (child.props.slot) {
-			const slotName = child.props.slot;
-			switch (slotName) {
-				case 'first-item':
-					firstItemContent.push(child);
-					break;
-				case 'second-item':
-					secondItemContent.push(child);
-					break;
-				default:
-					console.log(`"${slotName}" is an invalid slot name.`);
+	// Establish slots.
+	const slots = {};
+	React.Children.forEach(children, (child) => {
+		const slotName = child.props.slot;
+		if (slotName) {
+			if (slots[slotName]) {
+				slots[slotName].push(child);
+			} else {
+				slots[slotName] = [child];
 			}
 		}
 	});
+
+	// Assign content to named slots for this component.
+	const firstItemContent = slots['first-item'];
+	const secondItemContent = slots['second-item'];
 
 	return (
 		<div className='pds-grid pds-two-item-layout'>
