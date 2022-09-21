@@ -3,26 +3,27 @@
 /*
  * CSS theming API
  *
- * --pds-combobox-select- 				-> 
+ * --pds-combobox-select-color-foreground 						-> set the color of all text and borders
+ * --pds-combobox-select-color-background						-> set the background color of all elements (input, listbox option hover, etc)
+ * --pds-combobox-select-color-text								-> set the color of all text (input, option)
+ * --pds-combobox-select-border-radius							-> set the border radius size for all borders (input, listbox)
+ * --pds-combobox-select-border-width							-> set the border width for all borders (input, listbox)
+ *
+ * --pds-combobox-select__input-color-border					-> set the color of the border for the "input" element
+ *
+ * --pds-combobox-select__listbox-color-background				-> set the background color for the listbox
+ * --pds-combobox-select__listbox-color-border					-> set the color of the border for the listbox
+ * --pds-combobox-select__listbox-color-text					-> set the color of text for the listbox
+ *
+ * --pds-combobox-select__listbox-item-color-background-hover	-> set the background color of each option when hovered
+ * --pds-combobox-select__item-color-foreground-hover			-> set the color of text of each option when hovered/focused
  *
  */
 
 .pds-combobox-select {
-	--pds-combobox-select-input-color-border: var(
-		--pds-combobox-select-color-foreground,
-		var(--pds-color-neutrals-dark-faded)
-	);
-	--pds-combobox-select-listbox-color-border: var(
-		--pds-combobox-select-color-foreground,
-		#c1c1d6 /* TODO: convert to design token */
-	);
-
-	--pds-combobox-select__item-color-background: var(
-		--pds-combobox-select-color-background,
-		var(--pds-color-highlight-light)
-	);
-
-	--pds-combobox-select__listbox-color-text: var(--pds-color-text-darkest);
+	--pds-combobox-select-color-text: var(--pds-combobox-select-color-foreground);
+	--pds-combobox-select-border-radius: 0.25rem;
+	--pds-combobox-select-border-width: 1px;
 
 	display: inline-block;
 }
@@ -35,10 +36,18 @@
 }
 
 .pds-combobox-select [role='combobox'] {
-	border-color: var(--pds-combobox-select-input-color-border);
-	border-radius: var(--pds-combobox-select-border-radius, 0.25rem);
+	border-color: var(
+		--pds-combobox-select__input-color-border,
+		var(
+			--pds-combobox-select-color-foreground,
+			var(--pds-color-neutrals-dark-faded)
+		)
+	);
+	border-radius: var(--pds-combobox-select-border-radius);
 	border-style: solid;
-	border-width: var(--pds-combobox-select-border-width, 1px);
+	border-width: var(--pds-combobox-select-border-width);
+
+	color: var(--pds-combobox-select-color-text);
 
 	padding: token('spacing.XS' to em);
 
@@ -65,10 +74,16 @@
 }
 
 .pds-combobox-select [role='listbox'] {
-	border-color: var(--pds-combobox-select-listbox-color-border);
-	border-radius: var(--pds-combobox-select__listbox-border-radius, 0.25rem);
+	border-color: var(
+		--pds-combobox-select__listbox-color-border,
+		var(
+			--pds-combobox-select-color-foreground,
+			#c1c1d6 /* TODO: convert to design token */
+		)
+	);
+	border-radius: var(--pds-combobox-select-border-radius);
 	border-style: solid;
-	border-width: var(--pds-combobox-select__listbox-border-width, 1px);
+	border-width: var(--pds-combobox-select-border-width);
 	background-color: var(
 		--pds-combobox-select__listbox-color-background,
 		var(--pds-color-neutrals-lightest)
@@ -97,7 +112,10 @@
 }
 
 .pds-combobox-select [role='listbox'] [role='option'] {
-	color: var(--pds-menu-button__listbox-color-text);
+	color: var(
+		--pds-combobox-select__listbox-color-text,
+		var(--pds-color-text-darkest)
+	);
 	margin: 0;
 	padding-block: token('spacing.3XS' to em);
 	padding-inline: token('spacing.S' to em);
@@ -112,7 +130,13 @@
 .pds-combobox-select
 	[role='listbox']
 	[role='option'].pds-combobox-select__item-focused {
-	background-color: var(--pds-combobox-select__item-color-background);
+	background-color: var(
+		--pds-combobox-select__item-color-background-hover,
+		var(
+			--pds-combobox-select-color-background,
+			var(--pds-color-highlight-light)
+		)
+	);
 	color: var(
 		--pds-combobox-select__item-color-foreground-hover,
 		var(--pds-color-accents-deep)
