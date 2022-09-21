@@ -1,6 +1,8 @@
 const { test, expect } = require('@playwright/test');
-const { gotoFrame } = require('../../../src/libs/testing/vrt');
+const { gotoFrame, focusViaTab } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require('../../../src/libs/testing/a11y');
+
+const storyID = 'components-button--button';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
@@ -8,7 +10,7 @@ test.describe.configure({ mode: 'parallel' });
 test.describe('Components/Button', () => {
 	test.describe('Default/Secondary', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
+			await gotoFrame(page, storyID);
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -22,7 +24,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'disabled:true');
+			await gotoFrame(page, storyID, 'disabled:true');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -36,7 +38,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-button');
 
@@ -54,7 +56,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-button');
 
@@ -73,14 +75,9 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button');
+			await gotoFrame(page, storyID);
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -96,7 +93,7 @@ test.describe('Components/Button', () => {
 
 	test.describe('Primary', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -110,11 +107,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:primary;disabled:true',
-			);
+			await gotoFrame(page, storyID, 'variant:primary;disabled:true');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -128,7 +121,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			const button = page.locator('.pds-button');
 
@@ -146,7 +139,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			const button = page.locator('.pds-button');
 
@@ -165,14 +158,9 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+			await gotoFrame(page, storyID, 'variant:primary');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -188,7 +176,7 @@ test.describe('Components/Button', () => {
 
 	test.describe('Tertiary', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -202,11 +190,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:tertiary;disabled:true',
-			);
+			await gotoFrame(page, storyID, 'variant:tertiary;disabled:true');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -220,7 +204,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			const button = page.locator('.pds-button');
 
@@ -238,7 +222,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			const button = page.locator('.pds-button');
 
@@ -257,14 +241,9 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -280,7 +259,7 @@ test.describe('Components/Button', () => {
 
 	test.describe('Critical', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -294,11 +273,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:critical;disabled:true',
-			);
+			await gotoFrame(page, storyID, 'variant:critical;disabled:true');
 
 			const a11yNumViolations = await a11yTest(
 				page,
@@ -312,7 +287,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -330,7 +305,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -349,14 +324,9 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+			await gotoFrame(page, storyID, 'variant:critical');
 
-			// Tab to item with keyboard
-			let keyPressed = 'Tab';
-			if (browserName === 'webkit') {
-				keyPressed = 'Alt+Tab';
-			}
-			await page.keyboard.press(keyPressed);
+			await focusViaTab(page, browserName);
 
 			const a11yNumViolations = await a11yTest(
 				page,

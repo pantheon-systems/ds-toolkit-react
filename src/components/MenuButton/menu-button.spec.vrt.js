@@ -1,6 +1,8 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
+const storyID = 'components-menu-button--menu-button';
+
 const {
 	dialogMsgBase,
 	sampleMenuItems,
@@ -16,9 +18,7 @@ const clipOptions = { x: 0, y: 0, width: 250, height: 400 };
 test.describe('Components/Menu Button', () => {
 	test.describe('General', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__general-base.png',
@@ -26,7 +26,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-menu-button');
 
@@ -38,7 +38,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-menu-button');
 
@@ -51,9 +51,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -65,7 +63,7 @@ test.describe('Components/Menu Button', () => {
 
 	test.describe('Complex data', () => {
 		test('Menu open (via mouse)', async ({ page }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-menu-button');
 			await button.click();
@@ -76,9 +74,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('Menu open (via keyboard: space)', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -90,9 +86,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('Menu open (via keyboard: enter)', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -107,9 +101,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -124,9 +116,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -141,9 +131,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -160,9 +148,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -174,62 +160,11 @@ test.describe('Components/Menu Button', () => {
 				'menu-button__complex-a11y-keyboard-arrow-up_item-focused.png',
 			);
 		});
-
-		test('Item activated (via keyboard)', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
-
-			await focusViaTab(page, browserName);
-
-			await page.keyboard.press('Enter');
-			await page.keyboard.press('ArrowDown');
-			await page.keyboard.press('ArrowDown');
-
-			// retrieve the intended menu item's label
-			const targetItemLabel = sampleMenuItems[4].label;
-
-			// setup handler for the browser dialog that will occur on activation
-			await page.on('dialog', async (dialog) => {
-				expect(dialog.message()).toBe(`${dialogMsgBase}${targetItemLabel}`);
-				dialog.accept();
-			});
-
-			await page.keyboard.press('Enter');
-		});
-
-		test('Item activated (via mouse)', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-menu-button--menu-button');
-
-			const button = page.locator('.pds-menu-button');
-
-			await button.click();
-
-			// get the intended menu item
-			const itemFourth = page.locator(
-				'.pds-menu-button [role="menu"] [role="menuitem"] >> nth=3',
-			);
-
-			// retrieve the intended menu item's label
-			const targetItemLabel = sampleMenuItems[5].label;
-
-			// setup handler for the browser dialog that will occur on activation
-			await page.on('dialog', async (dialog) => {
-				expect(dialog.message()).toBe(`${dialogMsgBase}${targetItemLabel}`);
-				dialog.accept();
-			});
-
-			await itemFourth.click();
-		});
 	});
 
 	test.describe('Simple data', () => {
 		test('Menu open (via mouse)', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			const button = page.locator('.pds-menu-button');
 			await button.click();
@@ -240,13 +175,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('Menu open (via keyboard: space)', async ({ page, browserName }) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			await focusViaTab(page, browserName);
 
@@ -258,13 +187,7 @@ test.describe('Components/Menu Button', () => {
 		});
 
 		test('Menu open (via keyboard: enter)', async ({ page, browserName }) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			await focusViaTab(page, browserName);
 
@@ -279,13 +202,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			await focusViaTab(page, browserName);
 
@@ -300,13 +217,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			await focusViaTab(page, browserName);
 
@@ -321,13 +232,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			await focusViaTab(page, browserName);
 
@@ -344,13 +249,7 @@ test.describe('Components/Menu Button', () => {
 			page,
 			browserName,
 		}) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
+			await gotoFrame(page, storyID, 'menuItems:sampleSimpleMenuItems');
 
 			await focusViaTab(page, browserName);
 
@@ -361,61 +260,6 @@ test.describe('Components/Menu Button', () => {
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__simple-a11y-keyboard-arrow-up_item-focused.png',
 			);
-		});
-
-		test('Item activated (via keyboard)', async ({ page, browserName }) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
-
-			await focusViaTab(page, browserName);
-
-			await page.keyboard.press('Enter');
-			await page.keyboard.press('ArrowUp');
-			await page.keyboard.press('ArrowUp');
-
-			// retrieve the intended menu item's label
-			const targetItemLabel = sampleSimpleMenuItems[5].label;
-
-			// setup handler for the browser dialog that will occur on activation
-			await page.on('dialog', async (dialog) => {
-				expect(dialog.message()).toBe(`${dialogMsgBase}${targetItemLabel}`);
-				dialog.accept();
-			});
-
-			await page.keyboard.press('Enter');
-		});
-
-		test('Item activated (via mouse)', async ({ page, browserName }) => {
-			await gotoFrame(
-				page,
-				'components-menu-button--menu-button',
-				'menuItems:sampleSimpleMenuItems',
-			);
-
-			const button = page.locator('.pds-menu-button');
-
-			await button.click();
-
-			// get the intended menu item
-			const itemFourth = page.locator(
-				'.pds-menu-button [role="menu"] [role="menuitem"] >> nth=3',
-			);
-
-			// retrieve the intended menu item's label
-			const targetItemLabel = sampleSimpleMenuItems[3].label;
-
-			// setup handler for the browser dialog that will occur on activation
-			await page.on('dialog', async (dialog) => {
-				expect(dialog.message()).toBe(`${dialogMsgBase}${targetItemLabel}`);
-				dialog.accept();
-			});
-
-			await itemFourth.click();
 		});
 	});
 });

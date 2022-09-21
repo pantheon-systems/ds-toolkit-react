@@ -2,12 +2,14 @@ const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require('../../../src/libs/testing/a11y');
 
+const storyID = 'components-menu-button--menu-button';
+
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
 test.describe('Components/Menu Button', () => {
 	test('Base', async ({ page }) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
+		await gotoFrame(page, storyID);
 
 		const a11yNumViolations = await a11yTest(
 			page,
@@ -21,7 +23,7 @@ test.describe('Components/Menu Button', () => {
 	});
 
 	test('State: hover', async ({ page }) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
+		await gotoFrame(page, storyID);
 
 		const button = page.locator('.pds-menu-button');
 
@@ -39,7 +41,7 @@ test.describe('Components/Menu Button', () => {
 	});
 
 	test('State: active', async ({ page }) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
+		await gotoFrame(page, storyID);
 
 		const button = page.locator('.pds-menu-button');
 
@@ -58,7 +60,7 @@ test.describe('Components/Menu Button', () => {
 	});
 
 	test('State: focused', async ({ page, browserName }) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
+		await gotoFrame(page, storyID);
 
 		await focusViaTab(page, browserName);
 
@@ -74,7 +76,7 @@ test.describe('Components/Menu Button', () => {
 	});
 
 	test('Menu open (via mouse)', async ({ page }) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
+		await gotoFrame(page, storyID);
 
 		const button = page.locator('.pds-menu-button');
 		await button.click();
@@ -91,9 +93,7 @@ test.describe('Components/Menu Button', () => {
 	});
 
 	test('Menu open (via keyboard: enter)', async ({ page, browserName }) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
-
-		const button = page.locator('.pds-menu-button');
+		await gotoFrame(page, storyID);
 
 		await focusViaTab(page, browserName);
 
@@ -114,9 +114,7 @@ test.describe('Components/Menu Button', () => {
 		page,
 		browserName,
 	}) => {
-		await gotoFrame(page, 'components-menu-button--menu-button');
-
-		const button = page.locator('.pds-menu-button');
+		await gotoFrame(page, storyID);
 
 		await focusViaTab(page, browserName);
 

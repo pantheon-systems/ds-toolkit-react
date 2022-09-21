@@ -1,6 +1,8 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
+const storyID = 'components-button--button';
+
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
@@ -10,9 +12,7 @@ const clipOptions = { x: 0, y: 0, width: 150, height: 75 };
 test.describe('Components/Button', () => {
 	test.describe('Default/Secondary', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__default.png',
@@ -20,9 +20,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'disabled:true');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'disabled:true');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__default-disabled.png',
@@ -30,7 +28,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-button');
 
@@ -42,7 +40,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button');
+			await gotoFrame(page, storyID);
 
 			const button = page.locator('.pds-button');
 
@@ -55,9 +53,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID);
 
 			await focusViaTab(page, browserName);
 
@@ -69,9 +65,7 @@ test.describe('Components/Button', () => {
 
 	test.describe('Primary', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__primary.png',
@@ -79,13 +73,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:primary;disabled:true',
-			);
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:primary;disabled:true');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__primary-disabled.png',
@@ -93,7 +81,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			const button = page.locator('.pds-button');
 
@@ -105,7 +93,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			const button = page.locator('.pds-button');
 
@@ -118,9 +106,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:primary');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:primary');
 
 			await focusViaTab(page, browserName);
 
@@ -132,9 +118,7 @@ test.describe('Components/Button', () => {
 
 	test.describe('Tertiary', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__tertiary.png',
@@ -142,13 +126,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:tertiary;disabled:true',
-			);
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:tertiary;disabled:true');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__tertiary-disabled.png',
@@ -156,7 +134,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			const button = page.locator('.pds-button');
 
@@ -168,7 +146,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			const button = page.locator('.pds-button');
 
@@ -181,9 +159,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:tertiary');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:tertiary');
 
 			await focusViaTab(page, browserName);
 
@@ -195,9 +171,7 @@ test.describe('Components/Button', () => {
 
 	test.describe('Critical', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__critical.png',
@@ -205,13 +179,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(
-				page,
-				'components-button--button',
-				'variant:critical;disabled:true',
-			);
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:critical;disabled:true');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'button__critical-disabled.png',
@@ -219,7 +187,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -231,7 +199,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			const button = page.locator('.pds-button');
 
@@ -244,9 +212,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, 'components-button--button', 'variant:critical');
-
-			const button = page.locator('.pds-button');
+			await gotoFrame(page, storyID, 'variant:critical');
 
 			await focusViaTab(page, browserName);
 
