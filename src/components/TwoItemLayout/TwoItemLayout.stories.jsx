@@ -34,7 +34,27 @@ const Template = (args) => (
 				textAlign: 'center',
 			}}
 		>
-			Item 1
+			Item 1a
+		</div>
+		<div
+			slot='first-item'
+			style={{
+				backgroundColor: 'pink',
+				padding: '1rem',
+				textAlign: 'center',
+			}}
+		>
+			Item 1b
+		</div>
+		<div
+			slot='first-item'
+			style={{
+				backgroundColor: 'yellow',
+				padding: '1rem',
+				textAlign: 'center',
+			}}
+		>
+			Item 1c
 		</div>
 		<div
 			slot='second-item'
@@ -44,7 +64,26 @@ const Template = (args) => (
 				textAlign: 'center',
 			}}
 		>
-			Item 2
+			Item 2a
+		</div>
+		<div
+			slot='second-item'
+			style={{
+				backgroundColor: 'pink',
+				padding: '1rem',
+				textAlign: 'center',
+			}}
+		>
+			Item 2b
+		</div>
+		<div
+			style={{
+				backgroundColor: 'PaleTurquoise',
+				padding: '1rem',
+				textAlign: 'center',
+			}}
+		>
+			Item 3 (no slot, will not render)
 		</div>
 	</TwoItemLayoutComponent>
 );

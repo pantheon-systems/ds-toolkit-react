@@ -48,19 +48,35 @@ const TwoItemLayout = ({ variant, children }) => {
 			secondItemClasses = baseClasses.concat(oneThirdClasses);
 	}
 
-	// Establish content slots.
-	const slots = {};
-	React.Children.forEach(children, (child) => {
-		slots[child.props.slot] = React.cloneElement(child, {});
-	});
+	// Establish content slots for 'first-item' and 'second-item'.
+	// Children should be passed in with a slot prop like this: slot='slot-name'.
+	let firstItemContent = [];
+	let secondItemContent = [];
 
-	const firstItem = slots['first-item'];
-	const secondItem = slots['second-item'];
+	React.Children.forEach(children, (child, index) => {
+		if (child.props.slot) {
+			const slotName = child.props.slot;
+			switch (slotName) {
+				case 'first-item':
+					firstItemContent.push(child);
+					break;
+				case 'second-item':
+					secondItemContent.push(child);
+					break;
+				default:
+					console.log(`"${slotName}" is an invalid slot name.`);
+			}
+		}
+	});
 
 	return (
 		<div className='pds-grid pds-two-item-layout'>
-			<div className={firstItemClasses.join(' ').trim()}>{firstItem}</div>
-			<div className={secondItemClasses.join(' ').trim()}>{secondItem}</div>
+			<div className={firstItemClasses.join(' ').trim()}>
+				{firstItemContent}
+			</div>
+			<div className={secondItemClasses.join(' ').trim()}>
+				{secondItemContent}
+			</div>
 		</div>
 	);
 };
