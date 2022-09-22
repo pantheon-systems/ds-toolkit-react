@@ -26,38 +26,45 @@ export default {
 
 const Template = (args) => (
 	<TwoItemLayoutComponent {...args}>
-		<div
-			slot='first-item'
-			style={{
-				backgroundColor: 'PaleTurquoise',
-				padding: '1rem',
-				textAlign: 'center',
-			}}
-		>
-			Item 1a
-		</div>
-		<div
-			slot='first-item'
-			style={{
-				backgroundColor: 'pink',
-				padding: '1rem',
-				textAlign: 'center',
-			}}
-		>
-			Item 1b
-		</div>
-		<div
-			slot='second-item'
-			style={{
-				backgroundColor: 'PaleTurquoise',
-				padding: '1rem',
-				textAlign: 'center',
-			}}
-		>
-			Item 2
-		</div>
-		<div>Item 3 (no slot, will not render)</div>
+		<SampleCard slot='first-item' />
+		<SampleBlock slot='second-item' />
+		<p slot='second-item'>
+			Paragraph tag. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		</p>
+		<div>No slot, will not render.</div>
 	</TwoItemLayoutComponent>
 );
 
 export const TwoItemLayout = Template.bind({});
+
+// Sample components for stories.
+const SampleBlock = () => {
+	return (
+		<div
+			style={{
+				backgroundColor: 'LightGray',
+				padding: '1rem',
+				marginBlockEnd: '1rem',
+			}}
+		>
+			Sample item component
+		</div>
+	);
+};
+const SampleCard = () => {
+	return (
+		<div
+			style={{
+				border: '1px solid LightGray',
+				padding: '1rem 1.5rem 0',
+			}}
+		>
+			<p>
+				Sample card component. Lorem ipsum dolor sit amet, consectetur
+				adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+				magna aliqua. Vitae et leo duis ut diam quam nulla porttitor massa.
+				Facilisi morbi tempus iaculis urna id.
+			</p>
+		</div>
+	);
+};
