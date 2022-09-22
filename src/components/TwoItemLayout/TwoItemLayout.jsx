@@ -8,7 +8,7 @@ import '../../utilities/grid/grid.css';
  * Two Item Layout component
  */
 
-const TwoItemLayout = ({ variant, children }) => {
+const TwoItemLayout = ({ layoutVariant, children }) => {
 	// Pre-defined class arrays based on column width.
 	const halfClasses = [
 		'pds-grid-item--sm-4',
@@ -33,8 +33,8 @@ const TwoItemLayout = ({ variant, children }) => {
 	let firstItemClasses;
 	let secondItemClasses;
 
-	// Alter items' class arrays based on variant.
-	switch (variant) {
+	// Alter items' class arrays based on layoutVariant.
+	switch (layoutVariant) {
 		case 'equal':
 			firstItemClasses = baseClasses.concat(halfClasses);
 			secondItemClasses = baseClasses.concat(halfClasses);
@@ -81,7 +81,7 @@ TwoItemLayout.propTypes = {
 	/**
 	 * Layout variant for column widths.
 	 */
-	variant: PropTypes.oneOf(['equal', 'one-third-start', 'one-third-end']),
+	layoutVariant: PropTypes.oneOf(['equal', 'one-third-start', 'one-third-end']),
 	/**
 	 * Item content.
 	 */
@@ -89,7 +89,7 @@ TwoItemLayout.propTypes = {
 };
 
 TwoItemLayout.defaultProps = {
-	variant: 'equal',
+	layoutVariant: 'equal',
 };
 
 export default TwoItemLayout;

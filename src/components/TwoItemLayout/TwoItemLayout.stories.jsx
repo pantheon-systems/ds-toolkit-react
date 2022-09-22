@@ -20,7 +20,7 @@ export default {
 		},
 	},
 	args: {
-		variant: 'equal',
+		layoutVariant: 'equal',
 	},
 };
 
@@ -47,16 +47,6 @@ const Template = (args) => (
 			Item 1b
 		</div>
 		<div
-			slot='first-item'
-			style={{
-				backgroundColor: 'yellow',
-				padding: '1rem',
-				textAlign: 'center',
-			}}
-		>
-			Item 1c
-		</div>
-		<div
 			slot='second-item'
 			style={{
 				backgroundColor: 'PaleTurquoise',
@@ -64,27 +54,9 @@ const Template = (args) => (
 				textAlign: 'center',
 			}}
 		>
-			Item 2a
+			Item 2
 		</div>
-		<div
-			slot='second-item'
-			style={{
-				backgroundColor: 'pink',
-				padding: '1rem',
-				textAlign: 'center',
-			}}
-		>
-			Item 2b
-		</div>
-		<div
-			style={{
-				backgroundColor: 'PaleTurquoise',
-				padding: '1rem',
-				textAlign: 'center',
-			}}
-		>
-			Item 3 (no slot, will not render)
-		</div>
+		<div>Item 3 (no slot, will not render)</div>
 	</TwoItemLayoutComponent>
 );
 
