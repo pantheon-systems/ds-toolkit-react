@@ -11,7 +11,7 @@ executors:
 
   playwright:
     docker:
-      - image: 'mcr.microsoft.com/playwright:v1.26.0-focal'
+      - image: mcr.microsoft.com/playwright:v1.26.0-focal
     environment:
       NODE_ENV: development
     resource_class: medium
