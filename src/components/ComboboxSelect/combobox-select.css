@@ -76,10 +76,7 @@
 .pds-combobox-select [role='listbox'] {
 	border-color: var(
 		--pds-combobox-select__listbox-color-border,
-		var(
-			--pds-combobox-select-color-foreground,
-			#c1c1d6 /* TODO: convert to design token */
-		)
+		var(--pds-combobox-select-color-foreground, token('color.border.default'))
 	);
 	border-radius: var(--pds-combobox-select-border-radius);
 	border-style: solid;
