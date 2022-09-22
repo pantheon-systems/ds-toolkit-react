@@ -4,7 +4,7 @@ A select-only combobox is a type of input field that has a popup showing availab
 
 ## Usage
 
-## Select options data
+### Select options data
 
 The shape of the data passed to the select-only combobox component for options is an array of the following item shape:
 
