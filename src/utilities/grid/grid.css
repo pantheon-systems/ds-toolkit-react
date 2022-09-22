@@ -2,6 +2,7 @@
 
 .pds-grid {
 	display: grid;
+	row-gap: token('spacing.L' to rem);
 }
 
 /* Small viewport grid container. */
@@ -9,7 +10,6 @@
 	.pds-grid {
 		grid-template-columns: repeat(4, 1fr);
 		column-gap: token('grid.columns-4.gap');
-		row-gap: token('spacing.L' to rem);
 	}
 }
 
@@ -27,7 +27,6 @@
 	.pds-grid {
 		grid-template-columns: repeat(12, 1fr);
 		column-gap: token('grid.columns-12.gap');
-		row-gap: token('spacing.XL' to rem);
 	}
 }
 
