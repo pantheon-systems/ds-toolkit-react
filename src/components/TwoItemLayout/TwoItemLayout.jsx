@@ -10,24 +10,12 @@ import '../../utilities/grid/grid.css';
 
 const TwoItemLayout = ({ layoutVariant, children }) => {
 	// Pre-defined class arrays based on column width.
-	const halfClasses = [
-		'pds-grid-item--sm-4',
-		'pds-grid-item--md-3',
-		'pds-grid-item--lg-6',
-	];
-	const oneThirdClasses = [
-		'pds-grid-item--sm-4',
-		'pds-grid-item--md-2',
-		'pds-grid-item--lg-4',
-	];
-	const twoThirdsClasses = [
-		'pds-grid-item--sm-4',
-		'pds-grid-item--md-4',
-		'pds-grid-item--lg-8',
-	];
+	const halfClasses = ['pds-grid-item--md-3', 'pds-grid-item--lg-6'];
+	const oneThirdClasses = ['pds-grid-item--md-2', 'pds-grid-item--lg-4'];
+	const twoThirdsClasses = ['pds-grid-item--md-4', 'pds-grid-item--lg-8'];
 
 	// Base classes array.
-	const baseClasses = ['pds-grid-item'];
+	const baseClasses = ['pds-grid-item', 'pds-grid-item--sm-4'];
 
 	// Establish vars for each item's classes array.
 	let firstItemClasses;
