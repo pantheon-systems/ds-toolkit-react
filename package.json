@@ -39,7 +39,8 @@
 		"build": "rollup -c",
 		"postbuild": "npm run build:css",
 		"build:css": "postcss src/foundations/index.css -o _dist/css/pantheon-core.css",
-		"build:css:watch": "npm run build:css -- -w"
+		"build:css:watch": "npm run build:css -- -w",
+		"plop": "plop"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.4.3",
@@ -65,6 +66,7 @@
 		"babel-loader": "^8.2.5",
 		"cssnano": "^5.1.13",
 		"del": "^6.1.1",
+		"plop": "^3.1.1",
 		"postcss": "^8.4.16",
 		"postcss-cli": "^10.0.0",
 		"postcss-custom-media": "^8.0.2",
