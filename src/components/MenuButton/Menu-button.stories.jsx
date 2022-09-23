@@ -15,6 +15,9 @@ export default {
 			description: {
 				component: DocsDescription,
 			},
+			source: {
+				excludeDecorators: true,
+			},
 		},
 	},
 	argTypes: {
@@ -33,7 +36,7 @@ export default {
 	},
 	decorators: [
 		(Story) => (
-			<div style={{ marginBlockEnd: '16rem' }}>
+			<div style={{ marginBlockEnd: '20rem' }}>
 				<Story />
 			</div>
 		),

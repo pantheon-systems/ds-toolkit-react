@@ -3,11 +3,12 @@
 /*
  * CSS theming API
  *
- * --pds-menu-button-color-border 				-> set menu's overall border color
- * --pds-menu-button__listbox-border-radius		-> set menu listbox' border radius size
- * --pds-menu-button__listbox-border-size		-> set menu listbox' border size/thickness
- * --pds-menu-button__item-color-background		-> set menu item background color (hover)
- * --pds-menu-button__listbox-color-background	-> set menu listbox' background color
+ * --pds-menu-button-color-border 					-> set menu's overall border color
+ * --pds-menu-button__listbox-border-radius			-> set menu listbox' border radius size
+ * --pds-menu-button__listbox-border-size			-> set menu listbox' border size/thickness
+ * --pds-menu-button__item-color-background			-> set menu item background color (hover)
+ * --pds-menu-button__listbox-color-background		-> set menu listbox' background color
+ * --pds-menu-button__item-color-foreground-hover	-> set menu item foreground color on hover
  *
  */
 
@@ -70,7 +71,6 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 
 	padding: token('spacing.3XS' to em) 0;
 	margin-block-start: token('spacing.2XS' to rem);
-	font-size: token('typography.size.multipliers.reduce-one' to rem);
 
 	max-width: 20rem;
 	min-width: 8rem;
@@ -95,6 +95,10 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 .pds-menu-button [role='menu'] [role='menuitem']:hover,
 .pds-menu-button [role='menu'] [role='menuitem'].pds-menu-button__item-focused {
 	background-color: var(--pds-menu-button__item-color-background);
+	color: var(
+		--pds-menu-button__item-color-foreground-hover,
+		var(--pds-color-accents-deep)
+	);
 }
 
 .pds-menu-button [role='menu'] [role='separator'] {
@@ -104,6 +108,7 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 .pds-menu-button [role='menu'] .pds-menu-button__listbox-heading {
 	color: var(--pds-color-neutrals-dark-faded);
 	font-family: token('typography.font.headings');
+	font-size: token('typography.size.multipliers.reduce-one' to rem);
 	letter-spacing: token('typography.letter-spacing.M' to em);
 	text-transform: uppercase;
 	padding-block: token('spacing.2XS') em token('spacing.3XS' to em);
