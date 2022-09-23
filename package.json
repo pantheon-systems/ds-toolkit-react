@@ -47,7 +47,7 @@
 		"@csstools/postcss-design-tokens": "^1.2.x",
 		"@floating-ui/react-dom": "^1.0.0",
 		"@pantheon-systems/pds-tokens": "^0.0.x",
-		"@playwright/test": "1.25.x",
+		"@playwright/test": "1.24.x",
 		"@rollup/plugin-babel": "^5.3.1",
 		"@rollup/plugin-commonjs": "^22.0.2",
 		"@rollup/plugin-node-resolve": "^13.3.0",
