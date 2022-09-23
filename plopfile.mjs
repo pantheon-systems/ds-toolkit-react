@@ -16,6 +16,12 @@ export default function (plop) {
 				base: '__generators__/component/',
 				templateFiles: '__generators__/component/*.*',
 			},
+			{
+				type: 'append',
+				path: 'src/components/index.js',
+				template:
+					"export { default as {{ properCase componentName }} } from './{{ properCase componentName }}';",
+			},
 		], // array of actions
 	});
 
