@@ -40,7 +40,7 @@
 		"postbuild": "npm run build:css",
 		"build:css": "postcss src/foundations/index.css -o _dist/css/pantheon-core.css",
 		"build:css:watch": "npm run build:css -- -w",
-		"plop": "plop"
+		"generate:component": "plop component"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.4.3",
