@@ -12,7 +12,7 @@ const storyID = 'components-{{ dashCase componentName }}--';
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/{{ properCase componentName }}', () => {
+test.describe('Components/{{ titleCase componentName }}', () => {
 	test('<PROVIDE DESCRIPTIVE NAME HERE>', async ({ page }) => {
 		await gotoFrame(page, storyID);
 

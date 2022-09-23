@@ -1,5 +1,5 @@
-import {{ properCase componentName }}Component from './{{ capitalizeFirst (dashCase componentName) }}';
-import DocsDescription from './{{ capitalizeFirst (dashCase componentName) }}.docs.md';
+import {{ properCase componentName }}Component from './{{ properCase componentName }}';
+import DocsDescription from './{{ properCase componentName }}.docs.md';
 
 export default {
 	title: 'Components/{{ titleCase componentName }}',

@@ -1,1 +1,1 @@
-export { default } from './{{ capitalizeFirst (dashCase componentName) }}';
+export { default } from './{{ properCase componentName }}';
