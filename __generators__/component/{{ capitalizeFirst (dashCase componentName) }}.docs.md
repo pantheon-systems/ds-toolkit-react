@@ -1,5 +1,5 @@
 ## Purpose
 
-## Usage
+## Implementation
 
 ## Accessibility
