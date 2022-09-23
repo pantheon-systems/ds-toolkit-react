@@ -25,21 +25,23 @@
 	}
 }
 
-/* Default and Small viewport grid item values. */
-.pds-grid-item {
-	grid-column: span 4;
-}
-.pds-grid-item--sm-1 {
-	grid-column: span 1;
-}
-.pds-grid-item--sm-2 {
-	grid-column: span 2;
-}
-.pds-grid-item--sm-3 {
-	grid-column: span 3;
-}
-.pds-grid-item--sm-4 {
-	grid-column: span 4;
+/* Small viewport grid item values. */
+@media (--small-viewport) {
+	.pds-grid-item {
+		grid-column: span 4;
+	}
+	.pds-grid-item--sm-1 {
+		grid-column: span 1;
+	}
+	.pds-grid-item--sm-2 {
+		grid-column: span 2;
+	}
+	.pds-grid-item--sm-3 {
+		grid-column: span 3;
+	}
+	.pds-grid-item--sm-4 {
+		grid-column: span 4;
+	}
 }
 
 /* Medium viewport grid item values. */
