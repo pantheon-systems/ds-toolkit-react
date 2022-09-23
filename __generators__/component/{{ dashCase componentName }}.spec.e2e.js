@@ -1,3 +1,8 @@
+/*
+ * !!! DELETE THIS FILE
+ * -> if no specific end-to-end/non-VRT tests are needed for the component
+ */
+
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 

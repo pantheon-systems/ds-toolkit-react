@@ -1,3 +1,8 @@
+/*
+ * !!! DELETE THIS FILE
+ * -> if no specific accessibility/a11y tests are needed for the component
+ */
+
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require('../../../src/libs/testing/a11y');
