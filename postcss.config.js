@@ -11,9 +11,10 @@ module.exports = {
 			importFrom: [
 				{
 					customMedia: {
-						'--small-viewport': 'only screen and (width <= 640px)',
-						'--medium-viewport': 'only screen and (641px <= width <= 1024px)',
-						'--large-viewport': 'only screen and (width >= 1025px)',
+						'--small-viewport': 'only screen and (max-width: 640px)',
+						'--medium-viewport':
+							'only screen and (min-width: 641px) and (max-width: 1024px)',
+						'--large-viewport': 'only screen and (min-width: 1025px)',
 					},
 				},
 			],

@@ -1,16 +1,11 @@
 @design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
 
+/* Default and Small viewport grid container. */
 .pds-grid {
 	display: grid;
-	row-gap: token('spacing.XL' to rem);
-}
-
-/* Small viewport grid container. */
-@media (--small-viewport) {
-	.pds-grid {
-		grid-template-columns: repeat(4, 1fr);
-		column-gap: token('grid.columns-4.gap');
-	}
+	grid-template-columns: repeat(4, 1fr);
+	row-gap: token('spacing.L' to rem);
+	column-gap: token('grid.columns-4.gap');
 }
 
 /* Medium viewport grid container. */
@@ -18,6 +13,7 @@
 	.pds-grid {
 		grid-template-columns: repeat(6, 1fr);
 		column-gap: token('grid.columns-6.gap');
+		row-gap: token('spacing.XL' to rem);
 	}
 }
 
