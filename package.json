@@ -13,7 +13,6 @@
 	"homepage": "https://github.com/pantheon-systems/pds-product-react#readme",
 	"main": "_dist/cjs/index.js",
 	"module": "_dist/esm/index.js",
-	"types": "_dist/index.d.ts",
 	"files": [
 		"_dist"
 	],
@@ -51,7 +50,6 @@
 		"@rollup/plugin-babel": "^5.3.1",
 		"@rollup/plugin-commonjs": "^22.0.2",
 		"@rollup/plugin-node-resolve": "^13.3.0",
-		"@rollup/plugin-typescript": "^8.3.4",
 		"@storybook/addon-actions": "^6.5.12",
 		"@storybook/addon-essentials": "^6.5.12",
 		"@storybook/addon-interactions": "^6.5.12",
@@ -60,7 +58,6 @@
 		"@storybook/manager-webpack4": "^6.5.12",
 		"@storybook/react": "^6.5.12",
 		"@storybook/testing-library": "^0.0.13",
-		"@types/react": "^18.0.17",
 		"axe-html-reporter": "^2.2.3",
 		"babel-loader": "^8.2.5",
 		"cssnano": "^5.1.13",
