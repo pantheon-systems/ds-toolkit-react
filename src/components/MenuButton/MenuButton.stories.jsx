@@ -1,5 +1,5 @@
-import MenuButtonComponent from './Menu-button';
-import DocsDescription from './Menu-button.docs.md';
+import MenuButtonComponent from './MenuButton';
+import DocsDescription from './MenuButton.docs.md';
 
 import {
 	sampleMenuItems,
