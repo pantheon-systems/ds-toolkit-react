@@ -114,7 +114,9 @@ test.describe('Components/Combobox select', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -131,7 +133,9 @@ test.describe('Components/Combobox select', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -148,7 +152,9 @@ test.describe('Components/Combobox select', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
 
 			// retrieve the intended option's label
@@ -296,10 +302,12 @@ test.describe('Components/Combobox select', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 
 			// arrow down 12 times
 			for (let x = 0; x < 12; x++) {
 				await page.keyboard.press('ArrowDown');
+				await page.waitForTimeout(100);
 			}
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -320,7 +328,9 @@ test.describe('Components/Combobox select', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -341,13 +351,16 @@ test.describe('Components/Combobox select', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 
 			// arrow down 12 times
 			for (let x = 0; x < 12; x++) {
 				await page.keyboard.press('ArrowDown');
+				await page.waitForTimeout(100);
 			}
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 
 			const combobox = page.locator('.pds-combobox-select [role="combobox"]');
 

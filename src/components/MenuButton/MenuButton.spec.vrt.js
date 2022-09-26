@@ -136,7 +136,9 @@ test.describe('Components/Menu Button', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -153,7 +155,9 @@ test.describe('Components/Menu Button', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -237,7 +241,9 @@ test.describe('Components/Menu Button', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowDown');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
@@ -254,7 +260,9 @@ test.describe('Components/Menu Button', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
+			await page.waitForTimeout(100);
 			await page.keyboard.press('ArrowUp');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
