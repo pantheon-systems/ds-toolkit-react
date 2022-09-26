@@ -3,12 +3,12 @@
 Template repository for starting React based toolkits.
 
 Includes:
+
 - Automated a11y testing
 - Automated visual regression testing
 - Circle CI configuration for testing & publishing to Github Packages
 - Storybook
-- React/Typescript
-
+- React
 
 ## Development environment setup
 

@@ -4,7 +4,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-// import dts from 'rollup-plugin-dts';
 
 const pkg = require('./package.json');
 
@@ -34,11 +33,4 @@ export default [
 			terser(),
 		],
 	},
-
-	// {
-	// 	input: '_dist/esm/index.d.ts',
-	// 	output: [{ file: '_dist/index.d.ts', format: 'esm' }],
-	// 	external: [/\.css$/],
-	// 	plugins: [dts()],
-	// },
 ];
