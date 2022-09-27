@@ -32,6 +32,6 @@ const Template = (args) => <ButtonSplitComponent {...args} />;
 
 export const ButtonSplit = Template.bind({});
 ButtonSplit.args = {
-	menuItems: sampleActionItems,
+	actionItems: sampleActionItems,
 };
 ButtonSplit.storyName = 'Button Split';
