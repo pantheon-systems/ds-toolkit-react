@@ -39,7 +39,7 @@
 		"pretest:a11y:generate": "npm run build:css",
 		"test:a11y:generate": "npm run storybook:build && npx sb extract && node __tests__/a11y/a11y.generate-tests.js",
 		"test:a11y": "playwright test --project 'a11y'",
-		"a11y:results": "npx http-server ./__tests__/a11y/results/",
+		"test:a11y:results": "npx http-server ./__tests__/a11y/results/",
 		"build": "rollup -c",
 		"postbuild": "npm run build:css",
 		"build:css": "postcss src/foundations/index.css -o _dist/css/pantheon-core.css",
