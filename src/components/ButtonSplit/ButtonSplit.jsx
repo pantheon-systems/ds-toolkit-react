@@ -19,8 +19,12 @@ const ButtonSplit = ({ actionItems }) => {
 			<Button
 				label={primaryAction.label}
 				onClick={() => primaryAction.callback(primaryAction)}
+				className='pds-button-split__primary-action'
 			/>
-			<MenuButton menuItems={actionItems} />
+			<MenuButton
+				menuItems={actionItems}
+				className='pds-button-split__menu-button'
+			/>
 		</span>
 	);
 };

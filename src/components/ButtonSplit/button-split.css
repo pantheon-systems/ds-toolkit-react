@@ -29,7 +29,7 @@
 	display: inline-flex;
 }
 
-.pds-button-split .pds-menu-button {
+.pds-button-split .pds-button-split__menu-button {
 	display: flex;
 }
 
@@ -53,7 +53,7 @@
 		0;
 }
 
-.pds-button-split > .pds-menu-button {
+.pds-button-split > .pds-button-split__menu-button {
 	--pds-menu-button__listbox-border-width: var(
 		--_pds-button-split-border-width
 	);
