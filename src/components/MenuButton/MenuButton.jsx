@@ -562,6 +562,16 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 		buttonContent.push(icon.icon);
 	}
 
+	// provide a sensible default label if the trigger is only an icon
+	let ariaLabel;
+	if (!label && icon && icon.icon) {
+		if (isOpen) {
+			ariaLabel = 'Hide menu';
+		} else {
+			ariaLabel = 'Show menu';
+		}
+	}
+
 	return (
 		<span
 			className={['pds-menu-button', className].join(' ').trim()}
@@ -575,6 +585,7 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 				aria-haspopup='true'
 				aria-controls={listboxID}
 				aria-expanded={isOpen}
+				aria-label={ariaLabel}
 				onClick={handleTriggerClick}
 				onKeyDown={handleButtonKeyDown}
 				ref={reference}
