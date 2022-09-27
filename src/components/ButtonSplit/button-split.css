@@ -1,0 +1,63 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-button-split-color-border						-> set button split's overall border color
+ * --pds-button-split-border-width                      -> set button split's overall border width
+ * --pds-button-split-border-radius                     -> set button split's overall border radius size
+ *
+ */
+
+.pds-button-split {
+	--_pds-button-split-color-border: var(
+		--pds-button-split-color-border,
+		var(
+			--pds-button-color-border,
+			var(--pds-button-color-foreground, var(--pds-color-accents-deep))
+		)
+	);
+	--_pds-button-split-border-radius: var(
+		--pds-button-split-border-radius,
+		var(--pds-button-border-radius, token('border.radius.default' to rem))
+	);
+	--_pds-button-split-border-width: var(
+		--pds-button-split-border-width,
+		var(--pds-button-border-width, token('border.width.default' to px))
+	);
+
+	display: inline-flex;
+}
+
+.pds-button-split .pds-menu-button {
+	display: flex;
+}
+
+.pds-button-split svg.trigger-indicator {
+	width: token('spacing.S' to em);
+}
+
+.pds-button-split > *:first-child {
+	--pds-button-border-radius: var(--_pds-button-split-border-radius) 0 0
+		var(--_pds-button-split-border-radius);
+}
+
+.pds-button-split > *:last-child {
+	--pds-button-border-radius: 0 var(--_pds-button-split-border-radius)
+		var(--_pds-button-split-border-radius) 0;
+}
+
+.pds-button-split > *:not(:first-child) {
+	--pds-button-border-width: var(--_pds-button-split-border-width)
+		var(--_pds-button-split-border-width) var(--_pds-button-split-border-width)
+		0;
+}
+
+.pds-button-split > .pds-menu-button {
+	--pds-menu-button__listbox-border-width: var(
+		--_pds-button-split-border-width
+	);
+	--pds-menu-button__listbox-border-radius: var(
+		--_pds-button-split-border-radius
+	);
+}
