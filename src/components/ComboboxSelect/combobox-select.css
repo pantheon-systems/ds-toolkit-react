@@ -21,9 +21,18 @@
  */
 
 .pds-combobox-select {
-	--pds-combobox-select-color-text: var(--pds-combobox-select-color-foreground);
-	--pds-combobox-select-border-radius: 0.25rem;
-	--pds-combobox-select-border-width: 1px;
+	--_pds-combobox-select-color-text: var(
+		--pds-combobox-select-color-text,
+		var(--pds-combobox-select-color-foreground)
+	);
+	--_pds-combobox-select-border-radius: var(
+		--pds-combobox-select-border-radius,
+		token('border.radius.default' to rem)
+	);
+	--_pds-combobox-select-border-width: var(
+		--pds-combobox-select-border-width,
+		token('border.width.default' to px)
+	);
 
 	display: inline-block;
 }
@@ -43,11 +52,11 @@
 			var(--pds-color-neutrals-dark-faded)
 		)
 	);
-	border-radius: var(--pds-combobox-select-border-radius);
+	border-radius: var(--_pds-combobox-select-border-radius);
 	border-style: solid;
-	border-width: var(--pds-combobox-select-border-width);
+	border-width: var(--_pds-combobox-select-border-width);
 
-	color: var(--pds-combobox-select-color-text);
+	color: var(--_pds-combobox-select-color-text);
 
 	padding: token('spacing.XS' to em);
 
@@ -78,9 +87,9 @@
 		--pds-combobox-select__listbox-color-border,
 		var(--pds-combobox-select-color-foreground, token('color.border.default'))
 	);
-	border-radius: var(--pds-combobox-select-border-radius);
+	border-radius: var(--_pds-combobox-select-border-radius);
 	border-style: solid;
-	border-width: var(--pds-combobox-select-border-width);
+	border-width: var(--_pds-combobox-select-border-width);
 	background-color: var(
 		--pds-combobox-select__listbox-color-background,
 		var(--pds-color-neutrals-lightest)
