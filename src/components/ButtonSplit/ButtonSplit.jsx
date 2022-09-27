@@ -8,9 +8,9 @@ import './button-split.css';
 /**
  * ButtonSplit UI component
  */
-const ButtonSplit = ({ menuItems }) => {
+const ButtonSplit = ({ actionItems }) => {
 	// store the first item as the primary action
-	const primaryAction = menuItems[0];
+	const primaryAction = actionItems[0];
 
 	//
 	// Render the output
@@ -20,7 +20,7 @@ const ButtonSplit = ({ menuItems }) => {
 				label={primaryAction.label}
 				onClick={() => primaryAction.callback(primaryAction)}
 			/>
-			<MenuButton menuItems={menuItems} />
+			<MenuButton menuItems={actionItems} />
 		</span>
 	);
 };
@@ -28,7 +28,7 @@ const ButtonSplit = ({ menuItems }) => {
 //
 // Prop types
 
-const MenuItemType = PropTypes.exact({
+const ActionItemType = PropTypes.exact({
 	/**
 	 * Label for a menu item
 	 */
@@ -45,7 +45,7 @@ ButtonSplit.propTypes = {
 	/**
 	 * Array of menu items
 	 */
-	menuItems: PropTypes.arrayOf(MenuItemType).isRequired,
+	actionItems: PropTypes.arrayOf(ActionItemType).isRequired,
 };
 
 ButtonSplit.defaultProps = {};
