@@ -13,18 +13,38 @@
  */
 
 .pds-menu-button {
-	--pds-menu-button-color-border: var(
-		--pds-button-color-foreground,
-		var(--pds-color-accents-deep)
+	--_pds-menu-button-color-border: var(
+		--pds-menu-button-color-border,
+		var(--pds-button-color-border, var(--pds-color-accents-deep))
 	);
-	--pds-button-color-border: var(--pds-menu-button-color-border);
 
-	--pds-menu-button__item-color-background: var(
+	--_pds-menu-button__item-color-background: var(
 		--pds-button-color-background,
 		var(--pds-color-highlight-light)
 	);
 
-	--pds-menu-button__listbox-color-text: var(--pds-color-text-darkest);
+	--_pds-menu-button__listbox-color-text: var(--pds-color-text-darkest);
+
+	--_pds-menu-button__listbox-color-border: var(
+		--pds-menu-button__listbox-color-border,
+		var(--_pds-menu-button-color-border)
+	);
+	--_pds-menu-button__listbox-border-radius: var(
+		--pds-menu-button__listbox-border-radius,
+		var(--pds-button-border-radius, token('border.radius.default' to rem))
+	);
+	--_pds-menu-button__listbox-border-width: var(
+		--pds-menu-button__listbox-border-width,
+		var(--pds-button-border-width, token('border.width.default' to px))
+	);
+	--_pds-menu-button__listbox-color-background: var(
+		--pds-menu-button__listbox-color-background,
+		var(--pds-color-neutrals-lightest)
+	);
+	--_pds-menu-button__item-color-foreground-hover: var(
+		--pds-menu-button__item-color-foreground-hover,
+		var(--pds-color-accents-deep)
+	);
 
 	display: inline-block;
 }
@@ -54,20 +74,11 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 }
 
 .pds-menu-button [role='menu'] {
-	border-color: var(--pds-menu-button-color-border);
-	border-radius: var(
-		--pds-menu-button__listbox-border-radius,
-		var(--pds-button-border-radius, 0.25rem)
-	);
+	border-color: var(--_pds-menu-button__listbox-color-border);
+	border-radius: var(--_pds-menu-button__listbox-border-radius);
 	border-style: solid;
-	border-width: var(
-		--pds-menu-button__listbox-border-width,
-		var(--pds-button-border-width, 1px)
-	);
-	background-color: var(
-		--pds-menu-button__listbox-color-background,
-		var(--pds-color-neutrals-lightest)
-	);
+	border-width: var(--_pds-menu-button__listbox-border-width);
+	background-color: var(--_pds-menu-button__listbox-color-background);
 
 	padding: token('spacing.3XS' to em) 0;
 	margin-block-start: token('spacing.2XS' to rem);
@@ -94,11 +105,8 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 
 .pds-menu-button [role='menu'] [role='menuitem']:hover,
 .pds-menu-button [role='menu'] [role='menuitem'].pds-menu-button__item-focused {
-	background-color: var(--pds-menu-button__item-color-background);
-	color: var(
-		--pds-menu-button__item-color-foreground-hover,
-		var(--pds-color-accents-deep)
-	);
+	background-color: var(--_pds-menu-button__item-color-background);
+	color: var(--_pds-menu-button__item-color-foreground-hover);
 }
 
 .pds-menu-button [role='menu'] [role='separator'] {

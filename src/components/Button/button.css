@@ -12,16 +12,34 @@
  */
 
 button.pds-button {
-	background-color: var(--pds-button-color-background);
-	color: var(--pds-button-color-foreground);
-
-	border-color: var(
-		--pds-button-color-border,
-		var(--pds-button-color-foreground)
+	--_pds-button-color-background: var(
+		--pds-button-color-background,
+		transparent
 	);
-	border-radius: var(--pds-button-border-radius, 0.25rem);
+	--_pds-button-color-foreground: var(
+		--pds-button-color-foreground,
+		var(--pds-color-accents-deep)
+	);
+	--_pds-button-color-border: var(
+		--pds-button-color-border,
+		var(--_pds-button-color-foreground)
+	);
+	--_pds-button-border-radius: var(
+		--pds-button-border-radius,
+		token('border.radius.default' to rem)
+	);
+	--_pds-button-border-width: var(
+		--pds-button-border-width,
+		token('border.width.default' to px)
+	);
+
+	background-color: var(--_pds-button-color-background);
+	color: var(--_pds-button-color-foreground);
+
+	border-color: var(--_pds-button-color-border);
+	border-radius: var(--_pds-button-border-radius);
 	border-style: solid;
-	border-width: var(--pds-button-border-width, 1px);
+	border-width: var(--_pds-button-border-width);
 	font-size: token('typography.size.multipliers.reduce-one' to rem);
 	padding: token('spacing.XS' to rem);
 	/* margin-block-end: token('spacing.M' to rem); */
@@ -38,48 +56,38 @@ button.pds-button:active:enabled {
 }
 
 button.pds-button:disabled {
-	--pds-button-color-background: var(--pds-color-highlight-light);
-	--pds-button-color-foreground: var(--pds-color-text-disabled);
-	--pds-button-color-border: var(--pds-button-color-background);
+	--_pds-button-color-background: var(--pds-color-highlight-light);
+	--_pds-button-color-foreground: var(--pds-color-text-disabled);
+	--_pds-button-color-border: var(--_pds-button-color-background);
 }
 
 button.pds-button--primary {
-	--pds-button-color-background: var(--pds-color-brand-primary);
-	--pds-button-color-foreground: var(--pds-color-text-darkest);
-	--pds-button-color-border: var(--pds-button-color-background);
+	--_pds-button-color-background: var(--pds-color-brand-primary);
+	--_pds-button-color-foreground: var(--pds-color-text-darkest);
+	--_pds-button-color-border: var(--_pds-button-color-background);
 }
 
 button.pds-button--primary:disabled {
-	--pds-button-color-background: var(--pds-color-brand-primary-lightened);
+	--_pds-button-color-background: var(--pds-color-brand-primary-lightened);
 }
 
 button.pds-button--primary:hover:enabled {
-	--pds-button-color-background: var(--pds-color-brand-primary-darkened);
-}
-
-button.pds-button--secondary,
-button.pds-button--tertiary,
-button.pds-button--critical {
-	--pds-button-color-background: transparent;
-}
-
-button.pds-button--secondary {
-	--pds-button-color-foreground: var(--pds-color-accents-deep);
+	--_pds-button-color-background: var(--pds-color-brand-primary-darkened);
 }
 
 button.pds-button--tertiary {
-	--pds-button-color-foreground: var(--pds-color-neutrals-dark-faded);
+	--_pds-button-color-foreground: var(--pds-color-neutrals-dark-faded);
 }
 
 button.pds-button--critical {
-	--pds-button-color-foreground: var(--pds-color-status-failure);
+	--_pds-button-color-foreground: var(--pds-color-status-failure);
 }
 
 button.pds-button--critical:hover:enabled {
-	--pds-button-color-background: var(--pds-color-status-failure-background);
+	--_pds-button-color-background: var(--pds-color-status-failure-background);
 }
 
 button.pds-button--secondary:hover:enabled,
 button.pds-button--tertiary:hover:enabled {
-	--pds-button-color-background: var(--pds-color-highlight-light);
+	--_pds-button-color-background: var(--pds-color-highlight-light);
 }
