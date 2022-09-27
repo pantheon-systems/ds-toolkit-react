@@ -22,7 +22,7 @@ const isHeadingItemType = (item) => {
 /**
  * Menu Button UI component
  */
-const MenuButton = ({ label, icon, menuItems }) => {
+const MenuButton = ({ label, icon, menuItems, className }) => {
 	// Floating UI support
 	const {
 		x,
@@ -563,7 +563,10 @@ const MenuButton = ({ label, icon, menuItems }) => {
 	}
 
 	return (
-		<span className='pds-menu-button' ref={nodeRef}>
+		<span
+			className={['pds-menu-button', className].join(' ').trim()}
+			ref={nodeRef}
+		>
 			<Button
 				label={buttonContent}
 				id={triggerID}
