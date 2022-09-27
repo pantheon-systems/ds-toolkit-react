@@ -27,7 +27,7 @@
 
 	--_pds-menu-button__listbox-color-border: var(
 		--pds-menu-button__listbox-color-border,
-		var(--_pds-menu-button-color-border)
+		var(--pds-color-border-default)
 	);
 	--_pds-menu-button__listbox-border-radius: var(
 		--pds-menu-button__listbox-border-radius,
@@ -107,6 +107,7 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 .pds-menu-button [role='menu'] [role='menuitem'].pds-menu-button__item-focused {
 	background-color: var(--_pds-menu-button__item-color-background);
 	color: var(--_pds-menu-button__item-color-foreground-hover);
+	font-weight: token('typography.font-weight.bold');
 }
 
 .pds-menu-button [role='menu'] [role='separator'] {
