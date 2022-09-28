@@ -68,11 +68,11 @@ button.pds-button--primary {
 }
 
 button.pds-button--primary:disabled {
-	--_pds-button-color-background: var(--pds-color-brand-primary-lightened);
+	--_pds-button-color-background: var(--pds-color-brand-primary-light);
 }
 
 button.pds-button--primary:hover:enabled {
-	--_pds-button-color-background: var(--pds-color-brand-primary-darkened);
+	--_pds-button-color-background: var(--pds-color-brand-primary-dark);
 }
 
 button.pds-button--tertiary {
@@ -80,11 +80,11 @@ button.pds-button--tertiary {
 }
 
 button.pds-button--critical {
-	--_pds-button-color-foreground: var(--pds-color-status-failure);
+	--_pds-button-color-foreground: var(--pds-color-status-error);
 }
 
 button.pds-button--critical:hover:enabled {
-	--_pds-button-color-background: var(--pds-color-status-failure-background);
+	--_pds-button-color-background: var(--pds-color-status-error-light);
 }
 
 button.pds-button--secondary:hover:enabled,
