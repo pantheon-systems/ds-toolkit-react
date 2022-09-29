@@ -81,13 +81,13 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 	}, [isOpen, placement]);
 
 	// Update scroll when active option changes
-	useLayoutEffect(() => {
+	useEffect(() => {
 		// Update scroll position
 		updateScroll();
 	}, [activeDescendant, isOpen]);
 
 	// only run on initial load / componentDidMount
-	useLayoutEffect(() => {
+	useEffect(() => {
 		// if a value was passed in set the selectedOption correctly
 		if (value) {
 			const valueIndex = selectOptionItems.current.findIndex(
@@ -451,13 +451,25 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 					activeDescendant !== '' ? activeDescendant : initialDescendant
 				}
 				style={{
-					display: isOpen ? 'block' : 'none',
+					visibility: isOpen ? 'visible' : 'hidden',
 					position: strategy,
 					transform: `translate(${Math.round(x)}px,${Math.round(y)}px)`,
 				}}
 				onKeyDown={handleListboxKeyDown}
 				ref={floating}
 			>
+				{items.map((item, index) => {
+					return renderSelectOption(item, index);
+				})}
+			</ul>
+		);
+	};
+
+	// Function to render the select options as a shim to obtain matching widths
+	// !! This is required to ensure proper rendering of width
+	const renderWidthShim = (items) => {
+		return (
+			<ul className='pds-combobox-select-shim' aria-hidden='true'>
 				{items.map((item, index) => {
 					return renderSelectOption(item, index);
 				})}
@@ -485,11 +497,12 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 				onKeyDown={handleComboboxKeyDown}
 				ref={inputRef}
 			>
-				{selectedOption?.label || 'Select an option'}
+				<span>{selectedOption?.label || 'Select an option'}</span>
 				{defaultIcon}
 				{/* TODO: convert to translatable value */}
 			</div>
 			{renderSelectOptions(selectOptions)}
+			{renderWidthShim(selectOptions)}
 		</span>
 	);
 };
