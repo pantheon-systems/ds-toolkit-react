@@ -80,7 +80,7 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 	border-width: var(--_pds-menu-button__listbox-border-width);
 	background-color: var(--_pds-menu-button__listbox-color-background);
 
-	padding: token('spacing.3XS' to em) 0;
+	padding: token('spacing.4XS' to em) 0;
 	margin-block-start: token('spacing.2XS' to rem);
 
 	max-width: 20rem;
@@ -99,8 +99,8 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 .pds-menu-button [role='menu'] [role='presentation'] {
 	color: var(--pds-menu-button__listbox-color-text);
 	margin: 0;
-	padding-block: token('spacing.3XS' to em);
-	padding-inline: token('spacing.S' to em);
+	padding-block: token('spacing.4XS' to em);
+	padding-inline: token('spacing.XS' to em);
 }
 
 .pds-menu-button [role='menu'] [role='menuitem']:hover,
@@ -114,11 +114,13 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 	border-block-start: 1px solid #dfdfec;
 }
 
-.pds-menu-button [role='menu'] .pds-menu-button__listbox-heading {
+.pds-menu-button
+	[role='menu']
+	[role='presentation'].pds-menu-button__listbox-heading {
 	color: var(--pds-color-neutrals-dark-faded);
 	font-family: token('typography.font.headings');
 	font-size: token('typography.size.multipliers.reduce-one' to rem);
 	letter-spacing: token('typography.letter-spacing.M' to em);
 	text-transform: uppercase;
-	padding-block: token('spacing.2XS') em token('spacing.3XS' to em);
+	padding-block: token('spacing.3XS' to em) token('spacing.4XS' to em);
 }
