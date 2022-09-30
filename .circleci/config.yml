@@ -34,6 +34,11 @@ jobs:
       - setup_github_packages
       - node/install-packages
 
+      - run: ls -la /ms-playwright
+      - run: echo $PATH
+      - run: |
+          ls -al /ms-playwright
+
       - run:
           name: 'Generate a11y tests'
           command: 'npm run test:a11y:generate'
@@ -52,6 +57,11 @@ jobs:
       - checkout
       - setup_github_packages
       - node/install-packages
+
+      - run: ls -la /ms-playwright
+      - run: echo $PATH
+      - run: |
+          ls -al /ms-playwright
 
       - run:
           name: 'Run end-to-end tests'
