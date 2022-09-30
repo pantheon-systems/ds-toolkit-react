@@ -1,0 +1,8 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+label {
+	display: block;
+	font-size: token('typography.size.multipliers.reduce-one' to rem);
+	font-weight: token('typography.font-weight.bold');
+	margin-block-end: token('spacing.2XS' to em);
+}
