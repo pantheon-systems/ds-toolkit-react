@@ -1,6 +1,6 @@
 import Docs from './Select.docs.md';
 
-import ComboboxSelect from '../../components/ComboboxSelect/';
+import { createShortUUID } from '../../libs/components/utils';
 
 export default {
 	title: 'Foundations/Select',
@@ -17,16 +17,21 @@ export default {
 };
 
 const Template = ({}) => {
+	const selectID = `sample-select-${createShortUUID()}`;
+
 	return (
-		<select>
-			<option>Select an option</option>
-			<option>Alpha</option>
-			<option>Beta</option>
-			<option>Gamma</option>
-			<optgroup label='Miscellaneous'>
-				<option>Epsilon</option>
-			</optgroup>
-		</select>
+		<>
+			<label for={selectID}>Please select one:</label>
+			<select id={selectID}>
+				<option>Select an option</option>
+				<option>Alpha</option>
+				<option>Beta</option>
+				<option>Gamma</option>
+				<optgroup label='Miscellaneous'>
+					<option>Epsilon</option>
+				</optgroup>
+			</select>
+		</>
 	);
 };
 
