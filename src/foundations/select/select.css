@@ -52,10 +52,3 @@ select:active:enabled {
 	outline: none;
 	box-shadow: 0 0 0.5rem var(--pds-color-focus);
 }
-
-label {
-	display: block;
-	font-size: token('typography.size.multipliers.reduce-one' to rem);
-	font-weight: token('typography.font-weight.bold');
-	margin-block-end: token('spacing.2XS' to em);
-}
