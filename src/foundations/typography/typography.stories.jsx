@@ -36,3 +36,4 @@ const Template = ({}) => {
 };
 
 export const Default = Template.bind({});
+Default.storyName = 'Typography';
