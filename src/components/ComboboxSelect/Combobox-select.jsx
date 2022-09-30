@@ -50,6 +50,9 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 	const selectOptionIDs = useRef(new Array());
 	const selectOptionItems = useRef(new Array());
 
+	/* TODO: convert to translatable value */
+	const defaultSelectOptionLabel = 'Select an option';
+
 	useLayoutEffect(() => {
 		// setup the onClick outside handler
 		window.addEventListener('mousedown', handleClickOutside, true);
@@ -424,7 +427,9 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 					ref={shouldFocus ? activeOption : undefined}
 				>
 					{item.label}
-					{isSelected && checkmarkIcon}
+					<div className='pds-combobox-select__item-selected-indicator'>
+						{isSelected && checkmarkIcon}
+					</div>
 				</li>
 			);
 		}
@@ -465,13 +470,32 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 		);
 	};
 
-	// Function to render the select options as a shim to obtain matching widths
-	// !! This is required to ensure proper rendering of width
+	/*
+	 * Function to render the select options as a shim to obtain matching widths
+	 * !! This is required to ensure proper rendering of width
+	 *
+	 * The `defaultSelectOptionLabel` item helps maintain width when
+	 * the default option label is longer than all select options
+	 */
 	const renderWidthShim = (items) => {
 		return (
 			<ul className='pds-combobox-select-shim' aria-hidden='true'>
+				<li>
+					{defaultSelectOptionLabel}
+					<div className='pds-combobox-select__item-selected-indicator'></div>
+				</li>
 				{items.map((item, index) => {
-					return renderSelectOption(item, index);
+					// track if option is selected
+					const isSelected = selectedOption === item;
+
+					return (
+						<li key={`${item.label}-${index}`}>
+							{item.label}
+							<div className='pds-combobox-select__item-selected-indicator'>
+								{isSelected && checkmarkIcon}
+							</div>
+						</li>
+					);
 				})}
 			</ul>
 		);
@@ -497,9 +521,8 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 				onKeyDown={handleComboboxKeyDown}
 				ref={inputRef}
 			>
-				<span>{selectedOption?.label || 'Select an option'}</span>
+				<span>{selectedOption?.label || defaultSelectOptionLabel}</span>
 				{defaultIcon}
-				{/* TODO: convert to translatable value */}
 			</div>
 			{renderSelectOptions(selectOptions)}
 			{renderWidthShim(selectOptions)}
