@@ -35,10 +35,6 @@ jobs:
       - node/install-packages
 
       - run:
-          name: 'Install browsers (TEMPORARY FIX)'
-          command: 'npx playwright install'
-
-      - run:
           name: 'Generate a11y tests'
           command: 'npm run test:a11y:generate'
       - run:
@@ -56,10 +52,6 @@ jobs:
       - checkout
       - setup_github_packages
       - node/install-packages
-
-      - run:
-          name: 'Install browsers (TEMPORARY FIX)'
-          command: 'npx playwright install'
 
       - run:
           name: 'Run end-to-end tests'
