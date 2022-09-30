@@ -29,3 +29,4 @@ const Template = ({}) => {
 };
 
 export const Default = Template.bind({});
+Default.storyName = 'Anchor Link';
