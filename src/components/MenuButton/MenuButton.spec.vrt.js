@@ -9,6 +9,8 @@ const {
 	sampleSimpleMenuItems,
 } = require('./menu-button-sample-data');
 
+const screenshotDelay = 250;
+
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
@@ -68,6 +70,8 @@ test.describe('Components/Menu Button', () => {
 			const button = page.locator('.pds-menu-button');
 			await button.click();
 
+			page.waitForTimeout(screenshotDelay);
+
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__complex-data-mouse_menu-open.png',
 			);
@@ -80,6 +84,8 @@ test.describe('Components/Menu Button', () => {
 
 			await page.keyboard.press(' ');
 
+			page.waitForTimeout(screenshotDelay);
+
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__complex-a11y-keyboard-space_menu-open.png',
 			);
@@ -91,6 +97,8 @@ test.describe('Components/Menu Button', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('Enter');
+
+			page.waitForTimeout(screenshotDelay);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__complex-a11y-keyboard-enter_menu-open.png',
@@ -107,6 +115,8 @@ test.describe('Components/Menu Button', () => {
 
 			await page.keyboard.press('ArrowDown');
 
+			page.waitForTimeout(screenshotDelay);
+
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__complex-a11y-keyboard-arrow-down_menu-open.png',
 			);
@@ -121,6 +131,8 @@ test.describe('Components/Menu Button', () => {
 			await focusViaTab(page, browserName);
 
 			await page.keyboard.press('ArrowUp');
+
+			page.waitForTimeout(screenshotDelay);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
 				'menu-button__complex-a11y-keyboard-arrow-up_menu-open.png',

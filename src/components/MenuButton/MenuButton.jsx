@@ -99,10 +99,6 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 		setActiveMenuItemIndex(index);
 	};
 
-	const setOpenState = (value) => {
-		setIsOpen(value);
-	};
-
 	const openMenu = () => {
 		setIsOpen(true);
 		setFocusMenu(true);
@@ -110,6 +106,7 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 
 	const closeMenu = () => {
 		setIsOpen(false);
+		setActiveMenuItem(undefined, -1); // remove current selection to reset menu
 		nodeRef.current.querySelector(`#${triggerID}`).focus();
 	};
 
@@ -170,15 +167,15 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 	// Event handler functions
 	//
 	const handleTriggerClick = (event) => {
-		setIsOpen((prevState) => {
-			return !prevState;
-		});
+		if (isOpen) {
+			closeMenu();
+		} else {
+			openMenu();
+		}
 
 		setFocusMenu((prevState) => {
 			return !prevState;
 		});
-
-		setActiveMenuItem(menuItemIDs.current[0], 0);
 
 		event.stopPropagation();
 		event.preventDefault();
@@ -329,7 +326,7 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 	const handleClickOutside = (event) => {
 		if (nodeRef.current && !nodeRef.current.contains(event.target)) {
 			if (isOpen) {
-				setOpenState(false);
+				closeMenu();
 			}
 		}
 	};
