@@ -49,10 +49,7 @@
 .pds-combobox-select [role='combobox'] {
 	border-color: var(
 		--pds-combobox-select__input-color-border,
-		var(
-			--pds-combobox-select-color-foreground,
-			var(--pds-color-neutrals-dark-faded)
-		)
+		var(--pds-combobox-select-color-foreground, var(--pds-color-neutrals-dark))
 	);
 	border-radius: var(--_pds-combobox-select-border-radius);
 	border-style: solid;
