@@ -32,13 +32,14 @@ jobs:
     steps:
       - checkout
       - setup_github_packages
+
+      - run: ls -la /ms-playwright
+
       - node/install-packages:
           with-cache: false
 
-      - run: ls -la /ms-playwright
       - run: echo $PATH
-      - run: |
-          ls -al /ms-playwright
+      - run: ls -al /ms-playwright
 
       - run:
           name: 'Generate a11y tests'
@@ -57,13 +58,14 @@ jobs:
     steps:
       - checkout
       - setup_github_packages
+
+      - run: ls -la /ms-playwright
+
       - node/install-packages:
           with-cache: false
 
-      - run: ls -la /ms-playwright
       - run: echo $PATH
-      - run: |
-          ls -al /ms-playwright
+      - run: ls -al /ms-playwright
 
       - run:
           name: 'Run end-to-end tests'
