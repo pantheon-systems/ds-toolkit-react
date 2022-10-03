@@ -22,7 +22,13 @@ const isHeadingItemType = (item) => {
 /**
  * Menu Button UI component
  */
-const MenuButton = ({ label, icon, menuItems, className }) => {
+const MenuButton = ({
+	label,
+	icon,
+	menuItems,
+	className,
+	listboxPositionInitial,
+}) => {
 	// Floating UI support
 	const {
 		x,
@@ -34,7 +40,7 @@ const MenuButton = ({ label, icon, menuItems, className }) => {
 		placement,
 		refs,
 	} = useFloating({
-		placement: 'bottom-start',
+		placement: listboxPositionInitial || 'bottom-start',
 		middleware: [flip()],
 	});
 
@@ -650,12 +656,30 @@ MenuButton.propTypes = {
 	menuItems: PropTypes.arrayOf(
 		PropTypes.oneOfType([MenuItemType, HeadingItemType, SeparatorItemType]),
 	).isRequired,
+	/**
+	 * Initial location, if space permits, of the listbox
+	 */
+	listboxPositionInitial: PropTypes.oneOf([
+		'top',
+		'top-start',
+		'top-end',
+		'right',
+		'right-start',
+		'right-end',
+		'bottom',
+		'bottom-start',
+		'bottom-end',
+		'left',
+		'left-start',
+		'left-end',
+	]),
 };
 
 MenuButton.defaultProps = {
 	icon: {
 		position: 'end',
 		icon: defaultIcon,
+		listboxPositionInitial: 'bottom-start',
 	},
 };
 
