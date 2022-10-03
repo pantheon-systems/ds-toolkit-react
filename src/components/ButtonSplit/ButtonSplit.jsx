@@ -24,6 +24,7 @@ const ButtonSplit = ({ actionItems }) => {
 			<MenuButton
 				menuItems={actionItems}
 				className='pds-button-split__menu-button'
+				listboxPositionInitial='bottom-end'
 			/>
 		</span>
 	);
