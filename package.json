@@ -1,16 +1,16 @@
 {
-	"name": "@pantheon-systems/pds-product-react",
+	"name": "@pantheon-systems/ds-toolkit-react",
 	"version": "0.1.0",
-	"description": "PDS toolkit for the product context and built using the React framework",
+	"description": "Design system toolkit for the product context and built using the React framework",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/pantheon-systems/pds-product-react.git"
+		"url": "git+https://github.com/pantheon-systems/ds-toolkit-react.git"
 	},
 	"author": "Pantheon Systems",
 	"bugs": {
-		"url": "https://github.com/pantheon-systems/pds-product-react/issues"
+		"url": "https://github.com/pantheon-systems/ds-toolkit-react/issues"
 	},
-	"homepage": "https://github.com/pantheon-systems/pds-product-react#readme",
+	"homepage": "https://github.com/pantheon-systems/ds-toolkit-react#readme",
 	"main": "_dist/cjs/index.js",
 	"module": "_dist/esm/index.js",
 	"files": [
@@ -50,7 +50,6 @@
 		"@axe-core/playwright": "^4.4.3",
 		"@babel/core": "^7.18.10",
 		"@csstools/postcss-design-tokens": "^1.2.x",
-		"@floating-ui/react-dom": "^1.0.0",
 		"@pantheon-systems/pds-tokens": "^0.0.x",
 		"@playwright/test": "^1.26.0",
 		"@rollup/plugin-babel": "^5.3.1",
@@ -84,7 +83,11 @@
 		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-terser": "^7.0.2"
 	},
+	"dependencies": {
+		"@floating-ui/react-dom": "^1.0.0"
+	},
 	"peerDependencies": {
-		"react": "^18.2.0"
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
 	}
 }

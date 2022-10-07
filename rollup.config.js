@@ -11,9 +11,10 @@ export default [
 	{
 		input: 'src/index.js',
 		output: [
-			{ file: pkg.main, format: 'cjs', sourcemap: true, name: 'react-lib' },
+			{ file: pkg.main, format: 'cjs', sourcemap: true },
 			{ file: pkg.module, format: 'esm', sourcemap: true },
 		],
+		external: ['react', 'react-dom', 'prop-types'],
 		plugins: [
 			external(),
 			resolve({ extensions: ['.js', '.jsx'] }),
@@ -26,7 +27,9 @@ export default [
 							runtime: 'automatic',
 						},
 					],
+					'@babel/env',
 				],
+				exclude: 'node_modules/**',
 			}),
 			commonjs(),
 			postcss(),

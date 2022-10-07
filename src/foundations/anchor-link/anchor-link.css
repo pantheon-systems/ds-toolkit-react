@@ -4,6 +4,10 @@ a,
 a:visited {
 	color: token('color.accents.deep');
 	text-decoration-line: underline;
+
+	display: inline-flex;
+	align-items: center;
+	gap: token('spacing.XS' to em);
 }
 
 a:hover {

@@ -41,8 +41,12 @@ button.pds-button {
 	border-style: solid;
 	border-width: var(--_pds-button-border-width);
 	font-size: token('typography.size.multipliers.reduce-one' to rem);
-	padding: token('spacing.XS' to rem);
+	padding: token('spacing.XS' to em);
 	/* margin-block-end: token('spacing.M' to rem); */
+
+	display: inline-flex;
+	align-items: center;
+	gap: token('spacing.XS' to em);
 }
 
 button.pds-button + button.pds-button {
