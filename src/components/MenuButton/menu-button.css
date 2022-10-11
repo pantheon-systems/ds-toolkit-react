@@ -117,7 +117,7 @@ button.pds-menu-button__trigger[aria-expanded='true'] svg.trigger-indicator {
 .pds-menu-button
 	[role='menu']
 	[role='presentation'].pds-menu-button__listbox-heading {
-	color: var(--pds-color-neutrals-dark-faded);
+	color: var(--pds-color-neutrals-dark);
 	font-family: token('typography.font.headings');
 	font-size: token('typography.size.multipliers.reduce-one' to rem);
 	letter-spacing: token('typography.letter-spacing.M' to em);
