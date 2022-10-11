@@ -8,33 +8,34 @@ import './stepper.css';
  * Stepper UI component
  */
 const Stepper = ({ steps }) => {
-	// Find current step.
-	const currentStep = steps.findIndex((step) => step.isCurrent);
+	// Find index of current step.
+	// Selects last item with `isCurrent`, if more than one is designated in error.
+	const currentStepIndex = steps.findLastIndex((step) => step.isCurrent);
 
 	// Function to render each step.
 	const renderSteps = steps.map((step, index) => {
 		const stepLabel = step.label;
 		const stepNumber = index + 1;
 		const totalSteps = steps.length;
-		const isCurrent = step.isCurrent;
-		const isComplete = index < currentStep;
-		const hasError = step.hasError;
+		const currentStep = index === currentStepIndex;
+		const isComplete = index < currentStepIndex;
+		const hasError = step.hasError && currentStep;
 		const path = step.path;
 
 		// Set classes.
 		const stepClasses = ['pds-stepper__step'];
-		if (isCurrent) {
+		if (currentStep) {
 			stepClasses.push('pds-stepper__step--current');
 		}
 		if (isComplete) {
 			stepClasses.push('pds-stepper__step--complete');
 		}
-		if (hasError && isCurrent) {
+		if (hasError) {
 			stepClasses.push('pds-stepper__step--error');
 		}
 
 		// Set aria label.
-		// TODO: convert to translatable string
+		// TODO: convert to translatable string.
 		let ariaLabel = `Step ${stepNumber}`;
 		if (isComplete) {
 			ariaLabel = `Step ${stepNumber}, completed`;
@@ -44,7 +45,7 @@ const Stepper = ({ steps }) => {
 		let stepContents = (
 			<>
 				<div aria-hidden='true' className='pds-stepper__step-indicator'>
-					{hasError && isCurrent ? errorIcon : stepNumber}
+					{hasError ? errorIcon : stepNumber}
 				</div>
 				<div className='pds-stepper__step-label'>{stepLabel}</div>
 			</>
@@ -68,7 +69,7 @@ const Stepper = ({ steps }) => {
 				aria-label={ariaLabel}
 				aria-posinset={stepNumber}
 				aria-setsize={totalSteps}
-				aria-current={isCurrent ? 'step' : undefined}
+				aria-current={currentStep ? 'step' : undefined}
 				className={stepClasses.join(' ').trim()}
 			>
 				{stepContents}
