@@ -1,48 +1,54 @@
+export const dialogMsgBase = `Navigated to step => `;
+
+const sampleCallback = (item) => {
+	window.alert(`${dialogMsgBase}${item.label}`);
+};
+
 export const sampleSteps = [
 	{
 		label: 'Step A',
-		path: '/',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Step B',
-		path: '/',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Step C',
-		path: '/',
+		callback: sampleCallback,
 		isCurrent: true,
 	},
 	{
 		label: 'Step D',
-		path: '/',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Step E',
-		path: '/',
+		callback: sampleCallback,
 	},
 ];
 
 export const sampleStepsWithError = [
 	{
 		label: 'Step A',
-		path: '/',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Step B',
-		path: '/',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Step C',
-		path: '/',
+		callback: sampleCallback,
 		isCurrent: true,
 		hasError: true,
 	},
 	{
 		label: 'Step D',
-		path: '/',
+		callback: sampleCallback,
 	},
 	{
 		label: 'Step E',
-		path: '/',
+		callback: sampleCallback,
 	},
 ];

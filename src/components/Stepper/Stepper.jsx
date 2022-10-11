@@ -9,7 +9,7 @@ import './stepper.css';
  */
 const Stepper = ({ steps }) => {
 	// Find index of current step.
-	// Selects last item with `isCurrent`, if more than one is designated in error.
+	// Selects last item with `isCurrent` if more than one is designated in error.
 	const currentStepIndex = steps.findLastIndex((step) => step.isCurrent);
 
 	// Function to render each step.
@@ -20,7 +20,7 @@ const Stepper = ({ steps }) => {
 		const currentStep = index === currentStepIndex;
 		const isComplete = index < currentStepIndex;
 		const hasError = step.hasError && currentStep;
-		const path = step.path;
+		const callback = step.callback;
 
 		// Set classes.
 		const stepClasses = ['pds-stepper__step'];
@@ -35,7 +35,7 @@ const Stepper = ({ steps }) => {
 		}
 
 		// Set aria label.
-		// TODO: convert to translatable string.
+		// TODO convert to translatable string.
 		let ariaLabel = `Step ${stepNumber}`;
 		if (isComplete) {
 			ariaLabel = `Step ${stepNumber}, completed`;
@@ -51,15 +51,19 @@ const Stepper = ({ steps }) => {
 			</>
 		);
 
-		// If step isComplete, step should become navigable.
+		// If step isComplete, provide button to return to step.
 		if (isComplete) {
 			stepContents = (
-				<a href={path}>
+				// TODO convert button label to translatable string.
+				<button
+					onClick={() => callback(step)}
+					label={`Return to step ${stepNumber}`}
+				>
 					<div aria-hidden='true' className='pds-stepper__step-indicator'>
 						{completedIcon}
 					</div>
 					<div className='pds-stepper__step-label'>{stepLabel}</div>
-				</a>
+				</button>
 			);
 		}
 
@@ -103,9 +107,9 @@ Stepper.propTypes = {
 			 */
 			hasError: PropTypes.bool,
 			/**
-			 * Location of form associated with step.
+			 * Callback function to return to a previously completed step.
 			 */
-			path: PropTypes.string.isRequired,
+			callback: PropTypes.func,
 		}),
 	),
 };

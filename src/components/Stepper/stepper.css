@@ -20,9 +20,6 @@
  *
  */
 
-.pds-stepper {
-}
-
 ol.pds-stepper__steps {
 	padding: 0;
 	display: flex;
@@ -30,17 +27,17 @@ ol.pds-stepper__steps {
 }
 
 li.pds-stepper__step,
-li.pds-stepper__step a {
+li.pds-stepper__step button {
 	position: relative;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	row-gap: token('spacing.XS' to rem);
-}
 
-li.pds-stepper__step a {
-	text-decoration: none;
+	/* Clear default button styles.  */
+	border: none;
+	background: none;
 }
 
 /* Step indicators. */
