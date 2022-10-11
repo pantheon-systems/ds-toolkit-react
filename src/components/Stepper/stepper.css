@@ -15,6 +15,9 @@
  * --pds-stepper-indicator-text-color-current						->  set default text color for current step indicator.
  * --pds-stepper-label-text-color-current								->  set default text color for current step label.
  *
+ * --pds-stepper-indicator-background-color-error				->  set default background color for error indicator.
+ * --pds-stepper-indicator-text-color-error							->  set default text color for error indicator.
+ *
  */
 
 .pds-stepper {
@@ -149,7 +152,16 @@ li.pds-stepper__step:not(:last-child) .pds-stepper__step-indicator::after {
 }
 
 .pds-stepper__step--error .pds-stepper__step-indicator {
-	background-color: var(--pds-color-status-warning-dark);
-	color: white;
-	border: 2px solid var(--pds-color-status-warning-dark);
+	--_pds-stepper-indicator-background-color-error: var(
+		--pds-stepper-indicator-background-color-error,
+		var(--pds-color-status-warning-dark)
+	);
+	--_pds-stepper-indicator-text-color-error: var(
+		--pds-stepper-indicator-text-color-error,
+		white
+	);
+
+	background-color: var(--_pds-stepper-indicator-background-color-error);
+	color: var(--_pds-stepper-indicator-text-color-error);
+	border-color: var(--_pds-stepper-indicator-background-color-error);
 }

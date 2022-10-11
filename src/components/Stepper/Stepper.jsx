@@ -46,6 +46,10 @@ Stepper.propTypes = {
 			 * Is there an error on this step?
 			 */
 			hasError: PropTypes.bool,
+			/**
+			 * Location of form associated with step.
+			 */
+			path: PropTypes.string.isRequired,
 		}),
 	),
 };
