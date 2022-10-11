@@ -1,7 +1,12 @@
 import StepperComponent from './Stepper';
 import DocsDescription from './Stepper.docs.md';
 
-import { sampleSteps, sampleStepsWithError } from './stepper-sample-data';
+import {
+	threeSteps,
+	threeStepsWithError,
+	fourSteps,
+	fiveSteps,
+} from './stepper-sample-data';
 
 export default {
 	title: 'Components/Stepper',
@@ -18,15 +23,30 @@ export default {
 			},
 		},
 	},
-	argTypes: {},
+	argTypes: {
+		steps: {
+			description: 'Sample data sets for stepper steps.',
+			options: Object.keys({
+				threeSteps,
+				threeStepsWithError,
+				fourSteps,
+				fiveSteps,
+			}),
+			mapping: { threeSteps, threeStepsWithError, fourSteps, fiveSteps },
+			control: {
+				type: 'select',
+				labels: {
+					threeSteps: 'Three steps',
+					threeStepsWithError: 'Three steps with an error',
+					fourSteps: 'Four steps',
+					fiveSteps: 'Five steps',
+				},
+			},
+		},
+	},
 };
 
 const Template = (args) => <StepperComponent {...args} />;
 
 export const Stepper = Template.bind({});
-Stepper.args = { steps: sampleSteps };
-Stepper.storyName = 'Stepper';
-
-export const StepperError = Template.bind({});
-StepperError.args = { steps: sampleStepsWithError };
-StepperError.storyName = 'Stepper with Error';
+Stepper.args = { steps: threeSteps };

@@ -4,7 +4,40 @@ const sampleCallback = (item) => {
 	window.alert(`${dialogMsgBase}${item.label}`);
 };
 
-export const sampleSteps = [
+export const threeSteps = [
+	{
+		label: 'Step A',
+		callback: sampleCallback,
+	},
+	{
+		label: 'Step B',
+		callback: sampleCallback,
+		isCurrent: true,
+	},
+	{
+		label: 'Step C',
+		callback: sampleCallback,
+	},
+];
+
+export const threeStepsWithError = [
+	{
+		label: 'Step A',
+		callback: sampleCallback,
+	},
+	{
+		label: 'Step B',
+		callback: sampleCallback,
+		isCurrent: true,
+		hasError: true,
+	},
+	{
+		label: 'Step C',
+		callback: sampleCallback,
+	},
+];
+
+export const fourSteps = [
 	{
 		label: 'Step A',
 		callback: sampleCallback,
@@ -22,13 +55,9 @@ export const sampleSteps = [
 		label: 'Step D',
 		callback: sampleCallback,
 	},
-	{
-		label: 'Step E',
-		callback: sampleCallback,
-	},
 ];
 
-export const sampleStepsWithError = [
+export const fiveSteps = [
 	{
 		label: 'Step A',
 		callback: sampleCallback,
@@ -41,7 +70,6 @@ export const sampleStepsWithError = [
 		label: 'Step C',
 		callback: sampleCallback,
 		isCurrent: true,
-		hasError: true,
 	},
 	{
 		label: 'Step D',
