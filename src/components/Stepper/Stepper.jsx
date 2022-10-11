@@ -7,6 +7,19 @@ import './stepper.css';
 /**
  * Stepper UI component
  */
+
+// Define className variables.
+const stepperBaseClass = 'pds-stepper';
+const stepsListClass = `${stepperBaseClass}__steps`;
+const stepClass = {
+	base: `${stepperBaseClass}__step`,
+	current: `${stepperBaseClass}__step--current`,
+	complete: `${stepperBaseClass}__step--complete`,
+	error: `${stepperBaseClass}__step--error`,
+	indicator: `${stepperBaseClass}__step-indicator`,
+	label: `${stepperBaseClass}__step-label`,
+};
+
 const Stepper = ({ steps }) => {
 	// Find index of current step.
 	// Selects last item with `isCurrent` if more than one is designated in error.
@@ -22,16 +35,16 @@ const Stepper = ({ steps }) => {
 		const hasError = step.hasError && currentStep;
 		const callback = step.callback;
 
-		// Set classes.
-		const stepClasses = ['pds-stepper__step'];
-		if (currentStep) {
-			stepClasses.push('pds-stepper__step--current');
-		}
+		// Set step classes.
+		const stepClasses = [stepClass.base];
 		if (isComplete) {
-			stepClasses.push('pds-stepper__step--complete');
+			stepClasses.push(stepClass.complete);
+		}
+		if (currentStep) {
+			stepClasses.push(stepClass.current);
 		}
 		if (hasError) {
-			stepClasses.push('pds-stepper__step--error');
+			stepClasses.push(stepClass.error);
 		}
 
 		// Set aria label.
@@ -42,16 +55,17 @@ const Stepper = ({ steps }) => {
 		}
 
 		// Set step contents.
+		// Default content for non-completed steps.
 		let stepContents = (
 			<>
-				<div aria-hidden='true' className='pds-stepper__step-indicator'>
+				<div aria-hidden='true' className={stepClass.indicator}>
 					{hasError ? errorIcon : stepNumber}
 				</div>
-				<div className='pds-stepper__step-label'>{stepLabel}</div>
+				<div className={stepClass.label}>{stepLabel}</div>
 			</>
 		);
 
-		// If step isComplete, provide button to return to step.
+		// If step has been completed, provide button to return to step.
 		if (isComplete) {
 			stepContents = (
 				// TODO convert button label to translatable string.
@@ -59,14 +73,15 @@ const Stepper = ({ steps }) => {
 					onClick={() => callback(step)}
 					label={`Return to step ${stepNumber}`}
 				>
-					<div aria-hidden='true' className='pds-stepper__step-indicator'>
+					<div aria-hidden='true' className={stepClass.indicator}>
 						{completedIcon}
 					</div>
-					<div className='pds-stepper__step-label'>{stepLabel}</div>
+					<div className={stepClass.label}>{stepLabel}</div>
 				</button>
 			);
 		}
 
+		// Render each step as a list item.
 		return (
 			<li
 				key={index}
@@ -82,15 +97,15 @@ const Stepper = ({ steps }) => {
 	});
 
 	return (
-		<div aria-label='progress' className='pds-stepper'>
-			<ol className='pds-stepper__steps'>{renderSteps}</ol>
+		<div aria-label='progress' className={stepperBaseClass}>
+			<ol className={stepsListClass}>{renderSteps}</ol>
 		</div>
 	);
 };
 
 Stepper.propTypes = {
 	/**
-	 * An array of Steps.
+	 * An array of Step objects.
 	 */
 	steps: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -113,7 +128,5 @@ Stepper.propTypes = {
 		}),
 	),
 };
-
-Stepper.defaultProps = {};
 
 export default Stepper;
