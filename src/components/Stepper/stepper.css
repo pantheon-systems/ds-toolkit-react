@@ -26,13 +26,18 @@ ol.pds-stepper__steps {
 	justify-content: space-evenly;
 }
 
-li.pds-stepper__step {
+li.pds-stepper__step,
+li.pds-stepper__step a {
 	position: relative;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	row-gap: token('spacing.XS' to rem);
+}
+
+li.pds-stepper__step a {
+	text-decoration: none;
 }
 
 /* Step indicators. */
@@ -143,17 +148,8 @@ li.pds-stepper__step:not(:last-child) .pds-stepper__step-indicator::after {
 	color: var(--_pds-stepper-label-text-color-current);
 }
 
-/* TODO: Move to global styles. */
-.sr-only {
-	border: 0 !important;
-	clip: rect(1px, 1px, 1px, 1px) !important;
-	-webkit-clip-path: inset(50%) !important;
-	clip-path: inset(50%) !important;
-	height: 1px !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
-	white-space: nowrap !important;
+.pds-stepper__step--error .pds-stepper__step-indicator {
+	background-color: var(--pds-color-status-warning-dark);
+	color: white;
+	border: 2px solid var(--pds-color-status-warning-dark);
 }

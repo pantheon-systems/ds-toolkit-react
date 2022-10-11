@@ -1,6 +1,8 @@
 import StepperComponent from './Stepper';
 import DocsDescription from './Stepper.docs.md';
 
+import { sampleSteps } from './stepper-sample-data';
+
 export default {
 	title: 'Components/Stepper',
 	component: StepperComponent,
@@ -17,11 +19,10 @@ export default {
 		},
 	},
 	argTypes: {},
-	decorators: [],
 };
 
 const Template = (args) => <StepperComponent {...args} />;
 
 export const Stepper = Template.bind({});
-Stepper.args = {};
+Stepper.args = { steps: sampleSteps };
 Stepper.storyName = 'Stepper';
