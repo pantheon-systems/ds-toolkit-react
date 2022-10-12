@@ -71,6 +71,7 @@
 
 .pds-input-text textarea.pds-input-text__input {
 	height: 8em;
+	resize: none;
 }
 
 .pds-input-text .pds-input-text__input:focus {

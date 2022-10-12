@@ -29,6 +29,7 @@ const InputText = ({
 	message,
 	counterFunction,
 	validationFunction,
+	textareaHeight,
 	type,
 	id,
 	onChange,
@@ -161,6 +162,7 @@ const InputText = ({
 
 				<InputTag
 					className='pds-input-text__input'
+					style={type === 'textarea' ? { height: textareaHeight } : null}
 					type={type !== 'textarea' ? type : null}
 					id={id}
 					name={id}
@@ -252,6 +254,11 @@ InputText.propTypes = {
 		'url',
 		'textarea',
 	]),
+
+	/**
+	 * Height value to be given to the textarea type.
+	 */
+	textareaHeight: PropTypes.string,
 
 	/**
 	 * If a counter is desired provide a function that accepts the input's value and will return a string to display.
