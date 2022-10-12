@@ -33,7 +33,7 @@ Below is a description of each available type of input and when it is appropriat
 <tr>
 <td>number</td>
 <td>
-	A control for entering a number. Displays a spinner, a set of buttons, to increment and decrement the value.
+	A control for entering a number. Displays a spinner — a set of buttons to increment and decrement the value.
 	
 	Use only for numbers, not for numeric strings such as credit card numbers.
 </td>
@@ -121,4 +121,4 @@ This component has a few accessibility features built-in.
 
 The clear button will set focus back to the input area when clicked.
 
-If your optional validation function returns an error the message will be announced when the field validates. Validation occurs on blur events.
+If your optional validation function returns an error, the message will be announced when the field validates. Validation occurs on blur events.
