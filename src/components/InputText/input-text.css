@@ -10,7 +10,7 @@
 .pds-input-text {
 	--_pds-input-color-text: var(
 		--pds-input-color-text,
-		var(--pds-color-text-default)
+		var(--pds-color-neutrals-darkest)
 	);
 	--_pds-input-border-radius: var(
 		--pds-input-border-radius,
@@ -121,7 +121,7 @@
 }
 
 .pds-input-text .pds-input-text__counter {
-	color: var(--pds-color-neutrals-medium-dark);
+	color: var(--pds-color-neutrals-dark);
 }
 
 .pds-input-text .pds-input-text__message {
