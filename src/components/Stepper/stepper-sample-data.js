@@ -6,77 +6,77 @@ const sampleCallback = (item) => {
 
 export const threeSteps = [
 	{
-		label: 'Step A',
+		label: 'Part A',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step B',
+		label: 'Part B',
 		callback: sampleCallback,
 		isCurrent: true,
 	},
 	{
-		label: 'Step C',
+		label: 'Part C',
 		callback: sampleCallback,
 	},
 ];
 
 export const threeStepsWithError = [
 	{
-		label: 'Step A',
+		label: 'Part A',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step B',
+		label: 'Part B',
 		callback: sampleCallback,
 		isCurrent: true,
 		hasError: true,
 	},
 	{
-		label: 'Step C',
+		label: 'Part C',
 		callback: sampleCallback,
 	},
 ];
 
 export const fourSteps = [
 	{
-		label: 'Step A',
+		label: 'Part A',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step B',
+		label: 'Part B',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step C',
+		label: 'Part C',
 		callback: sampleCallback,
 		isCurrent: true,
 	},
 	{
-		label: 'Step D',
+		label: 'Part D',
 		callback: sampleCallback,
 	},
 ];
 
 export const fiveSteps = [
 	{
-		label: 'Step A',
+		label: 'Part A',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step B',
+		label: 'Part B',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step C',
+		label: 'Part C',
 		callback: sampleCallback,
 		isCurrent: true,
 	},
 	{
-		label: 'Step D',
+		label: 'Part D',
 		callback: sampleCallback,
 	},
 	{
-		label: 'Step E',
+		label: 'Part E',
 		callback: sampleCallback,
 	},
 ];
