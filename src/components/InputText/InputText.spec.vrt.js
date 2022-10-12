@@ -99,6 +99,17 @@ test.describe('Components/Inputs/Text', () => {
 		);
 	});
 
+	test('Type: textarea, custom height', async ({ page }) => {
+		await gotoFrame(page, storyID, 'type:textarea;textareaHeight:12rem');
+
+		const input = page.locator('.pds-input-text__input');
+		await input.type('Epsilon');
+
+		expect(await page.screenshot()).toMatchSnapshot(
+			'input-text__type-textarea_custom-height.png',
+		);
+	});
+
 	test('Functions: counter', async ({ page }) => {
 		await gotoFrame(page, 'components-inputs-text--input-text-example-counter');
 
