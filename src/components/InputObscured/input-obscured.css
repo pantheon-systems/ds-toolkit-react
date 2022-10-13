@@ -1,0 +1,156 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-input-obscured-						-> <add description>
+ *
+ */
+
+.pds-input-obscured {
+	--_pds-input-color-text: var(
+		--pds-input-color-text,
+		var(--pds-color-neutrals-darkest)
+	);
+	--_pds-input-border-radius: var(
+		--pds-input-border-radius,
+		token('border.radius.default' to rem)
+	);
+	--_pds-input-border-width: var(
+		--pds-input-border-width,
+		token('border.width.default' to px)
+	);
+}
+
+.pds-input-obscured .pds-input-obscured__aria-live {
+	border: 0 none;
+	clip: rect(0px, 0px, 0px, 0px);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.pds-input-obscured > .pds-input-obscured__field-wrapper {
+	display: flex;
+	gap: token('spacing.2XS' to em);
+
+	border-radius: var(--_pds-input-border-radius);
+	border-style: solid;
+	border-width: var(--_pds-input-border-width);
+	border-color: var(--pds-color-neutrals-dark);
+
+	padding-inline: token('spacing.2XS' to em);
+}
+
+.pds-input-obscured > .pds-input-obscured__field-wrapper:focus-within {
+	outline: none;
+	box-shadow: 0 0 0.5rem var(--pds-color-focus);
+
+	border-color: var(--pds-color-accents-deep);
+}
+
+.pds-input-obscured > label {
+	color: var(--pds-color-neutrals-darkest);
+	margin-block-end: token('spacing.4XS' to em);
+}
+
+.pds-input-obscured:hover > label {
+	color: var(--pds-color-accents-deep);
+}
+.pds-input-obscured:hover > .pds-input-obscured__field-wrapper {
+	border-color: var(--pds-color-accents-deep);
+}
+
+.pds-input-obscured .pds-input-obscured__input {
+	border: none;
+	background-color: transparent;
+
+	caret-color: var(--pds-color-accents-deep);
+
+	color: var(--_pds-input-color-text);
+
+	flex-grow: 1;
+
+	font-size: token('typography.size.multipliers.sixth' to rem);
+	letter-spacing: token('typography.letter-spacing.S' to em);
+
+	padding-block: token('spacing.4XS' to em);
+	padding-inline: 0;
+}
+
+.pds-input-obscured .pds-input-obscured__input:focus {
+	outline: none;
+}
+
+.pds-input-obscured .pds-input-obscured__input::placeholder {
+	color: var(--pds-color-neutrals-dark);
+}
+
+.pds-input-obscured.pds-is-disabled > label {
+	color: var(--pds-color-neutral-dark);
+}
+.pds-input-obscured.pds-is-disabled > .pds-input-obscured__field-wrapper {
+	background-color: var(--pds-color-neutrals-medium-light);
+}
+
+.pds-input-obscured.pds-is-required > label::after {
+	content: '*';
+	color: var(--pds-color-status-error);
+	margin-inline-start: token('spacing.4XS' to em);
+}
+
+.pds-input-obscured .pds-input-obscured__decorators,
+.pds-input-obscured .pds-input-obscured__accessories {
+	display: flex;
+	gap: token('spacing.4XS' to em);
+	align-items: center;
+}
+
+.pds-input-obscured .pds-input-obscured__accessory {
+	border: 0;
+	background: transparent;
+	display: flex;
+
+	padding: token('spacing.4XS' to em);
+}
+
+.pds-input-obscured .pds-input-obscured__clear svg {
+	width: token('spacing.XS' to em);
+}
+
+.pds-input-obscured .pds-input-obscured__toggle svg {
+	width: token('spacing.L' to em);
+}
+
+.pds-input-obscured .pds-input-obscured__decorator {
+	width: token('spacing.M' to em);
+}
+
+.pds-input-obscured .pds-input-obscured__counter {
+	color: var(--pds-color-neutrals-dark);
+}
+
+.pds-input-obscured .pds-input-obscured__message {
+	color: var(--pds-color-neutrals-dark);
+	font-size: token('typography.size.multipliers.reduce-one' to em);
+	margin-block-start: token('spacing.4XS' to em);
+}
+
+.pds-input-obscured.pds-has-error > label,
+.pds-input-obscured.pds-has-error .pds-input-obscured__message {
+	color: var(--pds-color-status-error);
+}
+.pds-input-obscured.pds-has-error > .pds-input-obscured__field-wrapper {
+	border-color: var(--pds-color-status-error);
+}
+
+.pds-input-obscured.pds-has-success > label,
+.pds-input-obscured.pds-has-success .pds-input-obscured__message {
+	color: var(--pds-color-status-success);
+}
+.pds-input-obscured.pds-has-success > .pds-input-obscured__field-wrapper {
+	border-color: var(--pds-color-status-success);
+}
