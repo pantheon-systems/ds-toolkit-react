@@ -22,7 +22,7 @@ test.describe('Components/Inputs/Obscured', () => {
 	test('Enter text', async ({ page }) => {
 		await gotoFrame(page, storyID);
 
-		const input = page.locator('.pds-input-obscured__input');
+		const input = page.locator('.pds-input-field__input');
 
 		await input.type('Epsilon');
 
@@ -80,7 +80,7 @@ test.describe('Components/Inputs/Obscured', () => {
 	test('Functions: counter', async ({ page }) => {
 		await gotoFrame(page, 'components-inputs-obscured--with-counter-function');
 
-		const input = page.locator('.pds-input-obscured__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
 		const a11yNumViolations = await a11yTest(
@@ -100,10 +100,10 @@ test.describe('Components/Inputs/Obscured', () => {
 			'components-inputs-obscured--with-validation-function',
 		);
 
-		const input = page.locator('.pds-input-obscured__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
-		const clearButton = page.locator('.pds-input-obscured__clear');
+		const clearButton = page.locator('.pds-input-field__clear');
 		await clearButton.focus();
 
 		const a11yNumViolations = await a11yTest(
@@ -120,7 +120,7 @@ test.describe('Components/Inputs/Obscured', () => {
 	test('Toggle obfuscation', async ({ page }) => {
 		await gotoFrame(page, storyID);
 
-		const input = page.locator('.pds-input-obscured__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
 		const toggleButton = page.locator('.pds-input-obscured__toggle');

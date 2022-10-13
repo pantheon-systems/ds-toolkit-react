@@ -16,7 +16,7 @@ test.describe('Components/Inputs/Text', () => {
 	test('Enter text', async ({ page }) => {
 		await gotoFrame(page, storyID);
 
-		const input = page.locator('.pds-input-text__input');
+		const input = page.locator('.pds-input-field__input');
 
 		await input.type('Epsilon');
 
@@ -72,7 +72,7 @@ test.describe('Components/Inputs/Text', () => {
 	test('Type: search, enter text', async ({ page }) => {
 		await gotoFrame(page, storyID, 'type:search');
 
-		const input = page.locator('.pds-input-text__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
 		expect(await page.screenshot()).toMatchSnapshot(
@@ -91,7 +91,7 @@ test.describe('Components/Inputs/Text', () => {
 	test('Type: textarea, enter text', async ({ page }) => {
 		await gotoFrame(page, storyID, 'type:textarea');
 
-		const input = page.locator('.pds-input-text__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
 		expect(await page.screenshot()).toMatchSnapshot(
@@ -102,7 +102,7 @@ test.describe('Components/Inputs/Text', () => {
 	test('Type: textarea, custom height', async ({ page }) => {
 		await gotoFrame(page, storyID, 'type:textarea;textareaHeight:12rem');
 
-		const input = page.locator('.pds-input-text__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
 		expect(await page.screenshot()).toMatchSnapshot(
@@ -113,7 +113,7 @@ test.describe('Components/Inputs/Text', () => {
 	test('Functions: counter', async ({ page }) => {
 		await gotoFrame(page, 'components-inputs-text--input-text-example-counter');
 
-		const input = page.locator('.pds-input-text__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
 		expect(await page.screenshot()).toMatchSnapshot(
@@ -127,10 +127,10 @@ test.describe('Components/Inputs/Text', () => {
 			'components-inputs-text--input-text-example-validation',
 		);
 
-		const input = page.locator('.pds-input-text__input');
+		const input = page.locator('.pds-input-field__input');
 		await input.type('Epsilon');
 
-		const clearButton = page.locator('.pds-input-text__clear');
+		const clearButton = page.locator('.pds-input-field__clear');
 		await clearButton.focus();
 
 		expect(await page.screenshot()).toMatchSnapshot(
