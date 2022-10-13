@@ -13,11 +13,12 @@ const stepperBaseClass = 'pds-stepper';
 const stepsListClass = `${stepperBaseClass}__steps`;
 const stepClass = {
 	base: `${stepperBaseClass}__step`,
+	content: `${stepperBaseClass}__step-content`,
+	indicator: `${stepperBaseClass}__step-indicator`,
+	label: `${stepperBaseClass}__step-label`,
 	current: `${stepperBaseClass}__step--current`,
 	complete: `${stepperBaseClass}__step--complete`,
 	error: `${stepperBaseClass}__step--error`,
-	indicator: `${stepperBaseClass}__step-indicator`,
-	label: `${stepperBaseClass}__step-label`,
 };
 
 const Stepper = ({ steps }) => {
@@ -25,15 +26,14 @@ const Stepper = ({ steps }) => {
 	// Selects last item with `isCurrent` if more than one is designated in error.
 	const currentStepIndex = steps.findLastIndex((step) => step.isCurrent);
 
+	const totalSteps = steps.length;
+
 	// Function to render each step.
 	const renderSteps = steps.map((step, index) => {
-		const stepLabel = step.label;
 		const stepNumber = index + 1;
-		const totalSteps = steps.length;
 		const currentStep = index === currentStepIndex;
 		const isComplete = index < currentStepIndex;
 		const hasError = step.hasError && currentStep;
-		const callback = step.callback;
 
 		// Set step classes.
 		const stepClasses = [stepClass.base];
@@ -54,15 +54,25 @@ const Stepper = ({ steps }) => {
 			ariaLabel = `Step ${stepNumber}, completed`;
 		}
 
+		// Step indicator markup.
+		const stepIndicator = (
+			<div aria-hidden='true' className={stepClass.indicator}>
+				{hasError ? errorIcon : undefined}
+				{isComplete ? completedIcon : undefined}
+				{!hasError && !isComplete ? stepNumber : undefined}
+			</div>
+		);
+
+		// Step label markup.
+		const stepLabel = <div className={stepClass.label}>{step.label}</div>;
+
 		// Set step contents.
 		// Default content for non-completed steps.
 		let stepContents = (
-			<>
-				<div aria-hidden='true' className={stepClass.indicator}>
-					{hasError ? errorIcon : stepNumber}
-				</div>
-				<div className={stepClass.label}>{stepLabel}</div>
-			</>
+			<div className={stepClass.content}>
+				{stepIndicator}
+				{stepLabel}
+			</div>
 		);
 
 		// If step has been completed, provide button to return to step.
@@ -70,37 +80,41 @@ const Stepper = ({ steps }) => {
 			stepContents = (
 				// TODO convert button label to translatable string.
 				<button
-					onClick={() => callback(step)}
+					className={stepClass.content}
+					onClick={() => step.callback(step)}
 					label={`Return to step ${stepNumber}`}
 				>
-					<div aria-hidden='true' className={stepClass.indicator}>
-						{completedIcon}
-					</div>
-					<div className={stepClass.label}>{stepLabel}</div>
+					{stepIndicator}
+					{stepLabel}
 				</button>
 			);
 		}
 
 		// Render each step as a list item.
 		return (
-			<li
-				key={index}
-				aria-label={ariaLabel}
-				aria-posinset={stepNumber}
-				aria-setsize={totalSteps}
-				aria-current={currentStep ? 'step' : undefined}
-				className={stepClasses.join(' ').trim()}
-			>
-				{stepContents}
-			</li>
+			<>
+				<li
+					key={index}
+					aria-label={ariaLabel}
+					aria-posinset={stepNumber}
+					aria-setsize={totalSteps}
+					aria-current={currentStep ? 'step' : undefined}
+					className={stepClasses.join(' ').trim()}
+				>
+					{stepContents}
+				</li>
+			</>
 		);
 	});
 
-	return (
-		<div aria-label='progress' className={stepperBaseClass}>
-			<ol className={stepsListClass}>{renderSteps}</ol>
-		</div>
-	);
+	// Only return the component if the total steps are between 3 and 5.
+	if (totalSteps >= 3 && totalSteps <= 5) {
+		return (
+			<div aria-label='progress' className={stepperBaseClass}>
+				<ol className={stepsListClass}>{renderSteps}</ol>
+			</div>
+		);
+	}
 };
 
 Stepper.propTypes = {
