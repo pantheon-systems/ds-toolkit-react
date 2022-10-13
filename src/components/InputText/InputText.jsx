@@ -89,7 +89,7 @@ const InputText = ({
 	const handleBlur = (e) => {
 		// call validationFunction that was passed in and it the current value
 		if (validationFunction) {
-			const validationResult = validationFunction(e.target.value);
+			const validationResult = validationFunction(e.target.value) || {};
 
 			resetInputState();
 
