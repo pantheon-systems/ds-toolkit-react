@@ -10,7 +10,7 @@ export const threeSteps = [
 		callback: sampleCallback,
 	},
 	{
-		label: 'Part B',
+		label: 'Part B has a longer label than the others',
 		callback: sampleCallback,
 		isCurrent: true,
 	},
@@ -43,7 +43,7 @@ export const fourSteps = [
 		callback: sampleCallback,
 	},
 	{
-		label: 'Part B',
+		label: 'Part B has a longer label than the others',
 		callback: sampleCallback,
 	},
 	{
@@ -72,7 +72,7 @@ export const fiveSteps = [
 		isCurrent: true,
 	},
 	{
-		label: 'Part D',
+		label: 'Part D has a longer label than the others',
 		callback: sampleCallback,
 	},
 	{
