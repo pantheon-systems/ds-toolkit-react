@@ -3,56 +3,126 @@
 /*
  * CSS theming API
  *
- * --pds-stepper-indicator-background-color 						->  set default background color for step indicator and line.
- * --pds-stepper-indicator-text-color										->  set default text color for step indicator.
- * --pds-stepper-label-text-color												->  set default text color for step label.
+ * --pds-stepper-background-color 						->  set default background color for step.
+ * --pds-stepper-foreground-color							->  set default foreground color for step.
+ * --pds-stepper-label-color									->  set default text color for step label.
  *
- * --pds-stepper-indicator-background-color-complete		->  set default background color for complete indicator and line.
- * --pds-stepper-indicator-text-color-complete					->  set default text color for current step indicator icon or text.
- * --pds-stepper-label-text-color-complete							->  set default text color for complete step label.
+ * --pds-stepper-background-color-complete		->  set default background color for complete steps.
+ * --pds-stepper-foreground-color-complete		->  set default foreground color for complete steps.
+ * --pds-stepper-label-color-complete					->  set default text color for complete step label.
  *
- * --pds-stepper-indicator-background-color-current			->  set default background color for current indicator.
- * --pds-stepper-indicator-text-color-current						->  set default text color for current step indicator.
- * --pds-stepper-label-text-color-current								->  set default text color for current step label.
+ * --pds-stepper-background-color-current			->  set default background color for current step.
+ * --pds-stepper-foreground-color-current			->  set default foreground color for current step.
+ * --pds-stepper-label-color-current					->  set default text color for current step label.
  *
- * --pds-stepper-indicator-background-color-error				->  set default background color for error indicator.
- * --pds-stepper-indicator-text-color-error							->  set default text color for error indicator.
+ * --pds-stepper-background-color-error				->  set default background color for step with error.
+ * --pds-stepper-foreground-color-error				->  set default foreground color for step with error.
  *
  */
+
+.pds-stepper {
+	--_pds-stepper-background-color: var(
+		--pds-stepper-background-color,
+		var(--pds-color-neutrals-medium-light)
+	);
+	--_pds-stepper-foreground-color: var(
+		--pds-stepper-foreground-color,
+		var(--pds-color-neutrals-darker)
+	);
+	--_pds-stepper-label-color: var(
+		--pds-stepper-label-color,
+		var(--pds-color-neutrals-darker)
+	);
+	--_pds-stepper-connector-color: var(
+		--pds-stepper-background-color,
+		var(--pds-color-neutrals-medium-light)
+	);
+	--_pds-stepper-background-color-complete: var(
+		--pds-stepper-background-color-complete,
+		var(--pds-color-status-success)
+	);
+	--_pds-stepper-foreground-color-complete: var(
+		--pds-stepper-foreground-color-complete,
+		white
+	);
+	--_pds-stepper-label-color-complete: var(
+		--pds-stepper-label-color-complete,
+		var(--pds-color-status-success-dark)
+	);
+	--_pds-stepper-background-color-current: var(
+		--pds-stepper-background-color-current,
+		white
+	);
+	--_pds-stepper-foreground-color-current: var(
+		--pds-stepper-foreground-color-current,
+		var(--pds-color-neutrals-darkest)
+	);
+	--_pds-stepper-label-color-current: var(
+		--pds-stepper-label-color-current,
+		var(--pds-color-status-success-darkest)
+	);
+	--_pds-stepper-background-color-error: var(
+		--pds-stepper-background-color-error,
+		var(--pds-color-status-warning-dark)
+	);
+	--_pds-stepper-foreground-color-error: var(
+		--pds-stepper-foreground-color-error,
+		white
+	);
+}
 
 ol.pds-stepper__steps {
 	padding: 0;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 
-li.pds-stepper__step,
-li.pds-stepper__step button {
-	position: relative;
+li.pds-stepper__step {
 	list-style: none;
-	display: flex;
+	position: relative;
+}
+
+/* Connecting lines. */
+li.pds-stepper__step::before,
+li.pds-stepper__step::after {
+	content: '';
+	width: 100%;
+	height: 0.125rem;
+	background-color: var(--_pds-stepper-connector-color);
+	position: absolute;
+	top: 0.625rem;
+}
+
+li.pds-stepper__step::before {
+	right: calc(50% + (1.5rem / 2) + token('spacing.2XS' to rem));
+}
+
+li.pds-stepper__step::after {
+	left: calc(50% + (1.5rem / 2) + token('spacing.2XS' to rem));
+}
+
+li.pds-stepper__step:first-child::before,
+li.pds-stepper__step:last-child::after {
+	background-color: transparent;
+}
+
+/* Step content wrapper. */
+.pds-stepper__step-content {
+	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
 	row-gap: token('spacing.XS' to rem);
+	position: relative;
 
-	/* Clear default button styles.  */
+	/* Clear default button styles. */
 	border: none;
 	background: none;
 }
 
 /* Step indicators. */
 .pds-stepper__step-indicator {
-	--_pds-stepper-indicator-background-color: var(
-		--pds-stepper-indicator-background-color,
-		var(--pds-color-neutrals-medium-light)
-	);
-	--_pds-stepper-indicator-text-color: var(
-		--pds-stepper-indicator-text-color,
-		var(--pds-color-neutrals-darker)
-	);
-
-	background-color: var(--_pds-stepper-indicator-background-color);
-	color: var(--_pds-stepper-indicator-text-color);
+	background-color: var(--_pds-stepper-background-color);
+	color: var(--_pds-stepper-foreground-color);
 	font-family: token('typography.font.headings');
 	font-size: token('typography.size.multipliers.reduce-one' to rem);
 	font-weight: token('typography.font-weight.bold');
@@ -64,101 +134,45 @@ li.pds-stepper__step button {
 	justify-content: center;
 }
 
-/* Connecting lines. */
-li.pds-stepper__step:not(:first-child) .pds-stepper__step-indicator::before {
-	content: '';
-	width: 100%;
-	height: 0.125rem;
-	background-color: var(--_pds-stepper-indicator-background-color);
-	position: absolute;
-	top: 0.625rem;
-	right: calc(50% + (1.5rem / 2) + token('spacing.2XS' to rem));
-}
-
-li.pds-stepper__step:not(:last-child) .pds-stepper__step-indicator::after {
-	content: '';
-	width: 100%;
-	height: 0.125rem;
-	background-color: var(--_pds-stepper-indicator-background-color);
-	position: absolute;
-	top: 0.625rem;
-	left: calc(50% + (1.5rem / 2) + token('spacing.2XS' to rem));
-}
-
 /* Step labels. */
 .pds-stepper__step-label {
-	--_pds-stepper-label-text-color: var(
-		--pds-stepper-label-text-color,
-		var(--pds-color-neutrals-darker)
-	);
-
-	color: var(--_pds-stepper-label-text-color);
+	color: var(--_pds-stepper-label-color);
 	font-family: token('typography.font.bodycopy');
 	font-size: token('typography.size.multipliers.sixth' to rem);
 	font-weight: token('typography.font-weight.bold');
 }
 
-/* Modifications for complete steps. */
-.pds-stepper__step--complete .pds-stepper__step-indicator {
-	--_pds-stepper-indicator-background-color-complete: var(
-		--pds-stepper-indicator-background-color-complete,
-		var(--pds-color-status-success)
-	);
-	--_pds-stepper-indicator-text-color-complete: var(
-		--pds-stepper-indicator-text-color-complete,
-		white
-	);
-
-	background-color: var(--_pds-stepper-indicator-background-color-complete);
-	color: var(--_pds-stepper-indicator-text-color-complete);
-}
-
-.pds-stepper__step--complete .pds-stepper__step-label {
-	--_pds-stepper-label-text-color-complete: var(
-		--pds-stepper-label-text-color-complete,
-		var(--pds-color-status-success-dark)
-	);
-
-	color: var(--_pds-stepper-label-text-color-complete);
-}
-
 /* Modifications for current step. */
-.pds-stepper__step--current .pds-stepper__step-indicator {
-	--_pds-stepper-indicator-background-color-current: var(
-		--pds-stepper-indicator-background-color-current,
-		white
-	);
-	--_pds-stepper-indicator-text-color-current: var(
-		--pds-stepper-indicator-text-color-current,
-		var(--pds-color-neutrals-darkest)
-	);
+li.pds-stepper__step--current {
+	--_pds-stepper-background-color: var(--_pds-stepper-background-color-current);
+	--_pds-stepper-foreground-color: var(--_pds-stepper-foreground-color-current);
+	--_pds-stepper-label-color: var(--_pds-stepper-label-color-current);
+}
 
-	background-color: var(--_pds-stepper-indicator-background-color-current);
-	color: var(--_pds-stepper-indicator-text-color-current);
-	border: 3px solid var(--_pds-stepper-indicator-text-color-current);
+li.pds-stepper__step--current:not(.pds-stepper__step--error)
+	.pds-stepper__step-indicator {
+	border: 3px solid var(--_pds-stepper-foreground-color-current);
 	box-sizing: border-box;
 }
 
-.pds-stepper__step--current .pds-stepper__step-label {
-	--_pds-stepper-label-text-color-current: var(
-		--pds-stepper-label-text-color-current,
-		var(--pds-color-status-success-darkest)
-	);
-
-	color: var(--_pds-stepper-label-text-color-current);
+li.pds-stepper__step--current::before {
+	--_pds-stepper-connector-color: var(--_pds-stepper-background-color-complete);
 }
 
-.pds-stepper__step--error .pds-stepper__step-indicator {
-	--_pds-stepper-indicator-background-color-error: var(
-		--pds-stepper-indicator-background-color-error,
-		var(--pds-color-status-warning-dark)
-	);
-	--_pds-stepper-indicator-text-color-error: var(
-		--pds-stepper-indicator-text-color-error,
-		white
-	);
+/* Modifications step with error. */
+li.pds-stepper__step--error {
+	--_pds-stepper-background-color: var(--_pds-stepper-background-color-error);
+	--_pds-stepper-foreground-color: var(--_pds-stepper-foreground-color-error);
+}
 
-	background-color: var(--_pds-stepper-indicator-background-color-error);
-	color: var(--_pds-stepper-indicator-text-color-error);
-	border-color: var(--_pds-stepper-indicator-background-color-error);
+/* Modifications for complete steps. */
+li.pds-stepper__step--complete {
+	--_pds-stepper-background-color: var(
+		--_pds-stepper-background-color-complete
+	);
+	--_pds-stepper-foreground-color: var(
+		--_pds-stepper-foreground-color-complete
+	);
+	--_pds-stepper-label-color: var(--_pds-stepper-label-color-complete);
+	--_pds-stepper-connector-color: var(--_pds-stepper-background-color-complete);
 }
