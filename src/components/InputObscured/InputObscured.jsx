@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import '../__shared/inputs/inputs-core.css';
 import './input-obscured.css';
 
 import { ClearIcon } from './icons/icon-clear';
@@ -32,7 +33,7 @@ const InputObscured = ({
 	const [internalMessage, setInternalMessage] = useState();
 	const [validationState, setValidationState] = useState(null);
 	const [visibility, setVisibility] = useState(false);
-	const cssClasses = useRef(['pds-input-obscured']);
+	const cssClasses = useRef(['pds-input-field', 'pds-input-obscured']);
 
 	const nodeRef = useRef(null);
 	const inputRef = useRef(null);
@@ -166,9 +167,9 @@ const InputObscured = ({
 				visibility ? 'visible' : 'hidden'
 			}.`}</div>
 
-			<div className='pds-input-obscured__field-wrapper'>
+			<div className='pds-input-field__field-wrapper'>
 				<input
-					className='pds-input-obscured__input'
+					className='pds-input-field__input'
 					type={visibility ? 'text' : 'password'}
 					id={id}
 					name={id}
@@ -184,15 +185,13 @@ const InputObscured = ({
 					autoComplete='off'
 				/>
 
-				<div className='pds-input-obscured__accessories'>
-					{counterFunction && (
-						<div className='pds-input-obscured__counter'>{counter}</div>
-					)}
+				<div className='pds-input-field__accessories'>
+					{counter && <div className='pds-input-field_counter'>{counter}</div>}
 
 					{value && (
 						<button
 							type='button'
-							className='pds-input-obscured__accessory pds-input-obscured__clear'
+							className='pds-input-field__accessory pds-input-field__clear'
 							title={`Clear ${label} input`}
 							aria-controls={id}
 							onClick={handleClearInput}
@@ -203,7 +202,7 @@ const InputObscured = ({
 
 					<button
 						type='button'
-						className='pds-input-obscured__accessory pds-input-obscured__toggle'
+						className='pds-input-field__accessory pds-input-obscured__toggle'
 						title={`${visibility ? 'Hide' : 'Show'} content of ${label} input`}
 						aria-controls={id}
 						onClick={handleToggle}
@@ -216,7 +215,7 @@ const InputObscured = ({
 
 			{(message || internalMessage) && (
 				<div
-					className='pds-input-obscured__message'
+					className='pds-input-field__message'
 					id={`${id}__message`}
 					role={validationState === 'error' ? 'alert' : null}
 				>

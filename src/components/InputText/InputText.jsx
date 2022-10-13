@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import '../__shared/inputs/inputs-core.css';
 import './input-text.css';
 import { SearchIcon } from './icons/icon-search';
 import { ClearIcon } from './icons/icon-clear';
 
 // decorator definitions
 const decoratorsList = {
-	search: <SearchIcon className='pds-input-text__decorator' />,
+	search: <SearchIcon className='pds-input-field__decorator' />,
 };
 
 const cssClassesList = {
@@ -15,6 +16,7 @@ const cssClassesList = {
 	success: 'pds-has-success',
 	required: 'pds-is-required',
 	disabled: 'pds-is-disabled',
+	isTextarea: 'pds-is-textarea',
 };
 
 /**
@@ -39,7 +41,7 @@ const InputText = ({
 	const [counter, setCounter] = useState(counterFunction(''));
 	const [internalMessage, setInternalMessage] = useState();
 	const [validationState, setValidationState] = useState(null);
-	const cssClasses = useRef(['pds-input-text']);
+	const cssClasses = useRef(['pds-input-field', 'pds-input-text']);
 
 	const inputRef = useRef(null);
 
@@ -131,6 +133,14 @@ const InputText = ({
 	let InputTag = `input`;
 	if (type === 'textarea') {
 		InputTag = `textarea`;
+
+		if (!cssClasses.current.includes(cssClassesList.isTextarea)) {
+			cssClasses.current.push(cssClassesList.isTextarea);
+		}
+	} else {
+		cssClasses.current = cssClasses.current.filter(
+			(i) => i !== cssClassesList.isTextarea,
+		);
 	}
 
 	// reset state CSS
@@ -155,13 +165,13 @@ const InputText = ({
 		<div className={cssClasses.current.join(' ').trim()}>
 			<label htmlFor={id}>{label}</label>
 
-			<div className='pds-input-text__field-wrapper'>
+			<div className='pds-input-field__field-wrapper'>
 				{decorator && (
-					<div className='pds-input-text__decorators'>{decorator}</div>
+					<div className='pds-input-field__decorators'>{decorator}</div>
 				)}
 
 				<InputTag
-					className='pds-input-text__input'
+					className='pds-input-field__input'
 					style={type === 'textarea' ? { height: textareaHeight } : null}
 					type={type !== 'textarea' ? type : null}
 					id={id}
@@ -179,14 +189,16 @@ const InputText = ({
 					}
 				/>
 
-				<div className='pds-input-text__accessories'>
-					{counterFunction && (
-						<div className='pds-input-text__counter'>{counter}</div>
+				<div className='pds-input-field__accessories'>
+					{counter && (
+						<div className='pds-input-field__accessory pds-input-field__counter'>
+							{counter}
+						</div>
 					)}
 
 					{value && (
 						<button
-							className='pds-input-text__clear'
+							className='pds-input-field__accessory pds-input-field__clear'
 							title={`Clear ${label} input`}
 							aria-controls={id}
 							onClick={handleClearInput}
@@ -199,7 +211,7 @@ const InputText = ({
 
 			{(message || internalMessage) && (
 				<div
-					className='pds-input-text__message'
+					className='pds-input-field__message'
 					id={`${id}__message`}
 					role={validationState === 'error' ? 'alert' : null}
 				>
