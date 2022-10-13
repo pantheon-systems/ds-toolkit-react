@@ -69,6 +69,9 @@
 		--pds-stepper-foreground-color-error,
 		white
 	);
+
+	max-width: 1400px;
+	margin-inline: auto;
 }
 
 ol.pds-stepper__steps {
@@ -78,19 +81,53 @@ ol.pds-stepper__steps {
 }
 
 li.pds-stepper__step {
+	--_pds-stepper-connector-min-width: 28px;
+
+	@media (min-width: 641px) {
+		--_pds-stepper-connector-min-width: 102px;
+	}
+
+	@media (min-width: 1025px) {
+		--_pds-stepper-connector-min-width: 170px;
+	}
+
 	list-style: none;
 	position: relative;
 }
 
 /* Connecting lines. */
-li.pds-stepper__step::before,
-li.pds-stepper__step::after {
+li.pds-stepper__step:not(:first-child)::before,
+li.pds-stepper__step:not(:last-child)::after {
 	content: '';
-	width: 100%;
+	min-width: var(--_pds-stepper-connector-min-width);
 	height: 0.125rem;
 	background-color: var(--_pds-stepper-connector-color);
 	position: absolute;
 	top: 0.625rem;
+}
+
+li.pds-stepper__step[aria-setsize='4'] {
+	--_pds-stepper-connector-min-width: 40px;
+
+	@media (min-width: 641px) {
+		--_pds-stepper-connector-min-width: 140px;
+	}
+
+	@media (min-width: 1025px) {
+		--_pds-stepper-connector-min-width: 208px;
+	}
+}
+
+li.pds-stepper__step[aria-setsize='3'] {
+	--_pds-stepper-connector-min-width: 68px;
+
+	@media (min-width: 641px) {
+		--_pds-stepper-connector-min-width: 216px;
+	}
+
+	@media (min-width: 1025px) {
+		--_pds-stepper-connector-min-width: 318px;
+	}
 }
 
 li.pds-stepper__step::before {
@@ -99,11 +136,6 @@ li.pds-stepper__step::before {
 
 li.pds-stepper__step::after {
 	left: calc(50% + (1.5rem / 2) + token('spacing.2XS' to rem));
-}
-
-li.pds-stepper__step:first-child::before,
-li.pds-stepper__step:last-child::after {
-	background-color: transparent;
 }
 
 /* Step content wrapper. */
@@ -140,6 +172,14 @@ li.pds-stepper__step:last-child::after {
 	font-family: token('typography.font.bodycopy');
 	font-size: token('typography.size.multipliers.sixth' to rem);
 	font-weight: token('typography.font-weight.bold');
+	text-align: center;
+	max-width: 7.5rem;
+}
+
+@media (--medium-viewport) {
+	.pds-stepper__step-label {
+		max-width: 15rem;
+	}
 }
 
 /* Modifications for current step. */
