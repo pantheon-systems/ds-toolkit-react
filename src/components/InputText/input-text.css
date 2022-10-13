@@ -55,6 +55,7 @@
 
 .pds-input-text .pds-input-text__input {
 	border: none;
+	background-color: transparent;
 
 	caret-color: var(--pds-color-accents-deep);
 
