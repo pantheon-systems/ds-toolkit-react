@@ -281,13 +281,6 @@ InputObscured.propTypes = {
 	 * Should be used rarely.
 	 */
 	message: PropTypes.string,
-
-	/**
-	 * Function to help lift the state and retrieve the input's value.
-	 * <br />
-	 * Should accept one argument, the input's value.
-	 */
-	onChange: PropTypes.func,
 };
 
 InputObscured.defaultProps = {
