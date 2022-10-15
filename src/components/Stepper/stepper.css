@@ -61,6 +61,7 @@
 		--pds-stepper-label-color-current,
 		var(--pds-color-status-success-darkest)
 	);
+	/* TODO: Fix following token color in pds-tokens; */
 	--_pds-stepper-background-color-error: var(
 		--pds-stepper-background-color-error,
 		var(--pds-color-status-warning-dark)
@@ -153,6 +154,21 @@ li.pds-stepper__step::after {
 	font-family: token('typography.font.bodycopy');
 	font-size: token('typography.size.multipliers.sixth' to rem);
 	font-weight: token('typography.font-weight.bold');
+}
+
+button.pds-stepper__step-content:hover,
+button.pds-stepper__step-content:focus-visible {
+	--_pds-stepper-background-color: var(--pds-color-status-info-dark);
+	--_pds-stepper-label-color: var(--pds-color-status-info-dark);
+}
+
+button.pds-stepper__step-content:focus-visible {
+	outline: none;
+}
+
+button.pds-stepper__step-content:focus-visible > .pds-stepper__step-indicator,
+button.pds-stepper__step-content:focus-visible > .pds-stepper__step-label {
+	box-shadow: 0 0 0.5rem var(--pds-color-focus);
 }
 
 /* Modifications for current step. */
