@@ -8,24 +8,27 @@ import './stepper.css';
  * Stepper UI component
  */
 
+// Define min and max number of steps allowed.
+const minStepCount = 3;
+const maxStepCount = 5;
+
 // Define className variables.
 const stepperBaseClass = 'pds-stepper';
 const stepsListClass = `${stepperBaseClass}__steps`;
 const stepClass = {
 	base: `${stepperBaseClass}__step`,
+	// Step parts.
 	content: `${stepperBaseClass}__step-content`,
 	indicator: `${stepperBaseClass}__step-indicator`,
 	label: `${stepperBaseClass}__step-label`,
+	// Step states.
 	current: `${stepperBaseClass}__step--current`,
 	complete: `${stepperBaseClass}__step--complete`,
 	error: `${stepperBaseClass}__step--error`,
 };
 
 const Stepper = ({ steps }) => {
-	// Find index of current step.
-	// Selects last item with `isCurrent` if more than one is designated in error.
 	const currentStepIndex = steps.findLastIndex((step) => step.isCurrent);
-
 	const totalSteps = steps.length;
 
 	// Function to render each step.
@@ -75,7 +78,7 @@ const Stepper = ({ steps }) => {
 			</div>
 		);
 
-		// If step has been completed, provide button to return to step.
+		// If step has been completed, provide button to return to that step.
 		if (isComplete) {
 			stepContents = (
 				// TODO convert button label to translatable string.
@@ -92,25 +95,27 @@ const Stepper = ({ steps }) => {
 
 		// Render each step as a list item.
 		return (
-			<>
-				<li
-					key={index}
-					aria-label={ariaLabel}
-					aria-posinset={stepNumber}
-					aria-setsize={totalSteps}
-					aria-current={currentStep ? 'step' : undefined}
-					className={stepClasses.join(' ').trim()}
-				>
-					{stepContents}
-				</li>
-			</>
+			<li
+				key={index}
+				aria-label={ariaLabel}
+				aria-posinset={stepNumber}
+				aria-setsize={totalSteps}
+				aria-current={currentStep ? 'step' : undefined}
+				className={stepClasses.join(' ').trim()}
+			>
+				{stepContents}
+			</li>
 		);
 	});
 
-	// Only return the component if the total steps are between 3 and 5.
-	if (totalSteps >= 3 && totalSteps <= 5) {
+	// Only return the component if it has an allowed number of steps.
+	if (totalSteps >= minStepCount && totalSteps <= maxStepCount) {
 		return (
-			<div aria-label='progress' className={stepperBaseClass}>
+			<div
+				aria-label='progress'
+				className={stepperBaseClass}
+				data-steps={totalSteps}
+			>
 				<ol className={stepsListClass}>{renderSteps}</ol>
 			</div>
 		);

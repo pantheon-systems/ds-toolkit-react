@@ -74,6 +74,17 @@
 	margin-inline: auto;
 }
 
+/* Set step width value based on number of total steps. */
+.pds-stepper[data-steps='3'] {
+	--_step-width: 33.33%;
+}
+.pds-stepper[data-steps='4'] {
+	--_step-width: 25%;
+}
+.pds-stepper[data-steps='5'] {
+	--_step-width: 20%;
+}
+
 ol.pds-stepper__steps {
 	padding: 0;
 	display: flex;
@@ -81,53 +92,20 @@ ol.pds-stepper__steps {
 }
 
 li.pds-stepper__step {
-	--_pds-stepper-connector-min-width: 28px;
-
-	@media (min-width: 641px) {
-		--_pds-stepper-connector-min-width: 102px;
-	}
-
-	@media (min-width: 1025px) {
-		--_pds-stepper-connector-min-width: 170px;
-	}
-
-	list-style: none;
+	width: var(--_step-width);
 	position: relative;
+	list-style: none;
 }
 
 /* Connecting lines. */
 li.pds-stepper__step:not(:first-child)::before,
 li.pds-stepper__step:not(:last-child)::after {
 	content: '';
-	min-width: var(--_pds-stepper-connector-min-width);
 	height: 0.125rem;
-	background-color: var(--_pds-stepper-connector-color);
+	width: 50%;
 	position: absolute;
 	top: 0.625rem;
-}
-
-li.pds-stepper__step[aria-setsize='4'] {
-	--_pds-stepper-connector-min-width: 40px;
-
-	@media (min-width: 641px) {
-		--_pds-stepper-connector-min-width: 140px;
-	}
-
-	@media (min-width: 1025px) {
-		--_pds-stepper-connector-min-width: 208px;
-	}
-}
-
-li.pds-stepper__step[aria-setsize='3'] {
-	--_pds-stepper-connector-min-width: 68px;
-
-	@media (min-width: 641px) {
-		--_pds-stepper-connector-min-width: 216px;
-	}
-
-	@media (min-width: 1025px) {
-		--_pds-stepper-connector-min-width: 318px;
-	}
+	background-color: var(--_pds-stepper-connector-color);
 }
 
 li.pds-stepper__step::before {
@@ -140,11 +118,13 @@ li.pds-stepper__step::after {
 
 /* Step content wrapper. */
 .pds-stepper__step-content {
+	width: 100%;
+	position: relative;
 	display: inline-flex;
 	flex-direction: column;
-	align-items: center;
 	row-gap: token('spacing.XS' to rem);
-	position: relative;
+	align-items: center;
+	text-align: center;
 
 	/* Clear default button styles. */
 	border: none;
@@ -153,33 +133,26 @@ li.pds-stepper__step::after {
 
 /* Step indicators. */
 .pds-stepper__step-indicator {
-	background-color: var(--_pds-stepper-background-color);
-	color: var(--_pds-stepper-foreground-color);
-	font-family: token('typography.font.headings');
-	font-size: token('typography.size.multipliers.reduce-one' to rem);
-	font-weight: token('typography.font-weight.bold');
 	height: 1.5rem;
 	width: 1.5rem;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: var(--_pds-stepper-background-color);
+	color: var(--_pds-stepper-foreground-color);
+	font-family: token('typography.font.headings');
+	font-size: token('typography.size.multipliers.reduce-one' to rem);
+	font-weight: token('typography.font-weight.bold');
 }
 
 /* Step labels. */
 .pds-stepper__step-label {
+	padding-inline: 4%;
 	color: var(--_pds-stepper-label-color);
 	font-family: token('typography.font.bodycopy');
 	font-size: token('typography.size.multipliers.sixth' to rem);
 	font-weight: token('typography.font-weight.bold');
-	text-align: center;
-	max-width: 7.5rem;
-}
-
-@media (--medium-viewport) {
-	.pds-stepper__step-label {
-		max-width: 15rem;
-	}
 }
 
 /* Modifications for current step. */
@@ -191,8 +164,8 @@ li.pds-stepper__step--current {
 
 li.pds-stepper__step--current:not(.pds-stepper__step--error)
 	.pds-stepper__step-indicator {
-	border: 3px solid var(--_pds-stepper-foreground-color-current);
 	box-sizing: border-box;
+	border: 3px solid var(--_pds-stepper-foreground-color-current);
 }
 
 li.pds-stepper__step--current::before {
