@@ -106,6 +106,7 @@ li.pds-stepper__step:not(:last-child)::after {
 	width: 50%;
 	position: absolute;
 	top: 0.625rem;
+	z-index: 99;
 	background-color: var(--_pds-stepper-connector-color);
 }
 
@@ -138,6 +139,7 @@ li.pds-stepper__step::after {
 	width: 1.5rem;
 	border-radius: 50%;
 	display: flex;
+	z-index: 99;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--_pds-stepper-background-color);
@@ -150,12 +152,14 @@ li.pds-stepper__step::after {
 /* Step labels. */
 .pds-stepper__step-label {
 	padding-inline: 4%;
+	z-index: 99;
 	color: var(--_pds-stepper-label-color);
 	font-family: token('typography.font.bodycopy');
 	font-size: token('typography.size.multipliers.sixth' to rem);
 	font-weight: token('typography.font-weight.bold');
 }
 
+/* Button states */
 button.pds-stepper__step-content:hover,
 button.pds-stepper__step-content:focus-visible {
 	--_pds-stepper-background-color: var(--pds-color-status-info-dark);
@@ -169,6 +173,41 @@ button.pds-stepper__step-content:focus-visible {
 button.pds-stepper__step-content:focus-visible > .pds-stepper__step-indicator,
 button.pds-stepper__step-content:focus-visible > .pds-stepper__step-label {
 	box-shadow: 0 0 0.5rem var(--pds-color-focus);
+}
+
+button.pds-stepper__step-content:active {
+	--_pds-stepper-background-color: var(--pds-color-status-success);
+	--_pds-stepper-label-color: var(--pds-color-status-success-dark);
+}
+
+button.pds-stepper__step-content:active > .pds-stepper__step-indicator,
+button.pds-stepper__step-content:active > .pds-stepper__step-label {
+	box-shadow: none;
+}
+
+/* Animation for button active state. */
+@keyframes grow {
+	0% {
+		width: 4.75rem;
+		height: 4.75rem;
+		top: -0.5rem;
+	}
+	100% {
+		width: 6rem;
+		height: 6rem;
+		top: -1rem;
+	}
+}
+
+button.pds-stepper__step-content:active::after {
+	content: '';
+	border-radius: 50%;
+	position: absolute;
+	background-color: var(--pds-color-neutrals-medium-light);
+	animation-name: grow;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
 }
 
 /* Modifications for current step. */
