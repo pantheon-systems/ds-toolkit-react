@@ -111,11 +111,7 @@ const Stepper = ({ steps }) => {
 	// Only return the component if it has an allowed number of steps.
 	if (totalSteps >= minStepCount && totalSteps <= maxStepCount) {
 		return (
-			<div
-				aria-label='progress'
-				className={stepperBaseClass}
-				data-steps={totalSteps}
-			>
+			<div className={stepperBaseClass} data-steps={totalSteps}>
 				<ol className={stepsListClass}>{renderSteps}</ol>
 			</div>
 		);
