@@ -1,4 +1,4 @@
-export const dialogMsgBase = `Navigated to step => `;
+export const dialogMsgBase = `Navigated to step: `;
 
 const sampleCallback = (item) => {
 	window.alert(`${dialogMsgBase}${item.label}`);
