@@ -80,11 +80,16 @@ const Stepper = ({ steps }) => {
 
 		// If step has been completed, provide button to return to that step.
 		if (isComplete) {
+			const handleButtonClick = (event) => {
+				step.callback(step);
+				event.preventDefault();
+			};
+
 			stepContents = (
 				// TODO convert button label to translatable string.
 				<button
 					className={stepClass.content}
-					onClick={() => step.callback(step)}
+					onClick={handleButtonClick}
 					label={`Return to step ${stepNumber}`}
 				>
 					{stepIndicator}
@@ -129,6 +134,10 @@ Stepper.propTypes = {
 			 */
 			label: PropTypes.string.isRequired,
 			/**
+			 * Callback function to return to a previously completed step.
+			 */
+			callback: PropTypes.func.isRequired,
+			/**
 			 * Is this the current step?
 			 */
 			isCurrent: PropTypes.bool,
@@ -136,10 +145,6 @@ Stepper.propTypes = {
 			 * Is there an error on this step?
 			 */
 			hasError: PropTypes.bool,
-			/**
-			 * Callback function to return to a previously completed step.
-			 */
-			callback: PropTypes.func,
 		}),
 	),
 };
