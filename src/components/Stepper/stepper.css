@@ -61,10 +61,9 @@
 		--pds-stepper-label-color-current,
 		var(--pds-color-status-success-darkest)
 	);
-	/* TODO: Fix following token color in pds-tokens; */
 	--_pds-stepper-background-color-error: var(
 		--pds-stepper-background-color-error,
-		var(--pds-color-status-warning-dark)
+		var(--pds-color-status-warning)
 	);
 	--_pds-stepper-foreground-color-error: var(
 		--pds-stepper-foreground-color-error,
