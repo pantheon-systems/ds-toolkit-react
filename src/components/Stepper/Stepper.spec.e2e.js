@@ -1,25 +1,28 @@
-/*
- * !!! DELETE THIS FILE
- * -> if no specific end-to-end/non-VRT tests are needed for the component
- */
-
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-stepper--';
+const storyID = 'components-stepper--stepper';
+
+const { dialogMsgBase, threeSteps } = require('./stepper-sample-data');
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-// Page screenshot clipping/cropping dimensions
-const clipOptions = { x: 0, y: 0, width: 350, height: 500 };
-
 test.describe('Components/Stepper', () => {
-	test.describe('General <RENAME IF APPROPRIATE>', () => {
-		test('<PROVIDE DESCRIPTIVE NAME HERE>', async ({ page, browserName }) => {
-			await gotoFrame(page, storyID);
+	test('Activate button (via mouse)', async ({ page, browserName }) => {
+		await gotoFrame(page, storyID);
 
-			expect('<VALUE FROM TEST>').toBe('<EXPECTED VALUE>');
+		const button = page.locator('button.pds-stepper__step-content');
+
+		// Retrieve the intended step's label
+		const targetItemLabel = threeSteps[0].label;
+
+		// Set up handler for the browser dialog that will occur on activation
+		await page.on('dialog', async (dialog) => {
+			expect(dialog.message()).toBe(`${dialogMsgBase}${targetItemLabel}`);
+			dialog.accept();
 		});
+
+		await button.click();
 	});
 });
