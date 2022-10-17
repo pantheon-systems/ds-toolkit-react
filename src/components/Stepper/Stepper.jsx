@@ -56,6 +56,9 @@ const Stepper = ({ steps }) => {
 		if (isComplete) {
 			ariaLabel = `Step ${stepNumber}, completed`;
 		}
+		if (hasError) {
+			ariaLabel = `Step ${stepNumber}, has an error`;
+		}
 
 		// Step indicator markup.
 		const stepIndicator = (
