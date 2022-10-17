@@ -44,6 +44,13 @@ export default {
 			},
 		},
 	},
+	decorators: [
+		(Story) => (
+			<div style={{ marginBlock: '2rem' }}>
+				<Story />
+			</div>
+		),
+	],
 };
 
 const Template = (args) => <StepperComponent {...args} />;
