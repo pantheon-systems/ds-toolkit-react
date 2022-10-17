@@ -1,5 +1,11 @@
 export const completedIcon = (
-	<svg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+	<svg
+		role='img'
+		xmlns='http://www.w3.org/2000/svg'
+		width='2em'
+		height='2em'
+		viewBox='0 0 24 24'
+	>
 		<path
 			fill='currentColor'
 			d='M16.7,6.8c-0.1-0.1-0.3-0.1-0.4,0l-5.9,5.9c-0.1,0.1-0.3,0.1-0.4,0l-2.2-2.2c-0.1-0.1-0.3-0.1-0.4,0l-1.8,1.8
@@ -9,7 +15,13 @@ export const completedIcon = (
 );
 
 export const errorIcon = (
-	<svg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+	<svg
+		role='img'
+		xmlns='http://www.w3.org/2000/svg'
+		width='1.625em'
+		height='1.625em'
+		viewBox='0 0 24 24'
+	>
 		<g>
 			<path
 				fill='currentColor'
