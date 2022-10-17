@@ -5,7 +5,8 @@ export default {
 	title: 'Components/Inputs/Obscured',
 	component: InputObscuredComponent,
 	parameters: {
-		componentSubtitle: 'A component <add description here>',
+		componentSubtitle:
+			'A component to allow the input of text based data by a user that will be obscured (password, etc).',
 		docs: {
 			description: {
 				component: DocsDescription,
