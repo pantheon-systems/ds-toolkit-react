@@ -1,0 +1,23 @@
+name: Publish Storybook to GitHub Pages
+
+on:
+  push:
+    branches:
+      - DS-374--published-storybook
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install and Build
+        run: |
+          npm install
+          npm run storybook:build
+      # Publish site to github-pages.
+      - name: Publish to pages
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: storybook-static
