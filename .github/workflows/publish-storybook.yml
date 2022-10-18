@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Install and Build
         run: |
+          echo //npm.pkg.github.com/:_authToken=${BOT_GITHUB_TOKEN} >> ~/.npmrc
           npm install
           npm run storybook:build
       # Publish site to github-pages.
