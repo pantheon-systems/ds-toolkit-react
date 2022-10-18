@@ -31,6 +31,24 @@ test.describe('Components/Inputs/Formatted', () => {
 		);
 	});
 
+	test('Format: credit card – validation error', async ({
+		page,
+		browserName,
+	}) => {
+		await gotoFrame(page, storyID_creditCard);
+
+		const input = page.locator('.pds-input-field__input');
+
+		await input.type('4141123456789');
+
+		const clearButton = page.locator('.pds-input-field__clear');
+		await clearButton.focus();
+
+		expect(await page.screenshot()).toMatchSnapshot(
+			'input-formatted__credit-card-validation-error.png',
+		);
+	});
+
 	test('Format: credit card (American Express)', async ({ page }) => {
 		await gotoFrame(page, storyID_creditCard);
 
@@ -43,6 +61,23 @@ test.describe('Components/Inputs/Formatted', () => {
 		);
 	});
 
+	test('Format: credit card (American Express) – validation error', async ({
+		page,
+	}) => {
+		await gotoFrame(page, storyID_creditCard);
+
+		const input = page.locator('.pds-input-field__input');
+
+		await input.type('3412345678000');
+
+		const clearButton = page.locator('.pds-input-field__clear');
+		await clearButton.focus();
+
+		expect(await page.screenshot()).toMatchSnapshot(
+			'input-formatted__credit-card-amex-validation-error.png',
+		);
+	});
+
 	test('Format: phone number (USA/CA)', async ({ page }) => {
 		await gotoFrame(page, storyID_phoneUS);
 
@@ -52,6 +87,21 @@ test.describe('Components/Inputs/Formatted', () => {
 
 		expect(await page.screenshot()).toMatchSnapshot(
 			'input-formatted__phone-us.png',
+		);
+	});
+
+	test('Format: phone number (USA/CA) – validation error', async ({ page }) => {
+		await gotoFrame(page, storyID_phoneUS);
+
+		const input = page.locator('.pds-input-field__input');
+
+		await input.type('55532315');
+
+		const clearButton = page.locator('.pds-input-field__clear');
+		await clearButton.focus();
+
+		expect(await page.screenshot()).toMatchSnapshot(
+			'input-formatted__phone-us-validation-error.png',
 		);
 	});
 

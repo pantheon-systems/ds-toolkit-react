@@ -120,29 +120,22 @@ const InputFormatted = ({
 		} else {
 			// Default validation included in component
 
-			// Credit card number
-			if (formatting === 'credit-card') {
-				// validity failure
-				if (inputRef.current.checkValidity() === false) {
-					hasError();
+			// validity failure
+			if (
+				inputRef.current.checkValidity() === false ||
+				e.target.value.length < maxlength.current + maxlength.numExtra
+			) {
+				hasError();
 
+				// Credit card number
+				if (formatting === 'credit-card') {
 					setInternalMessage(
 						`Credit card number must have at least ${maxlength.current} digits.`,
 					);
 				}
-			}
 
-			// Phone number (USA/CA)
-			if (formatting === 'phone-us') {
-				console.log(
-					`!!! Validity: phone => `,
-					inputRef.current.checkValidity(),
-				);
-
-				// validity failure
-				if (inputRef.current.checkValidity() === false) {
-					hasError();
-
+				// Phone number (USA/CA)
+				if (formatting === 'phone-us') {
 					setInternalMessage(
 						`Phone number must have at least ${maxlength.current} digits.`,
 					);
@@ -216,7 +209,7 @@ const InputFormatted = ({
 				rawValue.current = raw;
 
 				if (raw) {
-					maxlength.numExtra = 3;
+					maxlength.numExtra = 4;
 					maxlength.current = maxLengthPhoneUS;
 
 					let areaCode = raw.substring(0, 3);
