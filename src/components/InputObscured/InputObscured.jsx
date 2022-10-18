@@ -1,18 +1,11 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import { cssClassesList, ClearButton } from '../__shared/inputs/inputs-core';
 import '../__shared/inputs/inputs-core.css';
 import './input-obscured.css';
 
-import { ClearIcon } from './icons/icon-clear';
 import { EyeIcon, EyeSlashIcon } from './icons/icon-eye';
-
-const cssClassesList = {
-	error: 'pds-has-error',
-	success: 'pds-has-success',
-	required: 'pds-is-required',
-	disabled: 'pds-is-disabled',
-};
 
 /**
  * InputObscured UI component
@@ -189,15 +182,11 @@ const InputObscured = ({
 					{counter && <div className='pds-input-field_counter'>{counter}</div>}
 
 					{value && (
-						<button
-							type='button'
-							className='pds-input-field__accessory pds-input-field__clear'
-							title={`Clear ${label} input`}
-							aria-controls={id}
-							onClick={handleClearInput}
-						>
-							<ClearIcon />
-						</button>
+						<ClearButton
+							id={id}
+							label={label}
+							handleClearInput={handleClearInput}
+						/>
 					)}
 
 					<button

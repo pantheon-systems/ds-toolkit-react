@@ -6,3 +6,4 @@ export { default as TwoItemLayout } from './TwoItemLayout';
 export { default as ButtonSplit } from './ButtonSplit';
 export { default as InputText } from './InputText';
 export { default as InputObscured } from './InputObscured';
+export { default as InputFormatted } from './InputFormatted';

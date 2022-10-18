@@ -1,0 +1,11 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-input-formatted-						-> <add description>
+ *
+ */
+
+.pds-input-formatted {
+}
