@@ -10,6 +10,9 @@ const intlParts = new Intl.NumberFormat().formatToParts(1000000.89);
 const groupChar = intlParts.find((part) => part.type === 'group').value;
 const decimalChar = intlParts.find((part) => part.type === 'decimal').value;
 
+const maxlengthCreditCard = 16;
+const maxLengthPhoneUS = 10;
+
 /**
  * InputFormatted UI component
  */
@@ -33,10 +36,27 @@ const InputFormatted = ({
 	const inputRef = useRef(null);
 	const rawValue = useRef(null);
 
+	// define maximum length of input for certain formats
+	const maxlength = useRef('');
+
 	//
 	useEffect(() => {
 		if (initialValue) {
 			setValue(formatValue(initialValue));
+		}
+
+		maxlength.numExtra = '';
+
+		switch (formatting) {
+			case 'credit-card':
+				maxlength.numExtra = 3;
+				maxlength.current = maxlengthCreditCard;
+				break;
+
+			case 'phone-us':
+				maxlength.numExtra = 4;
+				maxlength.current = maxLengthPhoneUS;
+				break;
 		}
 	}, []);
 
@@ -75,6 +95,11 @@ const InputFormatted = ({
 		onChangeHandler();
 	};
 
+	const hasError = () => {
+		setValidationState('error');
+		cssClasses.current.push(cssClassesList.error);
+	};
+
 	const handleBlur = (e) => {
 		// call validationFunction that was passed in and it the current value
 		if (validationFunction) {
@@ -83,8 +108,7 @@ const InputFormatted = ({
 			resetInputState();
 
 			if (validationResult.error) {
-				setValidationState('error');
-				cssClasses.current.push(cssClassesList.error);
+				hasError();
 			}
 
 			if (validationResult.success) {
@@ -93,6 +117,37 @@ const InputFormatted = ({
 			}
 
 			setInternalMessage(validationResult.message);
+		} else {
+			// Default validation included in component
+
+			// Credit card number
+			if (formatting === 'credit-card') {
+				// validity failure
+				if (inputRef.current.checkValidity() === false) {
+					hasError();
+
+					setInternalMessage(
+						`Credit card number must have at least ${maxlength.current} digits.`,
+					);
+				}
+			}
+
+			// Phone number (USA/CA)
+			if (formatting === 'phone-us') {
+				console.log(
+					`!!! Validity: phone => `,
+					inputRef.current.checkValidity(),
+				);
+
+				// validity failure
+				if (inputRef.current.checkValidity() === false) {
+					hasError();
+
+					setInternalMessage(
+						`Phone number must have at least ${maxlength.current} digits.`,
+					);
+				}
+			}
 		}
 
 		onChangeHandler();
@@ -124,6 +179,10 @@ const InputFormatted = ({
 					const amexRegExp = new RegExp('^34|37', 'g');
 
 					if (amexRegExp.test(raw)) {
+						// override maxlength if we have an American Express card
+						maxlength.numExtra = 2;
+						maxlength.current = maxlengthCreditCard - 1;
+
 						const amex = {};
 						amex.first = raw.substring(0, 4);
 						amex.middle = raw.substring(4, 10);
@@ -139,6 +198,9 @@ const InputFormatted = ({
 					}
 
 					// All other card types
+					maxlength.numExtra = 3;
+					maxlength.current = maxlengthCreditCard;
+
 					const cardRegExp = new RegExp('.{1,4}', 'g');
 					const numberParts = raw.match(cardRegExp);
 
@@ -148,12 +210,15 @@ const InputFormatted = ({
 				return raw;
 			}
 
-			// Phone number (USA)
+			// Phone number (USA/CA)
 			if (formatting === 'phone-us') {
 				const raw = ('' + toFormat).replace(/\D/g, '');
 				rawValue.current = raw;
 
 				if (raw) {
+					maxlength.numExtra = 3;
+					maxlength.current = maxLengthPhoneUS;
+
 					let areaCode = raw.substring(0, 3);
 
 					let prefix = raw.substring(3, 6);
@@ -219,7 +284,7 @@ const InputFormatted = ({
 			<div className='pds-input-field__field-wrapper'>
 				<input
 					className='pds-input-field__input'
-					type='text'
+					type={formatting === 'phone-us' ? 'tel' : 'text'}
 					id={id}
 					name={id}
 					placeholder={placeholder}
@@ -233,6 +298,8 @@ const InputFormatted = ({
 					aria-describedby={
 						message || internalMessage ? `${id}__message` : null
 					}
+					maxLength={maxlength.current + maxlength.numExtra}
+					minLength={maxlength.current + maxlength.numExtra}
 				/>
 
 				<div className='pds-input-field__accessories'>

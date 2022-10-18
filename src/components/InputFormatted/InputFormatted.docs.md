@@ -4,13 +4,17 @@ The `InputFormatted` component allows the creation of an input field that will b
 
 The accessories section contains the clear button, visible only when a value is present in the input area, to instantly empty the input area when desired.
 
+This component includes some basic validation for the 'credit-card' and 'phone-us' formats. It will validate the required length of the digits and not allow digits beyond the maximum for each format.
+
 ## Usage
 
 ### Optional functions
 
 #### validationFunction
 
-This optional function allows you to provide a custom validation function of the input value. The function should accept one argument, the input's value, and return an object with a key of either `error` or `success`, and optionally a `message` key providing a description to clarify the result.
+This optional function allows you to provide a custom validation function of the input value. This function will override any built validation already included for 'credit-card' and 'phone-us' formats.
+
+The function should accept one argument, the input's value, and return an object with a key of either `error` or `success`, and optionally a `message` key providing a description to clarify the result.
 
 Validation will occur on the blur event, when focus leaves the editable input area.
 
