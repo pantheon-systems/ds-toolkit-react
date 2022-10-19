@@ -1,3 +1,4 @@
+export { default as AlertInline } from './AlertInline';
 export { default as Button } from './Button';
 export { default as ButtonSplit } from './ButtonSplit';
 export { default as ComboboxSelect } from './ComboboxSelect';

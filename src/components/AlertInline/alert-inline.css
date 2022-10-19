@@ -1,0 +1,95 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-alert-inline-color-background					-> Set the color of the background
+ * --pds-alert-inline-color-border						-> Set the color of the border
+ * --pds-alert-inline-color						        -> Set the color of the text
+ * --pds-alert-inline-border-radius						-> Set the radius size of the border
+ *
+ */
+
+.pds-alert-inline {
+	--_pds-alert-inline-color-background: var(
+		--pds-alert-inline-color-background,
+		var(--pds-color-status-info-light)
+	);
+	--_pds-alert-inline-color-border: var(
+		--pds-alert-inline-color-border,
+		var(--pds-color-status-info-dark)
+	);
+	--_pds-alert-inline-color: var(
+		--pds-alert-inline-color,
+		var(--pds-color-status-info-dark)
+	);
+	--_pds-alert-inline-border-radius: var(
+		--pds-alert-inline-border-radius,
+		token('border.radius.default' to rem)
+	);
+
+	gap: token('spacing.2XS' to em);
+
+	padding-block: token('spacing.XS' to em);
+	padding-inline: token('spacing.S' to em);
+
+	border-style: solid;
+	border-width: token('border.width.default' to px);
+	border-color: var(--_pds-alert-inline-color-border);
+
+	border-radius: var(--_pds-alert-inline-border-radius);
+
+	background-color: var(--_pds-alert-inline-color-background);
+
+	margin-block: token('spacing.M' to rem);
+}
+
+.pds-alert-inline,
+.pds-alert-inline .pds-alert-inline__dismiss {
+	display: flex;
+	align-items: center;
+	color: var(--_pds-alert-inline-color);
+}
+
+.pds-alert-inline .pds-alert-inline__dismiss {
+	flex-shrink: 0;
+
+	border: 0;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+}
+
+.pds-alert-inline .pds-alert-inline__decorator,
+.pds-alert-inline .pds-alert-inline__dismiss svg {
+	width: token('spacing.XL' to em);
+	flex-shrink: 0;
+}
+
+.pds-alert-inline .pds-alert-inline__content {
+	flex-grow: 1;
+}
+
+.pds-alert-inline.pds-alert-inline__success {
+	--_pds-alert-inline-color-background: var(--pds-color-status-success-light);
+	--_pds-alert-inline-color-border: var(--pds-color-status-success-dark);
+	--_pds-alert-inline-color: var(--pds-color-status-success-dark);
+}
+
+.pds-alert-inline.pds-alert-inline__warning {
+	--_pds-alert-inline-color-background: var(--pds-color-status-warning-light);
+	--_pds-alert-inline-color-border: var(--pds-color-status-warning-dark);
+	--_pds-alert-inline-color: var(--pds-color-status-warning-dark);
+}
+
+.pds-alert-inline.pds-alert-inline__error {
+	--_pds-alert-inline-color-background: var(--pds-color-status-error-light);
+	--_pds-alert-inline-color-border: var(--pds-color-status-error-dark);
+	--_pds-alert-inline-color: var(--pds-color-status-error-dark);
+}
+
+.pds-alert-inline.pds-alert-inline__pantheon {
+	--_pds-alert-inline-color-background: token('color.admin.pantheor-light');
+	--_pds-alert-inline-color-border: token('color.admin.pantheor-dark');
+	--_pds-alert-inline-color: token('color.admin.pantheor-dark');
+}
