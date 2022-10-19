@@ -70,7 +70,11 @@ const AlertInline = ({ type, message, isDismissible, onDismiss }) => {
 			<div className='pds-alert-inline__content'>{message}</div>
 
 			{isDismissible && (
-				<button className={cssClasses.dismiss} onClick={onDismiss}>
+				<button
+					className={cssClasses.dismiss}
+					onClick={onDismiss}
+					title='Dismiss alert'
+				>
 					<IconClear />
 				</button>
 			)}
