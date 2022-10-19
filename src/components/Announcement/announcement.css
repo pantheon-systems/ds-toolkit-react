@@ -1,0 +1,66 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-announcement-color-background					-> Set the color of the background
+ * --pds-announcement-color						        -> Set the color of the text
+ *
+ */
+
+.pds-announcement {
+	--_pds-announcement-color-background: var(
+		--pds-announcement-color-background,
+		var(--pds-color-accents-deep)
+	);
+	--_pds-announcement-color: var(
+		--pds-announcement-color,
+		var(--pds-color-neutrals-lightest)
+	);
+
+	gap: token('spacing.2XS' to em);
+
+	padding-block: token('spacing.XS' to em);
+	padding-inline: token('spacing.S' to em);
+
+	border: none;
+
+	background-color: var(--_pds-announcement-color-background);
+}
+
+.pds-announcement,
+.pds-announcement .pds-announcement__dismiss {
+	display: flex;
+	align-items: center;
+	color: var(--_pds-announcement-color);
+}
+
+.pds-announcement .pds-announcement__dismiss {
+	flex-shrink: 0;
+
+	border: 0;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+}
+
+.pds-announcement .pds-announcement__decorator,
+.pds-announcement .pds-announcement__dismiss svg {
+	width: token('spacing.XL' to em);
+	flex-shrink: 0;
+}
+
+.pds-announcement .pds-announcement__content {
+	flex-grow: 1;
+}
+
+.pds-announcement.pds-announcement__info
+	.pds-announcement__content
+	a:not(:active) {
+	color: var(--_pds-announcement-color);
+}
+
+.pds-announcement.pds-announcement__warning {
+	--_pds-announcement-color-background: var(--pds-color-status-warning-light);
+	--_pds-announcement-color: var(--pds-color-status-warning-dark);
+}
