@@ -109,11 +109,11 @@
 }
 
 .pds-input-field .pds-input-field__clear {
-	padding: token('spacing.4XS' to em);
+	padding: 0;
 }
 
 .pds-input-field .pds-input-field__clear svg {
-	width: token('spacing.XS' to em);
+	width: token('spacing.L' to em);
 }
 
 .pds-input-field .pds-input-field__decorator {

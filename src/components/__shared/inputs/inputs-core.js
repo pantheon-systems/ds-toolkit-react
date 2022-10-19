@@ -1,4 +1,4 @@
-import { ClearIcon } from './icons/icon-clear';
+import { IconClear } from '../__assets/icons/icon-clear';
 
 export const cssClassesList = {
 	error: 'pds-has-error',
@@ -17,7 +17,7 @@ export const ClearButton = ({ id, label, handleClearInput }) => {
 			aria-controls={id}
 			onClick={handleClearInput}
 		>
-			<ClearIcon />
+			<IconClear />
 		</button>
 	);
 };
