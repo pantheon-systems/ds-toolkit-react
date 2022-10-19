@@ -20,7 +20,7 @@ jobs:
         run: |
           echo //npm.pkg.github.com/:_authToken=${{ secrets.PAGES_DEPLOY }} >> ~/.npmrc
           npm install
-          npm run prestorybook
+          npm run build:css
           npm run storybook:build
       # Publish site to github-pages.
       - name: Publish to pages
