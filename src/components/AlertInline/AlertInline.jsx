@@ -18,54 +18,26 @@ const cssClasses = {
 	info: 'pds-alert-inline__info',
 };
 
+const decorators = {
+	warning: <IconWarning className={cssClasses.decorator} />,
+	error: <IconError className={cssClasses.decorator} />,
+	success: <IconCheckmark className={cssClasses.decorator} />,
+	pantheon: <IconPantheon className={cssClasses.decorator} />,
+	info: <IconInfo className={cssClasses.decorator} />,
+};
+
 /**
  * AlertInline UI component
  */
 const AlertInline = ({ type, message, isDismissible, onDismiss }) => {
-	const css = ['pds-alert-inline'];
-	let Decorator;
-
-	switch (type) {
-		case 'warning':
-			css.push(cssClasses.warning);
-			Decorator = ({ className }) => (
-				<IconWarning className={cssClasses.decorator} />
-			);
-			break;
-
-		case 'error':
-			css.push(cssClasses.error);
-			Decorator = ({ className }) => (
-				<IconError className={cssClasses.decorator} />
-			);
-			break;
-
-		case 'success':
-			css.push(cssClasses.success);
-			Decorator = ({ className }) => (
-				<IconCheckmark className={cssClasses.decorator} />
-			);
-			break;
-
-		case 'pantheon':
-			css.push(cssClasses.pantheon);
-			Decorator = ({ className }) => (
-				<IconPantheon className={cssClasses.decorator} />
-			);
-			break;
-
-		default:
-			css.push(cssClasses.info);
-			Decorator = ({ className }) => (
-				<IconInfo className={cssClasses.decorator} />
-			);
-	}
+	const css = ['pds-alert-inline', cssClasses[type]];
+	let decorator = decorators[type];
 
 	//
 	// Render the output
 	return (
 		<div className={css.join(' ').trim()}>
-			<Decorator />
+			{decorator}
 
 			<div className='pds-alert-inline__content'>{message}</div>
 
