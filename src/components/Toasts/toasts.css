@@ -1,0 +1,172 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-toasts-						-> <add description>
+ *
+ */
+
+.pds-toasts__container {
+	--_pds-toasts-animation-start-position: 75%;
+
+	box-sizing: content-box;
+	width: 30%;
+	padding: token('spacing.S' to rem);
+
+	position: absolute;
+
+	overflow: hidden;
+}
+
+.pds-toasts__container.pds-location-start-start,
+.pds-toasts__container.pds-location-end-start {
+	--_pds-toasts-animation-start-position: -75%;
+}
+
+.pds-toast {
+	--_pds-toast-color-border: var(
+		--pds-toast-color-border,
+		var(--pds-color-status-info)
+	);
+	--_pds-toast-color: var(--pds-toast-color, var(--pds-color-neutrals-darkest));
+	--_pds-toast-border-radius: var(
+		--pds-toast-border-radius,
+		token('border.radius.default' to rem)
+	);
+	--_pds-toast-color-decorator: var(--pds-color-status-info);
+
+	--_pds-toast-border-width: var(
+		--pds-toast-border-width,
+		token('border.width.default' to px)
+	);
+
+	gap: token('spacing.2XS' to em);
+
+	padding-block: token('spacing.XS' to em);
+	padding-inline: token('spacing.S' to em);
+
+	border-style: solid;
+	border-block-width: var(--_pds-toast-border-width);
+	border-inline-width: token('border.radius.default' to em)
+		var(--_pds-toast-border-width);
+	border-color: var(--_pds-toast-color-border);
+
+	border-radius: var(--_pds-toast-border-radius);
+
+	background-color: var(--pds-color-neutrals-lightest);
+	color: var(--_pds-toast-color);
+
+	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.12);
+
+	margin-block-end: token('spacing.S' to rem);
+
+	position: relative;
+
+	animation: revealToastAnimation ease-in 300ms;
+	animation-fill-mode: forwards;
+}
+
+.pds-toast.pds-dismissing {
+	animation: hideToastAnimation ease-in 300ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes revealToastAnimation {
+	from {
+		opacity: 0;
+		transform: translate3d(var(--_pds-toasts-animation-start-position), 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes hideToastAnimation {
+	to {
+		opacity: 0;
+		transform: translate3d(var(--_pds-toasts-animation-start-position), 0, 0);
+	}
+	from {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.pds-toast,
+.pds-toast .pds-toast__dismiss {
+	display: flex;
+	align-items: center;
+}
+
+.pds-toast .pds-toast__dismiss {
+	flex-shrink: 0;
+
+	border: 0;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+
+	color: var(--pds-color-neutrals-darker);
+}
+
+.pds-toast .pds-toast__decorator {
+	color: var(--_pds-toast-color-decorator);
+}
+
+.pds-toast .pds-toast__decorator,
+.pds-toast .pds-toast__dismiss svg {
+	width: token('spacing.XL' to em);
+	flex-shrink: 0;
+}
+
+.pds-toast .pds-toast__content {
+	flex-grow: 1;
+}
+
+.pds-toast .pds-toast__timer {
+	position: absolute;
+	inset-inline-start: 0;
+	inset-block-end: 0;
+
+	appearance: none;
+	border: 0;
+	border-end-end-radius: var(--_pds-toast-border-radius);
+
+	background-color: transparent;
+
+	height: token('spacing.4XS' to em);
+
+	width: 100%;
+}
+
+.pds-toast .pds-toast__timer-value {
+	background-color: var(--pds-color-neutrals-darkest);
+	height: 100%;
+	opacity: 16%;
+
+	transition-property: width;
+	transition-duration: 1s;
+	transition-timing-function: linear;
+}
+
+.pds-toast.pds-toast__success {
+	--_pds-toast-color-border: var(--pds-color-status-success);
+	--_pds-toast-color-decorator: var(--pds-color-status-success);
+}
+
+.pds-toast.pds-toast__warning {
+	--_pds-toast-color-border: var(--pds-color-status-warning);
+	--_pds-toast-color-decorator: var(--pds-color-status-warning);
+}
+
+.pds-toast.pds-toast__error {
+	--_pds-toast-color-border: var(--pds-color-status-error);
+	--_pds-toast-color-decorator: var(--pds-color-status-error);
+}
+
+.pds-toast.pds-toast__pantheon {
+	--_pds-toast-color-border: token('color.admin.pantheor');
+	--_pds-toast-color-decorator: token('color.admin.pantheor');
+}
