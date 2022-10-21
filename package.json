@@ -19,6 +19,7 @@
 	"scripts": {
 		"prestorybook": "npm run build:css",
 		"storybook": "start-storybook -p 6006",
+		"prestorybook:build": "npm run build:css",
 		"storybook:build": "build-storybook",
 		"pretest": "npm run build:css",
 		"test": "playwright test",
