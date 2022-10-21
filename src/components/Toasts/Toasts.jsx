@@ -119,7 +119,7 @@ Toasts.propTypes = {
 };
 
 Toasts.defaultProps = {
-	maxToastsVisible: 3,
+	maxToastsVisible: 999,
 	position: 'start-end',
 };
 
