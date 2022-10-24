@@ -26,8 +26,6 @@ const locations = {
  * Toasts UI component
  */
 const Toasts = ({ toasts, maxToastsVisible, position }) => {
-	console.log(`!!! Toasts =>`, toasts);
-
 	// Determine if we need to limit how many toasts should be visible
 	let toastsToShow = toasts;
 	let moreHidden = false;

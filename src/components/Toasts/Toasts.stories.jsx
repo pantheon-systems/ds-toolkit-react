@@ -1,69 +1,14 @@
 import ToastsComponent from './Toasts';
 import DocsDescription from './Toasts.docs.md';
 
-import { createShortUUID } from '../../libs/components/utils';
+import { useEffect } from 'react';
+import { useArgs } from '@storybook/client-api';
 
-const dismissClick = (event, id) => {
-	console.log(`!!! Dismiss button clicked for: ${id}...`);
-	const removeAtIndex = toasts.findIndex((toast) => toast.id === id);
-	if (removeAtIndex !== -1) {
-		toasts.splice(removeAtIndex, 1);
-	}
-	console.log(`!!! Toasts => `, toasts);
-};
-
-const dismissAuto = (event, id) => {
-	console.log(`!!! Auto-dismiss for: ${id}...`);
-	const removeAtIndex = toasts.findIndex((toast) => toast.id === id);
-	if (removeAtIndex !== -1) {
-		toasts.splice(removeAtIndex, 1);
-	}
-	console.log(`!!! Toasts => `, toasts);
-};
-
-const toasts = [
-	{
-		id: `pds-toast-${createShortUUID()}`,
-		type: 'info',
-		message: 'This is the first toast.',
-		isDismissible: true,
-		onDismiss: dismissClick,
-	},
-	{
-		id: `pds-toast-${createShortUUID()}`,
-		type: 'success',
-		message: 'This is the second toast.',
-		isDismissible: true,
-		onDismiss: dismissClick,
-	},
-	{
-		id: `pds-toast-${createShortUUID()}`,
-		type: 'warning',
-		message: 'This is the third toast.',
-		autodismiss: {
-			autodismiss: true,
-			timeInSeconds: 6,
-		},
-		onDismiss: dismissAuto,
-	},
-	{
-		id: `pds-toast-${createShortUUID()}`,
-		type: 'error',
-		message: 'This is the fourth toast.',
-		isDismissible: true,
-		onDismiss: dismissClick,
-	},
-	{
-		id: `pds-toast-${createShortUUID()}`,
-		type: 'pantheon',
-		message: 'This is the fifth toast.',
-		autodismiss: {
-			autodismiss: true,
-			timeInSeconds: 6,
-		},
-		onDismiss: dismissAuto,
-	},
-];
+import {
+	toastsSimple,
+	toastsSomeDismissible,
+	toastsOneAutoDismiss,
+} from './toasts-sample-data';
 
 export default {
 	title: 'Components/Toasts',
@@ -80,29 +25,52 @@ export default {
 		},
 	},
 	argTypes: {},
-	decorators: [],
+	decorators: [
+		(Story) => {
+			// programmatically update args/Controls
+			const [_, updateArgs] = useArgs();
+
+			// Handle custom dismiss event and force a component update
+			const handleDismiss = (event) => {
+				console.log(`[DS TOOLKIT DEBUG] PDS Dismiss Toast event received...`);
+				updateArgs();
+			};
+
+			useEffect(() => {
+				// Add custom event listener
+				document.addEventListener('pdsDismissToast', handleDismiss);
+
+				return () => {
+					// On unmount remove custom event listener
+					document.removeEventListener('pdsDismissToast', handleDismiss);
+				};
+			}, []);
+
+			return (
+				<div style={{ height: '20rem' }}>
+					<Story />
+				</div>
+			);
+		},
+	],
 };
 
-const Template = (args) => (
-	<>
-		<ToastsComponent {...args} />
-		<button
-			onClick={(e) => {
-				toasts.push({
-					id: `pds-toast-${createShortUUID()}`,
-					type: 'info',
-					message: 'This is the newly added toast.',
-				});
-				console.log(`!!! Toasts => `, toasts);
-			}}
-		>
-			Add toast
-		</button>
-	</>
-);
+const Template = (args) => <ToastsComponent {...args} />;
 
 export const Toasts = Template.bind({});
 Toasts.args = {
-	toasts: toasts,
+	toasts: toastsSimple,
 };
-Toasts.storyName = 'Toasts';
+Toasts.storyName = 'Default';
+
+export const ToastsDismissible = Template.bind({});
+ToastsDismissible.args = {
+	toasts: toastsSomeDismissible,
+};
+ToastsDismissible.storyName = 'With Dismissible';
+
+export const ToastsAutoDismiss = Template.bind({});
+ToastsAutoDismiss.args = {
+	toasts: toastsOneAutoDismiss,
+};
+ToastsAutoDismiss.storyName = 'With Auto-dismiss';

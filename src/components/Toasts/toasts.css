@@ -11,10 +11,11 @@
 	--_pds-toasts-animation-start-position: 75%;
 
 	box-sizing: content-box;
-	width: 30%;
+	width: 75%;
 	padding: token('spacing.S' to rem);
 
 	position: absolute;
+	z-index: 9999;
 
 	overflow: hidden;
 }
@@ -22,4 +23,18 @@
 .pds-toasts__container.pds-location-start-start,
 .pds-toasts__container.pds-location-end-start {
 	--_pds-toasts-animation-start-position: -75%;
+}
+
+/* Medium viewport grid container. */
+@media (--medium-viewport) {
+	.pds-toasts__container {
+		width: 40%;
+	}
+}
+
+/* Large viewport grid container. */
+@media (--large-viewport) {
+	.pds-toasts__container {
+		width: 30%;
+	}
 }
