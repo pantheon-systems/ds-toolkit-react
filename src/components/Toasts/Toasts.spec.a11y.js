@@ -21,4 +21,32 @@ test.describe('Components/Toasts', () => {
 			`${a11yNumViolations} accessibility issues found.`,
 		).toBe(0);
 	});
+
+	test('Dismissible', async ({ page }) => {
+		await gotoFrame(page, 'components-toasts--toasts-dismissible');
+
+		// required to allow animations to complete
+		await page.waitForTimeout(2000);
+
+		const a11yNumViolations = await a11yTest(page, 'toasts__dismissible');
+
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
+	});
+
+	test('Auto-dismiss', async ({ page }) => {
+		await gotoFrame(page, 'components-toasts--toasts-auto-dismiss');
+
+		// required to allow animations to complete
+		await page.waitForTimeout(2000);
+
+		const a11yNumViolations = await a11yTest(page, 'toasts__auto-dismiss');
+
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
+	});
 });

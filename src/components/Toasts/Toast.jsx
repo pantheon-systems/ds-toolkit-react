@@ -84,7 +84,6 @@ const Toast = ({
 	};
 
 	const triggerOnDismiss = (event) => {
-		/* toastRef.current.remove(); */
 		onDismiss(event, id);
 	};
 
