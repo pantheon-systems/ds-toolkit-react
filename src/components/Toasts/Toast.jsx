@@ -37,14 +37,7 @@ const typeLabels = {
 	pantheon: 'Pantheon',
 };
 
-const Toast = ({
-	id,
-	type,
-	message,
-	isDismissible,
-	onDismiss,
-	autodismiss,
-}) => {
+const Toast = ({ id, type, message, onDismiss, autodismiss }) => {
 	const css = ['pds-toast', cssClasses[type]];
 	let decorator = decorators[type];
 
@@ -175,10 +168,6 @@ Toast.propTypes = {
 		autodismiss: PropTypes.bool,
 		timeInSeconds: PropTypes.number,
 	}),
-	/**
-	 * Is the toast dismissible?
-	 */
-	isDismissible: PropTypes.bool,
 	/**
 	 * Function to manage what occurs when the toast's dismiss button is clicked, or the auto-dismiss timer ends.
 	 * NOTE: This is required if `isDismissible` or autodismiss is set to true.
