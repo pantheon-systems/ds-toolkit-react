@@ -2,6 +2,8 @@
 
 The Toasts component creates an area where toast messages are shown. A toast is a concise message that is communicated to the user in a consistent position. Toast messages should be used to communicate the completion of a task by the user, an error or warning that occurred as a result of an action by the user, or generally any message that would not create negative impact if it is missed by the user. Ideally a toast should contain _no_ interactive controls.
 
+Only one toasts area should exist on a page.
+
 ## Implementation
 
 ### Props
@@ -20,8 +22,7 @@ The shape of the data passed to the Toasts component is an array of `toasts`. Ea
 - `id` — A short string that uniquely identifies the toast — required.
 - `type` — A string describing the type of toast to show, one of: 'info', 'success', 'warning', 'error', 'pantheon' — required.
 - `message` — The content of the toast, either a string or a React element/node — required.
-- `isDismissible` — A boolean to indicate if the toast will wait for the user to dismiss it.
-- `onDismiss` — The function to perform when the toast is dismissed, manually or automatically.
+- `onDismiss` — The function to perform when the toast is dismissed — required.
 - `autodismiss` — An object with the following shape:
   - `autodismiss` — A boolean to indicate that the toast will self dismiss after a period of time.
   - `timeInSeconds` — A numeric value describing the number of seconds the toast will remain visible prior to dismissing itself.
@@ -34,13 +35,13 @@ The shape of the data passed to the Toasts component is an array of `toasts`. Ea
 		id: `pds-toast-7gVgbAhI`,
 		type: 'info',
 		message: 'This is the first toast.',
+		onDismiss: handleDismissButtonClick,
 	},
 	{
 		id: `pds-toast-xAtNczUX`,
 		type: 'success',
 		message: 'This is the second toast.',
-		isDismissible: true,
-		onDismiss: dismissClickSomeDismissible,
+		onDismiss: handleDismissButtonClick,
 	},
 	{
 		id: `pds-toast-5WJ6f4sp`,

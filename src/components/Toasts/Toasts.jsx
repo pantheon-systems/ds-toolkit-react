@@ -40,7 +40,8 @@ const Toasts = ({ toasts, maxToastsVisible, position }) => {
 		<div
 			className={`pds-toasts__container pds-location-${position}`}
 			style={locations[position]}
-			role='status'
+			role='log'
+			aria-label='Notifications'
 		>
 			{toastsToShow.map((toast, idx) => {
 				return <Toast {...toast} key={toast.id} />;
@@ -91,14 +92,10 @@ Toasts.propTypes = {
 				timeInSeconds: PropTypes.number,
 			}),
 			/**
-			 * Is the toast dismissible?
-			 */
-			isDismissible: PropTypes.bool,
-			/**
 			 * Function to manage what occurs when the toast's dismiss button is clicked, or the auto-dismiss timer ends.
 			 * NOTE: This is required if `isDismissible` or autodismiss is set to true.
 			 */
-			onDismiss: PropTypes.func,
+			onDismiss: PropTypes.func.isRequired,
 		}),
 	),
 	/**
