@@ -29,6 +29,14 @@ const decorators = {
 	info: <IconInfo className={cssClasses.decorator} />,
 };
 
+const typeLabels = {
+	info: 'Info',
+	warning: 'Warning',
+	error: 'Error',
+	success: 'Success',
+	pantheon: 'Pantheon',
+};
+
 const Toast = ({
 	id,
 	type,
@@ -96,21 +104,31 @@ const Toast = ({
 
 	const timerValueWidth = (timer.value / timer.time) * 100 + '%';
 
+	const toastLabel = `[${typeLabels[type]}] `;
+
 	return (
-		<div className={css.join(' ').trim()} id={id} ref={toastRef}>
+		<div
+			className={css.join(' ').trim()}
+			id={id}
+			ref={toastRef}
+			tabIndex='0'
+			aria-labelledby={`${id}-label`}
+		>
 			{decorator}
 
-			<div className='pds-toast__content'>{message}</div>
+			<div id={`${id}-label`} className='pds-toast__content'>
+				<span className='pds-toast__aria-type-description'>{toastLabel}</span>
+				{message}
+			</div>
 
-			{isDismissible && (
-				<button
-					className={cssClasses.dismiss}
-					onClick={handleDismiss}
-					title='Dismiss toast message'
-				>
-					<IconClear />
-				</button>
-			)}
+			<button
+				className={cssClasses.dismiss}
+				onClick={handleDismiss}
+				aria-label='Dismiss'
+				role='button'
+			>
+				<IconClear />
+			</button>
 
 			{autodismiss?.autodismiss && (
 				<div
@@ -165,7 +183,7 @@ Toast.propTypes = {
 	 * Function to manage what occurs when the toast's dismiss button is clicked, or the auto-dismiss timer ends.
 	 * NOTE: This is required if `isDismissible` or autodismiss is set to true.
 	 */
-	onDismiss: PropTypes.func,
+	onDismiss: PropTypes.func.isRequired,
 };
 
 Toast.defaultProps = {

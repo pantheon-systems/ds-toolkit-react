@@ -63,12 +63,6 @@ Toasts.args = {
 };
 Toasts.storyName = 'Default';
 
-export const ToastsDismissible = Template.bind({});
-ToastsDismissible.args = {
-	toasts: toastsSomeDismissible,
-};
-ToastsDismissible.storyName = 'With Dismissible';
-
 export const ToastsAutoDismiss = Template.bind({});
 ToastsAutoDismiss.args = {
 	toasts: toastsOneAutoDismiss,
