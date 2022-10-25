@@ -4,11 +4,7 @@ import DocsDescription from './Toasts.docs.md';
 import { useEffect } from 'react';
 import { useArgs } from '@storybook/client-api';
 
-import {
-	toastsSimple,
-	toastsSomeDismissible,
-	toastsOneAutoDismiss,
-} from './toasts-sample-data';
+import { toastsSimple } from './toasts-sample-data';
 
 export default {
 	title: 'Components/Toasts',
@@ -62,9 +58,3 @@ Toasts.args = {
 	toasts: toastsSimple,
 };
 Toasts.storyName = 'Default';
-
-export const ToastsAutoDismiss = Template.bind({});
-ToastsAutoDismiss.args = {
-	toasts: toastsOneAutoDismiss,
-};
-ToastsAutoDismiss.storyName = 'With Auto-dismiss';

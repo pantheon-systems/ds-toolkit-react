@@ -47,9 +47,6 @@ The shape of the data passed to the Toasts component is an array of `toasts`. Ea
 - `type` — A string describing the type of toast to show, one of: 'info', 'success', 'warning', 'error', 'pantheon' — required.
 - `message` — The content of the toast, either a string or a React element/node — required.
 - `onDismiss` — The function to perform when the toast is dismissed — required.
-- `autodismiss` — An object with the following shape:
-  - `autodismiss` — A boolean to indicate that the toast will self dismiss after a period of time.
-  - `timeInSeconds` — A numeric value describing the number of seconds the toast will remain visible prior to dismissing itself.
 
 #### Example data array
 
@@ -71,10 +68,6 @@ The shape of the data passed to the Toasts component is an array of `toasts`. Ea
 		id: `pds-toast-5WJ6f4sp`,
 		type: 'warning',
 		message: 'This is the third toast.',
-		autodismiss: {
-			autodismiss: true,
-			timeInSeconds: autoDismissTimeInSeconds,
-		},
 		onDismiss: dismissAuto,
 	},
 ]
