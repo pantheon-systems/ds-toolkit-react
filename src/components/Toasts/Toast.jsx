@@ -110,7 +110,7 @@ const Toast = ({ id, type, message, onDismiss, autodismiss }) => {
 			{decorator}
 
 			<div id={`${id}-label`} className='pds-toast__content'>
-				<span className='pds-toast__aria-type-description'>{toastLabel}</span>
+				<span className='pds-a11y-content'>{toastLabel}</span>
 				{message}
 			</div>
 
