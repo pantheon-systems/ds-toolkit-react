@@ -25,15 +25,7 @@ const locations = {
 /**
  * Toasts UI component
  */
-const Toasts = ({ toasts, maxToastsVisible, position }) => {
-	// Determine if we need to limit how many toasts should be visible
-	let toastsToShow = toasts;
-	let moreHidden = false;
-	if (maxToastsVisible < toasts.length) {
-		toastsToShow = toasts.slice(0, maxToastsVisible);
-		moreHidden = toasts.length - maxToastsVisible;
-	}
-
+const Toasts = ({ toasts, position }) => {
 	//
 	// Render the output
 	return (
@@ -43,13 +35,9 @@ const Toasts = ({ toasts, maxToastsVisible, position }) => {
 			role='log'
 			aria-label='Notifications'
 		>
-			{toastsToShow.map((toast, idx) => {
+			{toasts.map((toast, idx) => {
 				return <Toast {...toast} key={toast.id} />;
 			})}
-
-			{moreHidden && (
-				<div className='pds-toasts__more-hidden'>{moreHidden} more hidden</div>
-			)}
 		</div>
 	);
 };
@@ -99,10 +87,6 @@ Toasts.propTypes = {
 		}),
 	),
 	/**
-	 * Maximum number of toast objects to show in the UI.
-	 */
-	maxToastsVisible: PropTypes.number,
-	/**
 	 * Location toast objects will show in the UI.
 	 */
 	position: PropTypes.oneOf([
@@ -114,7 +98,6 @@ Toasts.propTypes = {
 };
 
 Toasts.defaultProps = {
-	maxToastsVisible: 999,
 	position: 'start-end',
 };
 
