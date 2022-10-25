@@ -4,6 +4,30 @@ The Toasts component creates an area where toast messages are shown. A toast is 
 
 Only one toasts area should exist on a page.
 
+## Usage
+
+### Types
+
+#### Success
+
+It is strongly recommended to use the success state primarily for notifications relating to long running tasks. For other updates please update the interface optimistically in the immediate area of the interaction.
+
+#### Info
+
+Should be used infrequently and follow the rules similar to the "success" type.
+
+#### Warning
+
+Should be used for notifications that call out potential issues but not errors.
+
+#### Error
+
+Actual errors reported by the page or system after an action was taken or completed by the system.
+
+#### Pantheon
+
+Used only in the internal, Pantheor only, version of the dashboard for notifications that are specific to internal staff or usage.
+
 ## Implementation
 
 ### Props
