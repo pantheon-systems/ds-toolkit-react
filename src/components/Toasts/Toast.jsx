@@ -37,44 +37,11 @@ const typeLabels = {
 	pantheon: 'Pantheon',
 };
 
-const Toast = ({ id, type, message, onDismiss, autodismiss }) => {
+const Toast = ({ id, type, message, onDismiss }) => {
 	const css = ['pds-toast', cssClasses[type]];
 	let decorator = decorators[type];
 
-	const [timer, setTimer] = useState({
-		time: autodismiss?.timeInSeconds,
-		value: autodismiss?.timeInSeconds,
-		unit: 'seconds',
-	});
-
 	const toastRef = useRef(null);
-
-	//
-
-	useEffect(() => {
-		let countdownTimer;
-
-		// Add timer if autodismiss is enabled for this toast
-		if (autodismiss?.autodismiss) {
-			countdownTimer = setInterval(() => {
-				setTimer((prevTimer) => {
-					if (prevTimer.value === 0) {
-						clearInterval(countdownTimer);
-
-						// call onDismiss callback
-						dismissAnimationEndEventHandler();
-						toastRef.current.classList.toggle(cssClasses.dismissing);
-					}
-
-					return { ...prevTimer, value: prevTimer.value - 1 };
-				});
-			}, 1000);
-		}
-
-		return () => {
-			clearInterval(countdownTimer);
-		};
-	}, []);
 
 	//
 
@@ -94,8 +61,6 @@ const Toast = ({ id, type, message, onDismiss, autodismiss }) => {
 	};
 
 	//
-
-	const timerValueWidth = (timer.value / timer.time) * 100 + '%';
 
 	const toastLabel = `[${typeLabels[type]}] `;
 
@@ -122,23 +87,6 @@ const Toast = ({ id, type, message, onDismiss, autodismiss }) => {
 			>
 				<IconClear />
 			</button>
-
-			{autodismiss?.autodismiss && (
-				<div
-					className='pds-toast__timer'
-					value={timer.value}
-					role='progressbar'
-					aria-valuemin='0'
-					aria-valuemax={timer.max}
-					aria-valuenow={timer.value}
-					aria-label='Toast timer countdown'
-				>
-					<div
-						className='pds-toast__timer-value'
-						style={{ width: timerValueWidth }}
-					></div>
-				</div>
-			)}
 		</div>
 	);
 };
@@ -161,13 +109,6 @@ Toast.propTypes = {
 	 * Content to display.
 	 */
 	message: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-	/**
-	 * Auto-dismiss config
-	 */
-	autodismiss: PropTypes.shape({
-		autodismiss: PropTypes.bool,
-		timeInSeconds: PropTypes.number,
-	}),
 	/**
 	 * Function to manage what occurs when the toast's dismiss button is clicked, or the auto-dismiss timer ends.
 	 * NOTE: This is required if `isDismissible` or autodismiss is set to true.

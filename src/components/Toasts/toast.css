@@ -108,32 +108,6 @@
 	flex-grow: 1;
 }
 
-.pds-toast .pds-toast__timer {
-	position: absolute;
-	inset-inline-start: 0;
-	inset-block-end: 0;
-
-	appearance: none;
-	border: 0;
-	border-end-end-radius: var(--_pds-toast-border-radius);
-
-	background-color: transparent;
-
-	height: token('spacing.4XS' to em);
-
-	width: 100%;
-}
-
-.pds-toast .pds-toast__timer-value {
-	background-color: var(--pds-color-neutrals-darkest);
-	height: 100%;
-	opacity: 16%;
-
-	transition-property: width;
-	transition-duration: 1s;
-	transition-timing-function: linear;
-}
-
 .pds-toast.pds-toast__success {
 	--_pds-toast-color-border: var(--pds-color-status-success);
 	--_pds-toast-color-decorator: var(--pds-color-status-success);

@@ -73,13 +73,6 @@ Toasts.propTypes = {
 			message: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
 				.isRequired,
 			/**
-			 * Auto-dismiss config
-			 */
-			autodismiss: PropTypes.shape({
-				autodismiss: PropTypes.bool,
-				timeInSeconds: PropTypes.number,
-			}),
-			/**
 			 * Function to manage what occurs when the toast's dismiss button is clicked, or the auto-dismiss timer ends.
 			 * NOTE: This is required if `isDismissible` or autodismiss is set to true.
 			 */
