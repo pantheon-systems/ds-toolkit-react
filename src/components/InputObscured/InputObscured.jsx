@@ -154,7 +154,7 @@ const InputObscured = ({
 			<label htmlFor={id}>{label}</label>
 
 			<div
-				className='pds-input-obscured__aria-live'
+				className='pds-a11y-content'
 				aria-live='polite'
 			>{`Content of ${label} input is ${
 				visibility ? 'visible' : 'hidden'

@@ -94,17 +94,6 @@
 	color: var(--pds-color-neutrals-darker);
 }
 
-.pds-toast__aria-type-description {
-	border: 0 none;
-	clip: rect(0px, 0px, 0px, 0px);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-
 .pds-toast .pds-toast__decorator {
 	color: var(--_pds-toast-color-decorator);
 }

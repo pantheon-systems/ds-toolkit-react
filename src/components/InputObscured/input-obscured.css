@@ -7,17 +7,6 @@
  *
  */
 
-.pds-input-obscured .pds-input-obscured__aria-live {
-	border: 0 none;
-	clip: rect(0px, 0px, 0px, 0px);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-
 .pds-input-obscured .pds-input-obscured__toggle {
 	padding: token('spacing.4XS' to em);
 }
