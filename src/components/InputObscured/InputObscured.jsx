@@ -108,7 +108,7 @@ const InputObscured = ({
 
 		// call counterFunction that was passed in and give it the current value
 		if (counterFunction) {
-			setCounter(counterFunction(inputRef.current.value));
+			setCounter(counterFunction(''));
 		}
 
 		// call the onChange function that was passed in and give it the current value
