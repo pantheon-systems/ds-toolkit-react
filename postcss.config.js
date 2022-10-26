@@ -14,6 +14,7 @@ module.exports = {
 						'--small-viewport': 'only screen and (max-width: 640px)',
 						'--medium-viewport':
 							'only screen and (min-width: 641px) and (max-width: 1024px)',
+						'--medium-viewport-min': 'only screen and (min-width: 641px)',
 						'--large-viewport': 'only screen and (min-width: 1025px)',
 					},
 				},
