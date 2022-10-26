@@ -32,7 +32,11 @@ export default {
 
 const Template = (args) => (
 	<LayoutGlobalComponent {...args}>
-		<nav slot='main-nav' className='pds-global-navigation'>
+		<nav
+			slot='main-nav'
+			className='pds-global-navigation'
+			aria-labelledby='main-nav-label'
+		>
 			<p id='main-nav-label'>Main site navigation</p>
 			<ul aria-labelledby='main-nav-label'>
 				<li>
@@ -50,7 +54,11 @@ const Template = (args) => (
 			</ul>
 		</nav>
 		{args.showSecondary && (
-			<nav slot='main-nav' className='pds-global-navigation__secondary-nav'>
+			<nav
+				slot='main-nav'
+				className='pds-global-navigation__secondary-nav'
+				aria-labelledby='main-nav-secondary-label'
+			>
 				<p id='main-nav-secondary-label'>Secondary site navigation</p>
 				<ul aria-labelledby='main-nav-secondary-label'>
 					<li>
