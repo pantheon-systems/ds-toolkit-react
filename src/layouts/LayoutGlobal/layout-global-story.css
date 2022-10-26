@@ -1,0 +1,55 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+#main-navigation {
+	background-color: token('color.neutrals.medium');
+}
+
+.pds-global-navigation,
+.pds-global-navigation__secondary-nav {
+	font-size: token('typography.size.multipliers.reduce-one' to rem);
+	padding: token('spacing.S' to rem);
+}
+
+.pds-global-navigation__secondary-nav {
+	background-color: token('color.accents.deep');
+}
+
+.pds-global-navigation__secondary-nav,
+.pds-global-navigation__secondary-nav a:not(:active) {
+	color: token('color.neutrals.lightest');
+}
+
+.pds-global-navigation ul,
+.pds-global-navigation__secondary-nav ul {
+	list-style-type: none;
+	padding-inline-start: 0;
+}
+
+.pds-layout-global--has-secondary-nav #main-navigation {
+	display: grid;
+	grid-template-columns: repeat(2, 50%);
+
+	hyphens: auto;
+	overflow-wrap: break-word;
+}
+
+#main-content {
+	background-color: token('color.neutrals.medium-light');
+}
+
+#main-content__header {
+	background-color: token('color.neutrals.medium-dark');
+}
+
+.pds-main-content__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: token('spacing.XS' to rem);
+
+	padding: token('spacing.2XS' to rem);
+}
+
+.pds-main-content {
+	padding: token('spacing.XS' to rem);
+}
