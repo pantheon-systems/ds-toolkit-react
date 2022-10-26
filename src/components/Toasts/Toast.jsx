@@ -11,13 +11,13 @@ import { IconPantheon } from '../__shared/__assets/icons/icon-pantheon';
 import { IconClear } from '../__shared/__assets/icons/icon-clear';
 
 const cssClasses = {
+	error: 'pds-toast--error',
+	info: 'pds-toast--info',
+	pantheon: 'pds-toast--pantheon',
+	success: 'pds-toast--success',
+	warning: 'pds-toast--warning',
 	decorator: 'pds-toast__decorator',
 	dismiss: 'pds-toast__dismiss',
-	warning: 'pds-toast__warning',
-	error: 'pds-toast__error',
-	success: 'pds-toast__success',
-	pantheon: 'pds-toast__pantheon',
-	info: 'pds-toast__info',
 	dismissing: 'pds-dismissing',
 };
 
