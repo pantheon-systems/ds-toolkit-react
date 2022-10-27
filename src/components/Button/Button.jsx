@@ -29,7 +29,7 @@ Button.propTypes = {
 	/**
 	 * Which variant of button to render
 	 */
-	variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'critical']),
+	variant: PropTypes.oneOf(['primary', 'secondary', 'subtle', 'critical']),
 	/**
 	 * The text of the button
 	 */

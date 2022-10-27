@@ -18,9 +18,9 @@ The primary type should only have one occurrence per page or logical content blo
 
 The critical type should only be used for destructive actions, such as deletion of data.
 
-#### Tertiary
+#### Subtle
 
-The tertiary type should only be used when paired with another button, such as for a "cancel" action in a modal. It should never be used independently.
+The subtle type should only be used when paired with another button, such as for a "cancel" action in a modal. It should never be used independently.
 
 ## Buttons vs Links
 
