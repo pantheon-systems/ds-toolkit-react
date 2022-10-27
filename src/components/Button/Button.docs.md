@@ -8,6 +8,20 @@ Buttons should be easy to find among other elements, including other buttons —
 
 Button text should be informative and concise.
 
+### Types
+
+#### Primary
+
+The primary type should only have one occurrence per page or logical content block. Avoid having many primary buttons on one page as it will defeat the purpose of this intentionally more prominent button.
+
+#### Critical
+
+The critical type should only be used for destructive actions, such as deletion of data.
+
+#### Tertiary
+
+The tertiary type should only be used when paired with another button, such as for a "cancel" action in a modal. It should never be used independently.
+
 ## Buttons vs Links
 
 Buttons and links are distinct elements with distinct purposes — buttons are used to initiate actions, while links are used to navigate to another page, elsewhere on the same page, or to an external destination. Those distinctions are extremely important for assistive technology users. See [Links VS Buttons: A Perennial Problem](https://www.digitala11y.com/links-vs-buttons-a-perennial-problem/) for an in-depth explanation.

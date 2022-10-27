@@ -76,7 +76,7 @@ button.pds-button--primary:hover:enabled {
 }
 
 button.pds-button--tertiary {
-	--_pds-button-color-foreground: var(--pds-color-neutrals-dark);
+	--_pds-button-color-border: transparent;
 }
 
 button.pds-button--critical {
