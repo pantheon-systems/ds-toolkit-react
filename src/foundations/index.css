@@ -1,4 +1,5 @@
 @import url('./normalize.css');
+@import url('./a11y.css');
 
 @import url('@pantheon-systems/pds-tokens/build/css/pds-design-tokens.css');
 

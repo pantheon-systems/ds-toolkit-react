@@ -108,7 +108,7 @@ const InputObscured = ({
 
 		// call counterFunction that was passed in and give it the current value
 		if (counterFunction) {
-			setCounter(counterFunction(inputRef.current.value));
+			setCounter(counterFunction(''));
 		}
 
 		// call the onChange function that was passed in and give it the current value
@@ -154,7 +154,7 @@ const InputObscured = ({
 			<label htmlFor={id}>{label}</label>
 
 			<div
-				className='pds-input-obscured__aria-live'
+				className='pds-a11y-content'
 				aria-live='polite'
 			>{`Content of ${label} input is ${
 				visibility ? 'visible' : 'hidden'
