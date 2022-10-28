@@ -6,7 +6,7 @@ const {
 	sampleSelectOptionsScrolling,
 } = require('./combobox-select-sample-data');
 
-const storyID = 'components-combobox-select--combobox-select';
+const storyID = 'components-inputs-combobox-select--combobox-select';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
@@ -15,7 +15,7 @@ test.describe.configure({ mode: 'parallel' });
 const clipOptions = { x: 0, y: 0, width: 350, height: 600 };
 const clipOptionsSmall = { x: 0, y: 0, width: 250, height: 200 };
 
-test.describe('Components/Combobox select', () => {
+test.describe('Components/Inputs/Combobox select', () => {
 	test.describe('General', () => {
 		test('Base', async ({ page }) => {
 			await gotoFrame(page, storyID);

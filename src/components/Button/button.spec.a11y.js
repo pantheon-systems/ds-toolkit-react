@@ -2,12 +2,12 @@ const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require('../../../src/libs/testing/a11y');
 
-const storyID = 'components-button--button';
+const storyID = 'components-buttons--button';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Button', () => {
+test.describe('Components/Buttons/Button', () => {
 	test.describe('Default/Secondary', () => {
 		test('Base', async ({ page }) => {
 			await gotoFrame(page, storyID);
@@ -174,13 +174,13 @@ test.describe('Components/Button', () => {
 		});
 	});
 
-	test.describe('Tertiary', () => {
+	test.describe('Subtle', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__tertiary',
+				'components-button__subtle',
 			);
 
 			expect(
@@ -190,11 +190,11 @@ test.describe('Components/Button', () => {
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary;disabled:true');
+			await gotoFrame(page, storyID, 'variant:subtle;disabled:true');
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__tertiary-disabled',
+				'components-button__subtle-disabled',
 			);
 
 			expect(
@@ -204,7 +204,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			const button = page.locator('.pds-button');
 
@@ -212,7 +212,7 @@ test.describe('Components/Button', () => {
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__tertiary-hover',
+				'components-button__subtle-hover',
 			);
 
 			expect(
@@ -222,7 +222,7 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			const button = page.locator('.pds-button');
 
@@ -231,7 +231,7 @@ test.describe('Components/Button', () => {
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__tertiary-active',
+				'components-button__subtle-active',
 			);
 
 			expect(
@@ -241,13 +241,13 @@ test.describe('Components/Button', () => {
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			await focusViaTab(page, browserName);
 
 			const a11yNumViolations = await a11yTest(
 				page,
-				'components-button__tertiary-focused',
+				'components-button__subtle-focused',
 			);
 
 			expect(

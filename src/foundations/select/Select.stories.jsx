@@ -3,7 +3,7 @@ import Docs from './Select.docs.md';
 import { createShortUUID } from '../../libs/components/utils';
 
 export default {
-	title: 'Foundations/Select',
+	title: 'Foundations/Elements/Select',
 	parameters: {
 		componentSubtitle: 'Base select field styles',
 		docs: {
