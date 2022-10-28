@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-toasts--toasts';
+const storyID = 'components-messaging-toasts--toasts';
 
 const { toastsSimple } = require('./toasts-sample-data');
 

@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-menu-button--menu-button';
+const storyID = 'components-buttons-menu-button--menu-button';
 
 const {
 	dialogMsgBase,
@@ -12,7 +12,7 @@ const {
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Menu Button', () => {
+test.describe('Components/Buttons/Menu Button', () => {
 	test.describe('Complex data', () => {
 		test('Item activated (via keyboard)', async ({ page, browserName }) => {
 			await gotoFrame(page, storyID);
