@@ -17,14 +17,6 @@ executors:
       PLAYWRIGHT_SKIP_BROWSER_GC: 1
     resource_class: medium
 
-commands:
-  setup_github_packages:
-    description: Setup environment to access Github Packages
-    steps:
-      - run:
-          name: 'Add npm registry to .npmrc'
-          command: 'echo //npm.pkg.github.com/:_authToken=${BOT_GITHUB_TOKEN} >> ~/.npmrc'
-
 jobs:
   test_a11y:
     description: 'Testing: a11y'
@@ -32,7 +24,6 @@ jobs:
 
     steps:
       - checkout
-      - setup_github_packages
       - node/install-packages
 
       - run:
@@ -51,7 +42,6 @@ jobs:
 
     steps:
       - checkout
-      - setup_github_packages
       - node/install-packages
 
       - run:
@@ -67,7 +57,6 @@ jobs:
 
     steps:
       - checkout
-      - setup_github_packages
       - node/install-packages
 
       - run:
