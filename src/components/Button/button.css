@@ -75,8 +75,8 @@ button.pds-button--primary:hover:enabled {
 	--_pds-button-color-background: var(--pds-color-brand-primary-dark);
 }
 
-button.pds-button--tertiary {
-	--_pds-button-color-foreground: var(--pds-color-neutrals-dark);
+button.pds-button--subtle {
+	--_pds-button-color-border: transparent;
 }
 
 button.pds-button--critical {
@@ -88,6 +88,6 @@ button.pds-button--critical:hover:enabled {
 }
 
 button.pds-button--secondary:hover:enabled,
-button.pds-button--tertiary:hover:enabled {
+button.pds-button--subtle:hover:enabled {
 	--_pds-button-color-background: var(--pds-color-highlight-light);
 }
