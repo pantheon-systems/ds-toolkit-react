@@ -51,7 +51,7 @@ const LayoutGlobal = ({ children, hasSecondaryMainNav }) => {
 	// Render the output
 	return (
 		<>
-			<a href='#main-content' className='pds-a11y-content'>
+			<a href='#main-content' className='pds-global-layout__skip-link'>
 				Skip to main content
 			</a>
 
