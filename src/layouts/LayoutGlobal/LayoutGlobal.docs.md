@@ -13,3 +13,7 @@ The slot names and uses are as follows:
 - `main-nav` — The main navigation area.
 - `main-content-header` — The header area of the main content area.
 - `main-content` — The main content area.
+
+<br/>
+
+**Note:** This is purely a layout component and does not contain any visual styles. The sample content below is styled for demonstration purposes only.
