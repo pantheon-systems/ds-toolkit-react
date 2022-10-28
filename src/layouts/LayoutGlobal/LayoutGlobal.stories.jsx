@@ -4,7 +4,7 @@ import DocsDescription from './LayoutGlobal.docs.md';
 import './layout-global-story.css';
 
 export default {
-	title: 'Layouts/Global',
+	title: 'Layouts/Page/Global',
 	component: LayoutGlobalComponent,
 	parameters: {
 		componentSubtitle:

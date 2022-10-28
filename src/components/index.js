@@ -9,4 +9,3 @@ export { default as InputText } from './InputText';
 export { default as MenuButton } from './MenuButton';
 export { default as Stepper } from './Stepper';
 export { default as Toasts } from './Toasts';
-export { default as TwoItemLayout } from './TwoItemLayout';
