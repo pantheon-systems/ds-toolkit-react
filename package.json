@@ -19,6 +19,7 @@
 	"scripts": {
 		"prestorybook": "npm run build:css",
 		"storybook": "start-storybook -p 6006",
+		"prestorybook:build": "npm run build:css",
 		"storybook:build": "build-storybook",
 		"pretest": "npm run build:css",
 		"test": "playwright test",
@@ -44,6 +45,8 @@
 		"postbuild": "npm run build:css",
 		"build:css": "postcss src/foundations/index.css -o _dist/css/pantheon-core.css",
 		"build:css:watch": "npm run build:css -- -w",
+		"predeploy:pantheon": "npm run build:css",
+		"deploy:pantheon": "build-storybook",
 		"generate:component": "plop component"
 	},
 	"devDependencies": {

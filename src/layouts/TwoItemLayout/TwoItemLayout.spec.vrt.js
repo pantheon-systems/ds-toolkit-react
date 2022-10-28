@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-two-item-layout--two-item-layout';
+const storyID = 'layouts-within-page-two-item-layout--two-item-layout';
 //
 // // enable single file parallelism
 // test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Two Item Layout', () => {
+test.describe('Layouts/Within Page/Two Item Layout', () => {
 	test('Default(equal)', async ({ page }) => {
 		await gotoFrame(page, storyID);
 

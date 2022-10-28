@@ -1,0 +1,63 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-layout-global-						-> <add description>
+ *
+ */
+
+div.pds-layout-global {
+	column-gap: 0;
+	row-gap: 0;
+}
+
+/* Medium viewport minimum */
+@media (--medium-viewport-min) {
+	#main-navigation,
+	#main-content__header {
+		position: sticky;
+		inset-block-start: 0;
+	}
+
+	#main-navigation {
+		height: 100vmin;
+	}
+}
+
+/* Skip link focus styles */
+.pds-global-layout__skip-link {
+	display: block;
+	position: absolute;
+	padding: token('spacing.S' to em);
+	font-size: token('typography.size.multipliers.reduce-one' to rem);
+	z-index: 1;
+	transform: translateY(-8rem);
+
+	border: 0;
+	border-radius: 3rem;
+	overflow: hidden;
+	text-align: center;
+
+	transition: all 120ms ease-out;
+	vertical-align: top;
+	white-space: nowrap;
+	user-select: none;
+	opacity: 1;
+	margin: token('spacing.S' to rem);
+	padding: token('spacing.M' to rem);
+
+	background-color: token('color.accents.deep');
+	color: token('color.neutrals.lightest');
+}
+
+.pds-global-layout__skip-link:not(:active) {
+	color: token('color.neutrals.lightest');
+}
+
+.pds-global-layout__skip-link:focus {
+	transform: translateY(0);
+	outline: none;
+	box-shadow: 0 0 0.5rem var(--pds-color-focus);
+	padding: token('spacing.M' to rem);
+}

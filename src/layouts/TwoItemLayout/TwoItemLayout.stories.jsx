@@ -2,7 +2,7 @@ import TwoItemLayoutComponent from './TwoItemLayout';
 import TwoItemLayoutDescription from './TwoItemLayout.docs.md';
 
 export default {
-	title: 'Components/Two Item Layout',
+	title: 'Layouts/Within Page/Two Item Layout',
 	component: TwoItemLayoutComponent,
 	parameters: {
 		componentSubtitle: 'A layout container with two items',
