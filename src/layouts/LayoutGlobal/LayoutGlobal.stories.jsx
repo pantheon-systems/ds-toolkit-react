@@ -78,10 +78,7 @@ const Template = (args) => (
 		)}
 
 		<div slot='main-content-header' className='pds-main-content__header'>
-			<span>Pantheon</span>
-			<div className='pds-main-content__header-utilities'>
-				<input type='search' placeholder='search' />
-			</div>
+			<span>Main Content Header</span>
 		</div>
 
 		<div slot='main-content' className='pds-main-content'>
