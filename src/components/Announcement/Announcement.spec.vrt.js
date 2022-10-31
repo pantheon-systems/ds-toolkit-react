@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-announcement--announcement';
+const storyID = 'components-messaging-announcement--announcement';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Announcement', () => {
+test.describe('Components/Messaging/Announcement', () => {
 	test('Type: info', async ({ page }) => {
 		await gotoFrame(page, storyID);
 
@@ -24,7 +24,10 @@ test.describe('Components/Announcement', () => {
 	});
 
 	test('Dismissible', async ({ page }) => {
-		await gotoFrame(page, 'components-announcement--announcement-dismissible');
+		await gotoFrame(
+			page,
+			'components-messaging-announcement--announcement-dismissible',
+		);
 
 		expect(await page.screenshot()).toMatchSnapshot(
 			'announcement__dismissible.png',

@@ -4,7 +4,7 @@ import DocsDescription from './ButtonSplit.docs.md';
 import { sampleActionItems } from './button-split-sample-data';
 
 export default {
-	title: 'Components/Button Split',
+	title: 'Components/Buttons/Button Split',
 	component: ButtonSplitComponent,
 	parameters: {
 		componentSubtitle:

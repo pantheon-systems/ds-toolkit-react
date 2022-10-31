@@ -7,7 +7,7 @@ import {
 } from './menu-button-sample-data';
 
 export default {
-	title: 'Components/Menu Button',
+	title: 'Components/Buttons/Menu Button',
 	component: MenuButtonComponent,
 	parameters: {
 		componentSubtitle: 'A component used to render a button that opens a menu',

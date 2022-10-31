@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-button-split--button-split';
+const storyID = 'components-buttons-button-split--button-split';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
@@ -10,7 +10,7 @@ test.describe.configure({ mode: 'parallel' });
 const clipOptions = { x: 0, y: 0, width: 175, height: 100 };
 const clipOptionsLarge = { x: 0, y: 0, width: 250, height: 400 };
 
-test.describe('Components/Button Split', () => {
+test.describe('Components/Buttons/Button Split', () => {
 	test('Base', async ({ page }) => {
 		await gotoFrame(page, storyID);
 

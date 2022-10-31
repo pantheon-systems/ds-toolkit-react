@@ -7,7 +7,7 @@ import {
 } from './combobox-select-sample-data';
 
 export default {
-	title: 'Components/Combobox Select',
+	title: 'Components/Inputs/Combobox Select',
 	component: ComboboxSelectComponent,
 	parameters: {
 		componentSubtitle:

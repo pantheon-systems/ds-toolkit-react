@@ -1,6 +1,6 @@
-# pds-starter
+# DS Toolkit React
 
-Template repository for starting React based toolkits.
+Design systems focused React based toolkit for the Pantheon Dashboard.
 
 Includes:
 

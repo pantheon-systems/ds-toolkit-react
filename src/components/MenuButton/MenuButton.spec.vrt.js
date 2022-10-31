@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-menu-button--menu-button';
+const storyID = 'components-buttons-menu-button--menu-button';
 
 const {
 	dialogMsgBase,
@@ -17,7 +17,7 @@ test.describe.configure({ mode: 'parallel' });
 // Page screenshot clipping/cropping dimensions
 const clipOptions = { x: 0, y: 0, width: 250, height: 400 };
 
-test.describe('Components/Menu Button', () => {
+test.describe('Components/Buttons/Menu Button', () => {
 	test.describe('General', () => {
 		test('Base', async ({ page }) => {
 			await gotoFrame(page, storyID);

@@ -7,7 +7,7 @@ import { useArgs } from '@storybook/client-api';
 import { toastsSimple } from './toasts-sample-data';
 
 export default {
-	title: 'Components/Toasts',
+	title: 'Components/Messaging/Toasts',
 	component: ToastsComponent,
 	parameters: {
 		componentSubtitle: 'A component to display toast messages',
@@ -57,4 +57,4 @@ export const Toasts = Template.bind({});
 Toasts.args = {
 	toasts: toastsSimple,
 };
-Toasts.storyName = 'Default';
+Toasts.storyName = 'Toasts';

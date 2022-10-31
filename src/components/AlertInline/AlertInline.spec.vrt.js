@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-alerts-inline--alert-inline';
+const storyID = 'components-messaging-alert-inline--alert-inline';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Alerts/Inline', () => {
+test.describe('Components/Messaging/Alerts Inline', () => {
 	test('Type: info', async ({ page }) => {
 		await gotoFrame(page, storyID);
 
@@ -48,7 +48,10 @@ test.describe('Components/Alerts/Inline', () => {
 	});
 
 	test('Dismissible', async ({ page }) => {
-		await gotoFrame(page, 'components-alerts-inline--alert-inline-dismissible');
+		await gotoFrame(
+			page,
+			'components-messaging-alert-inline--alert-inline-dismissible',
+		);
 
 		expect(await page.screenshot()).toMatchSnapshot(
 			'alert-inline__dismissible.png',

@@ -2,7 +2,7 @@ import AlertInlineComponent from './AlertInline';
 import DocsDescription from './AlertInline.docs.md';
 
 export default {
-	title: 'Components/Alerts/Inline',
+	title: 'Components/Messaging/Alert Inline',
 	component: AlertInlineComponent,
 	parameters: {
 		componentSubtitle: 'A component to display an alert within a content area',
