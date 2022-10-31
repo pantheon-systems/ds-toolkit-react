@@ -5,11 +5,9 @@ import './checkbox.css';
 /**
  * Checkbox UI component
  */
-const Checkbox = ({ size, id, name, value, label, disabled, ...props }) => {
-	const sizeClass = size === 'medium' ? undefined : `pds-checkbox--${size}`;
-
+const Checkbox = ({ id, name, value, label, disabled }) => {
 	return (
-		<div className={['pds-checkbox', sizeClass].join(' ').trim()}>
+		<div className='pds-checkbox'>
 			<input
 				type='checkbox'
 				id={id}
@@ -22,10 +20,6 @@ const Checkbox = ({ size, id, name, value, label, disabled, ...props }) => {
 };
 
 Checkbox.propTypes = {
-	/**
-	 * Checkbox size.
-	 */
-	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/**
 	 * Id of the checkbox.
 	 */
@@ -49,7 +43,6 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-	size: 'medium',
 	disabled: false,
 };
 
