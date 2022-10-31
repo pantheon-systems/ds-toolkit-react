@@ -25,7 +25,7 @@
 	grid-template-columns: 1em auto;
 	column-gap: token('spacing.2XS' to em);
 
-	font-size: token('typography.size.multipliers.sixth' to rem);
+	font-size: token('typography.size.multipliers.sixth' to em);
 
 	width: max-content;
 }
