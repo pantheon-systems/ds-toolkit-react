@@ -1,8 +1,6 @@
 import RadioGroupComponent from './RadioGroup';
 import DocsDescription from './RadioGroup.docs.md';
 
-import { IconMasterCard } from './_story/icon-mastercard';
-
 export default {
 	title: 'Components/Inputs/Radio Group',
 	component: RadioGroupComponent,
