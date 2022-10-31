@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-alerts-inline--alert-inline-dismissible';
+const storyID = 'components-messaging-alert-inline--alert-inline-dismissible';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Alerts/Inline', () => {
+test.describe('Components/Messaging/Alerts Inline', () => {
 	test('Dismissible: click button (mouse)', async ({ page, browserName }) => {
 		await gotoFrame(page, storyID);
 

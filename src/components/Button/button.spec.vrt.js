@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-button--button';
+const storyID = 'components-buttons--button';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
@@ -9,7 +9,7 @@ test.describe.configure({ mode: 'parallel' });
 // Page screenshot clipping/cropping dimensions
 const clipOptions = { x: 0, y: 0, width: 150, height: 75 };
 
-test.describe('Components/Button', () => {
+test.describe('Components/Buttons/Button', () => {
 	test.describe('Default/Secondary', () => {
 		test('Base', async ({ page }) => {
 			await gotoFrame(page, storyID);
@@ -116,37 +116,37 @@ test.describe('Components/Button', () => {
 		});
 	});
 
-	test.describe('Tertiary', () => {
+	test.describe('Subtle', () => {
 		test('Base', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__tertiary.png',
+				'button__subtle.png',
 			);
 		});
 
 		test('Disabled', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary;disabled:true');
+			await gotoFrame(page, storyID, 'variant:subtle;disabled:true');
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__tertiary-disabled.png',
+				'button__subtle-disabled.png',
 			);
 		});
 
 		test('State: hover', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			const button = page.locator('.pds-button');
 
 			await button.hover();
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__tertiary-hover.png',
+				'button__subtle-hover.png',
 			);
 		});
 
 		test('State: active', async ({ page }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			const button = page.locator('.pds-button');
 
@@ -154,17 +154,17 @@ test.describe('Components/Button', () => {
 			await page.mouse.down();
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__tertiary-active.png',
+				'button__subtle-active.png',
 			);
 		});
 
 		test('State: focused', async ({ page, browserName }) => {
-			await gotoFrame(page, storyID, 'variant:tertiary');
+			await gotoFrame(page, storyID, 'variant:subtle');
 
 			await focusViaTab(page, browserName);
 
 			expect(await page.screenshot({ clip: clipOptions })).toMatchSnapshot(
-				'button__tertiary-focused.png',
+				'button__subtle-focused.png',
 			);
 		});
 	});

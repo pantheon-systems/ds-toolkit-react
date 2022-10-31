@@ -2,12 +2,12 @@ const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../../src/libs/testing/vrt');
 const { a11yTest } = require('../../../src/libs/testing/a11y');
 
-const storyID = 'components-combobox-select--combobox-select';
+const storyID = 'components-inputs-combobox-select--combobox-select';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Combobox select', () => {
+test.describe('Components/Inputs/Combobox select', () => {
 	test('Base', async ({ page }) => {
 		await gotoFrame(page, storyID);
 

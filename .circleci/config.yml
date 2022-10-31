@@ -11,7 +11,7 @@ executors:
 
   playwright:
     docker:
-      - image: mcr.microsoft.com/playwright:v1.26.0
+      - image: mcr.microsoft.com/playwright:v1.27.1
     environment:
       NODE_ENV: development
       PLAYWRIGHT_SKIP_BROWSER_GC: 1

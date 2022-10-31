@@ -2,7 +2,7 @@ import AnnouncementComponent from './Announcement';
 import DocsDescription from './Announcement.docs.md';
 
 export default {
-	title: 'Components/Announcement',
+	title: 'Components/Messaging/Announcement',
 	component: AnnouncementComponent,
 	parameters: {
 		componentSubtitle: 'A component to show a product/top level announcement',

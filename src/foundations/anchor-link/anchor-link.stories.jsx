@@ -1,7 +1,7 @@
 import Docs from './anchor-link.docs.md';
 
 export default {
-	title: 'Foundations/Anchor Link',
+	title: 'Foundations/Elements/Anchor Link',
 	parameters: {
 		componentSubtitle: 'Base anchor link styles',
 		docs: {

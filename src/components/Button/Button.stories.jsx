@@ -2,7 +2,7 @@ import ButtonComponent from './Button';
 import DocsDescription from './Button.docs.md';
 
 export default {
-	title: 'Components/Button',
+	title: 'Components/Buttons',
 	component: ButtonComponent,
 	parameters: {
 		componentSubtitle: 'A component used to render a button',
@@ -21,3 +21,4 @@ export const Button = Template.bind({});
 Button.args = {
 	label: 'Button label',
 };
+Button.storyName = 'Button';

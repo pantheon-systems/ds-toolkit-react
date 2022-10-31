@@ -6,12 +6,12 @@ const {
 	sampleSelectOptionsScrolling,
 } = require('./combobox-select-sample-data');
 
-const storyID = 'components-combobox-select--combobox-select';
+const storyID = 'components-inputs-combobox-select--combobox-select';
 
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Combobox select', () => {
+test.describe('Components/Inputs/Combobox select', () => {
 	test.describe('Non-scrolling listbox', () => {
 		test('Option selected (via keyboard)', async ({ page, browserName }) => {
 			await gotoFrame(page, storyID);

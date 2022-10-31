@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { gotoFrame, focusViaTab } = require('../../libs/testing/vrt');
 
-const storyID = 'components-button-split--button-split';
+const storyID = 'components-buttons-button-split--button-split';
 
 const {
 	dialogMsgBase,
@@ -11,7 +11,7 @@ const {
 // enable single file parallelism
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('Components/Button Split', () => {
+test.describe('Components/Buttons/Button Split', () => {
 	test('Primary action activated (via mouse)', async ({
 		page,
 		browserName,
