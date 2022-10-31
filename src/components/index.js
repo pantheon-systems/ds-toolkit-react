@@ -2,6 +2,7 @@ export { default as AlertInline } from './AlertInline';
 export { default as Announcement } from './Announcement';
 export { default as Button } from './Button';
 export { default as ButtonSplit } from './ButtonSplit';
+export { default as Checkbox } from './Checkbox';
 export { default as ComboboxSelect } from './ComboboxSelect';
 export { default as InputObscured } from './InputObscured';
 export { default as InputFormatted } from './InputFormatted';

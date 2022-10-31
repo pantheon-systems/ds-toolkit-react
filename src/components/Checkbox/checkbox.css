@@ -1,0 +1,25 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-checkbox-						-> <add description>
+ *
+ */
+
+/* Default fallback checkbox style = medium checkbox Component style. */
+input[type='checkbox'] {
+	float: left;
+	margin-inline-end: token('spacing.2XS' to rem);
+	width: token('spacing.L' to rem);
+	height: token('spacing.L' to rem);
+}
+
+input[type='checkbox'] + label {
+	font-family: token('typography.font.bodycopy');
+	font-size: token('typography.size.multipliers.sixth' to rem);
+}
+
+/* Checkbox component styles. */
+.pds-checkbox {
+}
