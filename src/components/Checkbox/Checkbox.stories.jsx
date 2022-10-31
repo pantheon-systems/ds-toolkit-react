@@ -2,7 +2,7 @@ import CheckboxComponent from './Checkbox';
 import DocsDescription from './Checkbox.docs.md';
 
 export default {
-	title: 'Components/Checkbox',
+	title: 'Components/Inputs/Checkbox',
 	component: CheckboxComponent,
 	parameters: {
 		componentSubtitle: 'A component <add description here>',

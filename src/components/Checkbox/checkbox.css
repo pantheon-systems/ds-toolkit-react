@@ -7,7 +7,7 @@
  *
  */
 
-/* Default fallback checkbox style = medium checkbox Component style. */
+/* Default fallback checkbox style = medium Checkbox component style. */
 input[type='checkbox'] {
 	float: left;
 	margin-inline-end: token('spacing.2XS' to rem);
