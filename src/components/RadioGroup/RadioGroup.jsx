@@ -8,11 +8,11 @@ import './radio-group.css';
  */
 const RadioGroup = ({ id, label, options, initialSelection, onChange }) => {
 	//
-	const [currentSelection, setCurrentSElection] = useState(initialSelection);
+	const [currentSelection, setCurrentSelection] = useState(initialSelection);
 
 	//
 	const handleSelection = (event) => {
-		setCurrentSElection(event.target.value);
+		setCurrentSelection(event.target.value);
 
 		//
 		if (onChange) {
