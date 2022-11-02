@@ -29,19 +29,20 @@ const RadioGroup = ({ id, label, options, initialSelection, onChange }) => {
 			<div className='pds-radio-group__options'>
 				{options.map((radio, idx) => {
 					return (
-						<label
+						<div
 							className='pds-radio-group__option'
 							key={`${id}-option-${idx}`}
 						>
 							<input
 								type='radio'
+								id={`${id}-option-${idx}`}
 								name={id}
 								value={radio.value}
 								onClick={handleSelection}
 								defaultChecked={currentSelection === radio.value ? true : false}
 							/>
-							{radio.label}
-						</label>
+							<label htmlFor={`${id}-option-${idx}`}>{radio.label}</label>
+						</div>
 					);
 				})}
 			</div>
