@@ -39,4 +39,22 @@ test.describe('Components/Inputs/Radio Group', () => {
 			`${a11yNumViolations} accessibility issues found.`,
 		).toBe(0);
 	});
+
+	test('Focus styles', async ({ page, browserName }) => {
+		await gotoFrame(page, storyID);
+
+		await focusViaTab(page, browserName);
+
+		await page.keyboard.press('ArrowDown');
+
+		// wait for animation to complete
+		await page.waitForTimeout(250);
+
+		const a11yNumViolations = await a11yTest(page, 'radio-group__focus-styles');
+
+		expect(
+			a11yNumViolations,
+			`${a11yNumViolations} accessibility issues found.`,
+		).toBe(0);
+	});
 });

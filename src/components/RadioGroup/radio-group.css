@@ -9,6 +9,7 @@
 
 .pds-radio-group {
 	--_pds-radio-group-input-border-width: 0.15em;
+	--_pds-radio-group-focus-width: 0.15em;
 
 	border: none;
 	margin-inline: 0;
@@ -28,6 +29,10 @@
 	font-size: token('typography.size.multipliers.sixth' to em);
 
 	width: max-content;
+}
+
+.pds-radio-group .pds-radio-group__option label {
+	font-size: inherit;
 }
 
 .pds-radio-group .pds-radio-group__option input[type='radio'] {
@@ -69,15 +74,19 @@
 }
 
 .pds-radio-group .pds-radio-group__option input[type='radio']:focus-visible {
-	outline: none;
+	outline-width: var(--_pds-radio-group-focus-width);
+	outline-style: solid;
+	outline-color: token('color.focus');
+	outline-offset: var(--_pds-radio-group-focus-width);
 }
 
-.pds-radio-group .pds-radio-group__option:focus-within {
-	outline: none;
-	box-shadow: 0 0 0.5em var(--pds-color-focus);
-	padding: token('spacing.4XS' to em);
-	margin: calc(token('spacing.4XS' to em) * -1);
-	margin-block-end: calc(
-		token('spacing.2XS' to em) - token('spacing.4XS' to em)
-	);
+.pds-radio-group
+	.pds-radio-group__option
+	input[type='radio']:focus-visible
+	+ label {
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-color: token('color.focus');
+	text-decoration-thickness: var(--_pds-radio-group-focus-width);
+	text-underline-offset: var(--_pds-radio-group-focus-width);
 }
