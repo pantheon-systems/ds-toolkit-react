@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './checkbox.css';
@@ -5,16 +6,26 @@ import './checkbox.css';
 /**
  * Checkbox UI component
  */
-const Checkbox = ({ id, name, value, label, disabled }) => {
+const Checkbox = ({ id, label, name, value, checked, disabled }) => {
+	const defaultChecked = checked ? checked : false;
+	const [isChecked, setIsChecked] = useState(defaultChecked);
+
+	const handleOnChange = () => {
+		setIsChecked(!isChecked);
+	};
+
 	return (
 		<div className='pds-checkbox'>
 			<input
 				type='checkbox'
 				id={id}
 				name={name ? name : id}
-				{...(value ? { value: value } : {})}
+				value={value}
+				defaultChecked={isChecked}
+				disabled={disabled}
+				onChange={handleOnChange}
 			/>
-			<label for={id}>{label}</label>
+			<label htmlFor={id}>{label}</label>
 		</div>
 	);
 };
@@ -25,6 +36,10 @@ Checkbox.propTypes = {
 	 */
 	id: PropTypes.string.isRequired,
 	/**
+	 * Label of the checkbox.
+	 */
+	label: PropTypes.string,
+	/**
 	 * Name attribute of the checkbox — will use `id` value if undefined.
 	 */
 	name: PropTypes.string,
@@ -33,9 +48,9 @@ Checkbox.propTypes = {
 	 */
 	value: PropTypes.string,
 	/**
-	 * Label of the checkbox.
+	 * Is the checkbox checked initially?
 	 */
-	label: PropTypes.string,
+	checked: PropTypes.bool,
 	/**
 	 * Is the checkbox disabled?
 	 */
@@ -43,6 +58,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
+	checked: false,
 	disabled: false,
 };
 

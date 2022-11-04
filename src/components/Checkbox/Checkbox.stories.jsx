@@ -5,7 +5,8 @@ export default {
 	title: 'Components/Inputs/Checkbox',
 	component: CheckboxComponent,
 	parameters: {
-		componentSubtitle: 'A component <add description here>',
+		componentSubtitle:
+			'A component allowing the user to select a boolean option',
 		docs: {
 			description: {
 				component: DocsDescription,
@@ -23,8 +24,8 @@ const Template = (args) => <CheckboxComponent {...args} />;
 
 export const Checkbox = Template.bind({});
 Checkbox.args = {
-	label: 'Alpha',
 	id: 'pds-sample-checkbox-alpha',
-	name: 'alpha',
+	label: 'Alpha',
+	value: 'alpha',
 };
 Checkbox.storyName = 'Checkbox';
