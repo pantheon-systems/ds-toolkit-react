@@ -20,7 +20,7 @@
 .pds-checkbox label {
 	color: token('color.neutrals.darkest');
 	font-family: token('typography.font.bodycopy');
-	font-size: token('typography.size.multipliers.sixth' to em);
+	font-size: inherit;
 }
 
 .pds-checkbox input[type='checkbox'] {
