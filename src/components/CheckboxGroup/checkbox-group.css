@@ -1,0 +1,19 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-checkbox-group-						-> <add description>
+ *
+ */
+
+.pds-checkbox-group {
+	border: none;
+	margin-inline: 0;
+	padding-block: 0;
+	padding-inline: 0;
+}
+
+.pds-checkbox-group legend {
+	margin-block-end: token('spacing.XS' to em);
+}

@@ -1,0 +1,44 @@
+import CheckboxGroupComponent from './CheckboxGroup';
+import DocsDescription from './CheckboxGroup.docs.md';
+
+export default {
+	title: 'Components/Inputs/Checkbox Group',
+	component: CheckboxGroupComponent,
+	parameters: {
+		componentSubtitle:
+			'A component where a user can select one or more items from a limited number of choices',
+		docs: {
+			description: {
+				component: DocsDescription,
+			},
+			source: {
+				excludeDecorators: true,
+			},
+		},
+	},
+	argTypes: {},
+	decorators: [],
+};
+
+const Template = (args) => <CheckboxGroupComponent {...args} />;
+
+export const CheckboxGroup = Template.bind({});
+CheckboxGroup.args = {
+	id: 'pds-sample-checkbox-group',
+	label: 'Select options',
+	options: [
+		{
+			label: 'Alpha',
+			value: 'alpha',
+		},
+		{
+			label: 'Beta',
+			value: 'beta',
+		},
+		{
+			label: 'Gamma',
+			value: 'gamma',
+		},
+	],
+};
+CheckboxGroup.storyName = 'Checkbox Group';
