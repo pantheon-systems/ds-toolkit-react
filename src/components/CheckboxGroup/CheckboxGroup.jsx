@@ -8,8 +8,6 @@ import './checkbox-group.css';
  * CheckboxGroup UI component
  */
 const CheckboxGroup = ({ id, label, options, onChange }) => {
-	//
-	// Render the output
 	return (
 		<fieldset className='pds-checkbox-group' id={id}>
 			<legend>{label}</legend>
@@ -18,6 +16,7 @@ const CheckboxGroup = ({ id, label, options, onChange }) => {
 				{options.map((checkbox, index) => {
 					return (
 						<Checkbox
+							key={index}
 							id={`${id}-option-${index}`}
 							label={checkbox.label}
 							name={id}
@@ -49,7 +48,7 @@ CheckboxGroup.propTypes = {
 			/**
 			 * Option unique ID
 			 */
-			id: PropTypes.string.isRequired,
+			id: PropTypes.string,
 			/**
 			 * Label of the checkbox.
 			 */
