@@ -94,9 +94,3 @@
 	text-decoration-thickness: 0.15em;
 	text-underline-offset: 0.15em;
 }
-
-/* Active. */
-.pds-checkbox input[type='checkbox']:active {
-	background-color: token('color.neutrals.medium-light');
-	box-shadow: 0 0 0.5em var(--pds-color-focus);
-}
