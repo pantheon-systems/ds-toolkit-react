@@ -30,14 +30,25 @@ CheckboxGroup.args = {
 		{
 			label: 'Alpha',
 			value: 'alpha',
+			checked: true,
 		},
 		{
 			label: 'Beta',
 			value: 'beta',
+			checked: true,
 		},
 		{
 			label: 'Gamma',
 			value: 'gamma',
+		},
+		{
+			label: 'Delta',
+			value: 'delta',
+		},
+		{
+			label: 'Epsilon',
+			value: 'epsilon',
+			disabled: true,
 		},
 	],
 };
