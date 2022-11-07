@@ -7,12 +7,42 @@ import './checkbox-group.css';
 /**
  * CheckboxGroup UI component
  */
-const CheckboxGroup = ({ id, label, options, onChange }) => {
+const CheckboxGroup = ({ id, label, options }) => {
+	// Get array of values that are checked initially.
+	const initialCheckedOptions = [];
+	options.map((checkbox) => {
+		if (checkbox.checked === true) {
+			initialCheckedOptions.push(checkbox.value);
+		}
+	});
+
+	const [checkedOptions, setCheckedOptions] = useState(initialCheckedOptions);
+
+	const handleCheckedOptions = (event) => {
+		// If option is checked, add to checkedOptions.
+		if (event.target.checked === true) {
+			setCheckedOptions((checkedOptions) => [
+				...checkedOptions,
+				event.target.value,
+			]);
+		}
+		// If option is unchecked, remove from checkedOptions.
+		if (event.target.checked === false) {
+			setCheckedOptions((checkedOptions) =>
+				checkedOptions.filter((value) => value !== event.target.value),
+			);
+		}
+	};
+
 	return (
 		<fieldset className='pds-checkbox-group' id={id}>
 			<legend>{label}</legend>
 
-			<div className='pds-checkbox-group__options'>
+			<div
+				className='pds-checkbox-group__options'
+				onClick={handleCheckedOptions}
+				{...(checkedOptions.length !== 0 ? { values: checkedOptions } : {})}
+			>
 				{options.map((checkbox, index) => {
 					return (
 						<Checkbox
@@ -67,11 +97,6 @@ CheckboxGroup.propTypes = {
 			disabled: PropTypes.bool,
 		}),
 	),
-	/**
-	 * Callback function that will return updated values from the instance when it changes.
-	 * Function should have the shape of: `(value) => { <do stuff here> } `.
-	 */
-	onChange: PropTypes.func,
 };
 
 CheckboxGroup.defaultProps = {};
