@@ -24,8 +24,7 @@ const Template = (args) => <CheckboxComponent {...args} />;
 
 export const Checkbox = Template.bind({});
 Checkbox.args = {
-	id: 'pds-sample-checkbox-alpha',
-	label: 'Alpha',
-	value: 'alpha',
+	id: 'pds-sample-checkbox',
+	label: 'Yes, I confirm my selection',
 };
 Checkbox.storyName = 'Checkbox';
