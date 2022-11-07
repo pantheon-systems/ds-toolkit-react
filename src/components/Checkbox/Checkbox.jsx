@@ -6,7 +6,7 @@ import './checkbox.css';
 /**
  * Checkbox UI component
  */
-const Checkbox = ({ id, label, name, value, checked, disabled }) => {
+const Checkbox = ({ id, label, checked, disabled }) => {
 	const defaultChecked = checked ? checked : false;
 	const [isChecked, setIsChecked] = useState(defaultChecked);
 
@@ -19,8 +19,6 @@ const Checkbox = ({ id, label, name, value, checked, disabled }) => {
 			<input
 				type='checkbox'
 				id={id}
-				name={name ? name : id}
-				value={value}
 				defaultChecked={isChecked}
 				disabled={disabled}
 				onChange={handleOnChange}
@@ -38,15 +36,7 @@ Checkbox.propTypes = {
 	/**
 	 * Label of the checkbox.
 	 */
-	label: PropTypes.string,
-	/**
-	 * Name attribute of the checkbox — will use `id` value if undefined.
-	 */
-	name: PropTypes.string,
-	/**
-	 * Value attribute of the checkbox.
-	 */
-	value: PropTypes.string,
+	label: PropTypes.string.isRequired,
 	/**
 	 * Is the checkbox checked initially?
 	 */
