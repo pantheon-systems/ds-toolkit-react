@@ -6,12 +6,16 @@ import './checkbox.css';
 /**
  * Checkbox UI component
  */
-const Checkbox = ({ id, label, checked, disabled }) => {
-	const defaultChecked = checked ? checked : false;
-	const [isChecked, setIsChecked] = useState(defaultChecked);
+const Checkbox = ({ id, label, value, checked, disabled, onChange }) => {
+	//
+	const [isChecked, setIsChecked] = useState(checked);
 
-	const handleOnChange = () => {
+	const handleOnClick = (event) => {
 		setIsChecked(!isChecked);
+
+		if (onChange) {
+			onChange(event.target);
+		}
 	};
 
 	return (
@@ -19,9 +23,10 @@ const Checkbox = ({ id, label, checked, disabled }) => {
 			<input
 				type='checkbox'
 				id={id}
+				{...(value ? { value: value } : {})}
 				defaultChecked={isChecked}
 				disabled={disabled}
-				onChange={handleOnChange}
+				onClick={handleOnClick}
 			/>
 			<label htmlFor={id}>{label}</label>
 		</div>
@@ -38,6 +43,10 @@ Checkbox.propTypes = {
 	 */
 	label: PropTypes.string.isRequired,
 	/**
+	 * Value attribute of the checkbox. Not required for single boolean checkboxes.
+	 */
+	value: PropTypes.string,
+	/**
 	 * Is the checkbox checked initially?
 	 */
 	checked: PropTypes.bool,
@@ -45,6 +54,11 @@ Checkbox.propTypes = {
 	 * Is the checkbox disabled?
 	 */
 	disabled: PropTypes.bool,
+	/**
+	 * Callback function that will return the updated properties from the checkbox when it changes.
+	 * Function should have the shape of: `(checkbox) => { <do stuff here> } `.
+	 */
+	onChange: PropTypes.func,
 };
 
 Checkbox.defaultProps = {
