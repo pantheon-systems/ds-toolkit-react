@@ -35,7 +35,6 @@ CheckboxGroup.args = {
 		{
 			label: 'Beta',
 			value: 'beta',
-			checked: true,
 		},
 		{
 			label: 'Gamma',

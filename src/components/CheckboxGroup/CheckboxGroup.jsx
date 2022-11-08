@@ -7,7 +7,7 @@ import './checkbox-group.css';
 /**
  * CheckboxGroup UI component
  */
-const CheckboxGroup = ({ id, label, options }) => {
+const CheckboxGroup = ({ id, label, options, onChange }) => {
 	// Get array of values that are checked initially.
 	const initialCheckedOptions = [];
 	options.map((checkbox) => {
@@ -19,29 +19,38 @@ const CheckboxGroup = ({ id, label, options }) => {
 	const [checkedOptions, setCheckedOptions] = useState(initialCheckedOptions);
 
 	const handleCheckedOptions = (event) => {
-		// If option is checked, add to checkedOptions.
+		let updatedOptions = [];
+
+		// If event option is checked, add to array.
 		if (event.target.checked === true) {
-			setCheckedOptions((checkedOptions) => [
-				...checkedOptions,
-				event.target.value,
-			]);
+			updatedOptions = [...checkedOptions, event.target.value];
 		}
-		// If option is unchecked, remove from checkedOptions.
+
+		// If event option is unchecked, remove from array.
 		if (event.target.checked === false) {
-			setCheckedOptions((checkedOptions) =>
-				checkedOptions.filter((value) => value !== event.target.value),
+			updatedOptions = checkedOptions.filter(
+				(value) => value !== event.target.value,
 			);
+		}
+
+		setCheckedOptions(updatedOptions);
+
+		if (onChange) {
+			onChange(updatedOptions);
 		}
 	};
 
 	return (
-		<fieldset className='pds-checkbox-group' id={id}>
+		<fieldset
+			className='pds-checkbox-group'
+			id={id}
+			{...(checkedOptions.length !== 0 ? { values: checkedOptions } : {})}
+		>
 			<legend>{label}</legend>
 
 			<div
 				className='pds-checkbox-group__options'
-				onClick={handleCheckedOptions}
-				{...(checkedOptions.length !== 0 ? { values: checkedOptions } : {})}
+				onChange={handleCheckedOptions}
 			>
 				{options.map((checkbox, index) => {
 					return (
@@ -76,17 +85,13 @@ CheckboxGroup.propTypes = {
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
 			/**
-			 * Option unique ID
-			 */
-			id: PropTypes.string,
-			/**
 			 * Label of the checkbox.
 			 */
 			label: PropTypes.string.isRequired,
 			/**
 			 * Value attribute of the checkbox.
 			 */
-			value: PropTypes.string,
+			value: PropTypes.string.isRequired,
 			/**
 			 * Is the checkbox checked initially?
 			 */
@@ -97,6 +102,11 @@ CheckboxGroup.propTypes = {
 			disabled: PropTypes.bool,
 		}),
 	),
+	/**
+	 * Callback function that will return the updated array of values from the instance when any of the options change.
+	 * Function should have the shape of: `(values) => { <do stuff here> } `.
+	 */
+	onChange: PropTypes.func,
 };
 
 CheckboxGroup.defaultProps = {};
