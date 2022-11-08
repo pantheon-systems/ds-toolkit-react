@@ -8,7 +8,7 @@
  */
 
 .pds-checkbox {
-	--_pds-checkbox-input-size: 1.25em;
+	--_pds-checkbox-input-size: 1em;
 	--_pds-checkbox-input-border-width: 0.0625em;
 
 	display: grid;
@@ -28,11 +28,12 @@
 	appearance: none;
 	width: var(--_pds-checkbox-input-size);
 	height: var(--_pds-checkbox-input-size);
-	background-color: transparent;
+	margin-top: var(--_pds-checkbox-input-border-width);
 	border-width: var(--_pds-checkbox-input-border-width);
 	border-style: solid;
 	border-color: token('color.neutrals.dark');
 	border-radius: 0.125em;
+	background-color: transparent;
 }
 
 /* Checked. */
@@ -55,11 +56,11 @@
 
 .pds-checkbox input[type='checkbox']:checked::before {
 	height: calc(var(--_pds-checkbox-input-size) * 0.325);
-	width: calc(var(--_pds-checkbox-input-size) * 0.1);
+	width: calc(var(--_pds-checkbox-input-size) * 0.125);
 }
 
 .pds-checkbox input[type='checkbox']:checked::after {
-	height: calc(var(--_pds-checkbox-input-size) * 0.1);
+	height: calc(var(--_pds-checkbox-input-size) * 0.125);
 	width: calc(var(--_pds-checkbox-input-size) * 0.5625);
 }
 
