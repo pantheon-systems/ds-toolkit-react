@@ -1,6 +1,6 @@
 ## Purpose
 
-The `CheckboxGroup` component presents a user with a limited number of options where they may select more than one. This is useful fields that can accept more than one value. This component can also be used as a filtering mechanism for long lists or tables.
+The `CheckboxGroup` component presents a user with a limited number of options where they may select more than one. This is useful for fields that can accept more than one value. This component can also be used as a filtering mechanism for long lists or tables.
 
 ## Implementation
 
@@ -39,3 +39,5 @@ Example data array for the `options` prop:
 	}
 ]
 ```
+
+When using an `onChange` callback function, you will be provided with an array of values representing the checkboxes that are currently checked.

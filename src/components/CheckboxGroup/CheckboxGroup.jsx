@@ -41,11 +41,7 @@ const CheckboxGroup = ({ id, label, options, onChange }) => {
 	};
 
 	return (
-		<fieldset
-			className='pds-checkbox-group'
-			id={id}
-			{...(checkedOptions.length !== 0 ? { values: checkedOptions } : {})}
-		>
+		<fieldset className='pds-checkbox-group' id={id}>
 			<legend>{label}</legend>
 
 			<div
