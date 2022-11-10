@@ -6,6 +6,4 @@ A single boolean checkbox is often used in forms where the user must agree to a 
 
 ## Implementation
 
-All props are optional except for `id` and `label`.
-
 When using an `onChange` callback function, you will have access to the entire checkbox object. You may then access the individual properties from there. For example, if you need to know the current checked state of the checkbox, use `checkbox.checked` in your function.

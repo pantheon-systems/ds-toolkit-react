@@ -8,8 +8,9 @@
  */
 
 .pds-checkbox {
-	--_pds-checkbox-input-size: 1em;
+	--_pds-checkbox-input-size: 1.25em;
 	--_pds-checkbox-input-border-width: 0.0625em;
+	--_pds-checkbox-label-size: token('typography.size.multipliers.sixth' to em);
 
 	display: grid;
 	grid-template-columns: var(--_pds-checkbox-input-size) auto;
@@ -18,9 +19,13 @@
 }
 
 .pds-checkbox label {
+	margin-block-start: calc(
+		(var(--_pds-checkbox-input-size) - var(--_pds-checkbox-label-size)) * -0.5
+	);
 	color: token('color.neutrals.darkest');
 	font-family: token('typography.font.bodycopy');
-	font-size: token('typography.size.multipliers.sixth' to em);
+	font-size: var(--_pds-checkbox-label-size);
+	line-height: token('typography.line-height.M');
 }
 
 .pds-checkbox input[type='checkbox'] {
@@ -28,7 +33,7 @@
 	appearance: none;
 	width: var(--_pds-checkbox-input-size);
 	height: var(--_pds-checkbox-input-size);
-	margin-top: var(--_pds-checkbox-input-border-width);
+
 	border-width: var(--_pds-checkbox-input-border-width);
 	border-style: solid;
 	border-color: token('color.neutrals.dark');
@@ -36,8 +41,9 @@
 	background-color: transparent;
 }
 
-/* Checked. */
-.pds-checkbox input[type='checkbox']:checked {
+/* Checked + Indeterminate */
+.pds-checkbox input[type='checkbox']:checked,
+.pds-checkbox input[type='checkbox']:indeterminate {
 	background-color: token('color.accents.deep');
 	border-color: token('color.accents.deep');
 }
@@ -51,7 +57,7 @@
 	transform: translateX(calc(var(--_pds-checkbox-input-size) * 0.375))
 		rotate(-45deg);
 	transform-origin: left bottom;
-	border-radius: 1px;
+	border-radius: 0.0625em;
 }
 
 .pds-checkbox input[type='checkbox']:checked::before {
@@ -62,6 +68,17 @@
 .pds-checkbox input[type='checkbox']:checked::after {
 	height: calc(var(--_pds-checkbox-input-size) * 0.125);
 	width: calc(var(--_pds-checkbox-input-size) * 0.5625);
+}
+
+.pds-checkbox input[type='checkbox']:indeterminate::before {
+	content: '';
+	background-color: white;
+	position: absolute;
+	bottom: calc(50% - (var(--_pds-checkbox-input-size) * 0.1) / 2);
+	left: calc(50% - (var(--_pds-checkbox-input-size) * 0.5) / 2);
+	height: calc(var(--_pds-checkbox-input-size) * 0.1);
+	width: calc(var(--_pds-checkbox-input-size) * 0.5);
+	border-radius: 0.0625em;
 }
 
 /* Disabled. */

@@ -16,7 +16,13 @@ export default {
 			},
 		},
 	},
-	argTypes: {},
+	argTypes: {
+		indeterminate: {
+			table: {
+				disable: true,
+			},
+		},
+	},
 	decorators: [],
 };
 

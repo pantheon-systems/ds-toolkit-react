@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './checkbox.css';
@@ -6,10 +6,26 @@ import './checkbox.css';
 /**
  * Checkbox UI component
  */
-const Checkbox = ({ id, label, value, checked, disabled, onChange }) => {
-	//
+const Checkbox = ({
+	id,
+	label,
+	value,
+	checked,
+	indeterminate,
+	disabled,
+	onChange,
+}) => {
+	// State for checked property.
 	const [isChecked, setIsChecked] = useState(checked);
 
+	// Set initial value of indeterminate property.
+	const checkboxRef = useRef(indeterminate);
+
+	useEffect(() => {
+		checkboxRef.current.indeterminate = indeterminate;
+	}, []);
+
+	//
 	const handleOnClick = (event) => {
 		setIsChecked(!isChecked);
 
@@ -21,6 +37,7 @@ const Checkbox = ({ id, label, value, checked, disabled, onChange }) => {
 	return (
 		<div className='pds-checkbox'>
 			<input
+				ref={checkboxRef}
 				type='checkbox'
 				id={id}
 				{...(value ? { value: value } : {})}
@@ -43,13 +60,17 @@ Checkbox.propTypes = {
 	 */
 	label: PropTypes.string.isRequired,
 	/**
-	 * Value attribute of the checkbox. Not required for single boolean checkboxes.
+	 * Value attribute of the checkbox.
 	 */
 	value: PropTypes.string,
 	/**
 	 * Is the checkbox checked initially?
 	 */
 	checked: PropTypes.bool,
+	/**
+	 * Is the checkbox indeterminate initially?
+	 */
+	indeterminate: PropTypes.bool,
 	/**
 	 * Is the checkbox disabled?
 	 */
@@ -63,6 +84,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
 	checked: false,
+	indeterminate: false,
 	disabled: false,
 };
 
