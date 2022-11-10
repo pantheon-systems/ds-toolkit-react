@@ -6,7 +6,7 @@ orbs:
 executors:
   basic:
     docker:
-      - image: 'cimg/node:lts'
+      - image: 'cimg/node:16'
     resource_class: small
 
   playwright:
