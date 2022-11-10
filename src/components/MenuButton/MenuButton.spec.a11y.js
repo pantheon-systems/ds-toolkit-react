@@ -76,8 +76,6 @@ test.describe('Components/Buttons/Menu Button', () => {
 	});
 
 	test('Menu open (via mouse)', async ({ page }) => {
-		test.slow();
-
 		await gotoFrame(page, storyID);
 
 		const button = page.locator('.pds-menu-button');
