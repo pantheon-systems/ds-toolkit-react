@@ -1,6 +1,6 @@
 {
-	"name": "@pantheon-systems/pds-product-react",
-	"version": "0.1.0",
+	"name": "@pantheon-systems/ds-toolkit-react",
+	"version": "0.999.0-dev",
 	"description": "PDS toolkit for the product context and built using the React framework",
 	"repository": {
 		"type": "git",
@@ -42,8 +42,9 @@
 		"test:a11y": "playwright test --project 'a11y'",
 		"test:a11y:results": "npx http-server ./__tests__/a11y/results/",
 		"build": "rollup -c",
-		"postbuild": "npm run build:css",
+		"postbuild": "npm run build:css && npm run build:css:components",
 		"build:css": "postcss src/foundations/index.css -o _dist/css/pantheon-core.css",
+		"build:css:components": "postcss src/index.css -o _dist/css/pantheon-components.css",
 		"build:css:watch": "npm run build:css -- -w",
 		"predeploy:pantheon": "npm run build:css",
 		"deploy:pantheon": "build-storybook",
@@ -72,6 +73,7 @@
 		"babel-loader": "^8.2.5",
 		"cssnano": "^5.1.13",
 		"del": "^6.1.1",
+		"nanoid": "^4.0.0",
 		"plop": "^3.1.1",
 		"postcss": "^8.4.16",
 		"postcss-cli": "^10.0.0",
