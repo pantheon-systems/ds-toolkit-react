@@ -22,6 +22,8 @@
 		--pds-input-border-width,
 		token('border.width.default' to px)
 	);
+
+	margin-block-end: token('spacing.S' to em);
 }
 
 .pds-input-field > .pds-input-field__field-wrapper {

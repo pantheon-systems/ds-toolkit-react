@@ -179,7 +179,9 @@ const ComboboxSelect = ({ label, icon, selectOptions, onChange, value }) => {
 		setSelectedOption(item);
 
 		// call the onChange function that was passed in and give it the item value or label
-		onChange(item.value || item.label);
+		if (onChange) {
+			onChange(item.value || item.label);
+		}
 	};
 
 	const selectCurrentOptionItem = () => {

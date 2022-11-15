@@ -37,6 +37,8 @@
 	display: inline-block;
 	position: relative;
 	max-width: 20rem;
+
+	margin-block-end: token('spacing.S' to em);
 }
 
 .pds-combobox-select label {

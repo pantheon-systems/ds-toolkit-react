@@ -4,7 +4,7 @@
 
 body {
 	font-family: token('typography.font.bodycopy');
-	letter-spacing: token('typography.letter-spacing.S' to rem);
+	letter-spacing: token('typography.letter-spacing.S' to em);
 	color: var(--pds-typography-bodycopy-color);
 }
 
@@ -42,23 +42,23 @@ h5 {
 }
 
 h1 {
-	font-size: token('typography.size.multipliers.first' to rem);
+	font-size: token('typography.size.multipliers.first' to em);
 }
 
 h2 {
-	font-size: token('typography.size.multipliers.second' to rem);
+	font-size: token('typography.size.multipliers.second' to em);
 }
 
 h3 {
-	font-size: token('typography.size.multipliers.third' to rem);
+	font-size: token('typography.size.multipliers.third' to em);
 }
 
 h4 {
-	font-size: token('typography.size.multipliers.fourth' to rem);
+	font-size: token('typography.size.multipliers.fourth' to em);
 }
 
 h5 {
-	font-size: token('typography.size.multipliers.fifth' to rem);
+	font-size: token('typography.size.multipliers.fifth' to em);
 }
 
 p {
