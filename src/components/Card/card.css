@@ -1,0 +1,31 @@
+@design-tokens url('node_modules://@pantheon-systems/pds-tokens/build/json/pds-design-tokens.json') format('style-dictionary3');
+
+/*
+ * CSS theming API
+ *
+ * --pds-card-background-color  -> Background color of card.
+ * --pds-card-border-color  		-> Border color of card.
+ *
+ */
+
+div.pds-card {
+	--_pds-card-background-color: var(
+		--pds-card-background-color,
+		var(--pds-color-neutrals-lightest)
+	);
+
+	--_pds-card-border-color: var(
+		--pds-card-border-color,
+		var(--pds-color-neutrals-medium)
+	);
+
+	border: 1px solid var(--_pds-card-border-color);
+	border-radius: 5px;
+	box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.12);
+	padding: token('spacing.L' to em);
+	background-color: var(--_pds-card-background-color);
+}
+
+div.pds-card + div.pds-card {
+	margin-block-start: token('spacing.L' to em);
+}
