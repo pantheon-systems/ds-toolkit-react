@@ -21,6 +21,7 @@ Follow [these instructions from Github](https://docs.github.com/en/authenticatio
 Once created add the following to the `.npmrc` file in your user directory on your local system:
 
 ```
+@pantheon-systems:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=TOKEN
 ```
 
