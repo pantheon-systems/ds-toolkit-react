@@ -1,7 +1,7 @@
 {
-	"name": "@pantheon-systems/pds-product-react",
+	"name": "@pantheon-systems/ds-toolkit-react",
 	"version": "0.1.0",
-	"description": "PDS toolkit for the product context and built using the React framework",
+	"description": "PDS toolkit built for React.",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/pantheon-systems/pds-product-react.git"
