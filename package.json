@@ -50,7 +50,7 @@
 		"generate:component": "plop component"
 	},
 	"devDependencies": {
-		"@axe-core/playwright": "^4.5.0",
+		"@axe-core/playwright": "^4.5.2",
 		"@babel/core": "^7.18.10",
 		"@csstools/postcss-design-tokens": "^1.2.x",
 		"@floating-ui/react-dom": "^1.0.0",
