@@ -71,7 +71,7 @@ workflows:
   testing:
     jobs:
       - test_a11y:
-          context: design-systems-automation
+          context: pds-automation
           filters:
             branches:
               ignore:
@@ -79,7 +79,7 @@ workflows:
             tags:
               ignore: /.*/
       - test_e2e:
-          context: design-systems-automation
+          context: pds-automation
           filters:
             branches:
               ignore:
@@ -87,7 +87,7 @@ workflows:
             tags:
               ignore: /.*/
       - build_package:
-          context: design-systems-automation
+          context: pds-automation
           filters:
             tags:
               only:
