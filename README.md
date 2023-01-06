@@ -34,9 +34,3 @@ Git hooks scripts are stored in the `.git-hooks` directory.
 To install the Git hooks:
 
 - run from project root: `./.git-hooks/hooks-setup.sh`
-
-#### If using the Tower GUI app
-
-[Follow these instructions](https://www.git-tower.com/help/guides/integration/environment/mac) to properly setup the command line environment.
-
-Other GUI tools may require similar setup to properly set up scripts run by Git hooks.
